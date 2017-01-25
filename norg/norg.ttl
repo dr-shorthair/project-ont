@@ -1,0 +1,80 @@
+# baseURI: http://registry.it.csiro.au/ont/norg
+# imports: http://www.w3.org/2006/time
+# imports: http://www.w3.org/ns/org
+# imports: http://www.w3.org/ns/prov
+# imports: http://xmlns.com/foaf/0.1/
+# prefix: norg
+
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix norg: <http://registry.it.csiro.au/ont/norg#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://registry.it.csiro.au/ont/norg>
+  rdf:type owl:Ontology ;
+  dct:created "2017-01-25"^^xsd:date ;
+  dct:creator <http://orcid.org/0000-0002-3884-3420> ;
+  dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+  rdfs:comment """Modification to W3C ORG ontology. 
+
+A org:Post is heldBy a (time-bounded) Membership, as an alternative to a single Agent.""" ;
+  owl:imports <http://www.w3.org/2006/time> ;
+  owl:imports <http://www.w3.org/ns/org> ;
+  owl:imports <http://www.w3.org/ns/prov> ;
+  owl:imports <http://xmlns.com/foaf/0.1/> ;
+.
+norg:heldBy
+  rdf:type rdf:Property ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Indicates a Membership by which an Agent holds a Post."@en ;
+  rdfs:comment "This property is a modified clone of org:heldBy with the rdfs:range adjusted to org:Membership instead of foaf:Agent" ;
+  rdfs:domain org:Post ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/org> ;
+  rdfs:label "held by"@en ;
+  rdfs:label "occupé par"@fr ;
+  rdfs:label "ocupado por"@es ;
+  rdfs:label "ricoperto da"@it ;
+  rdfs:range org:Membership ;
+.
+norg:holds
+  rdf:type rdf:Property ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Indicates a Post held by some Agent in the context of a Membership."@en ;
+  rdfs:comment "This property is a modified clone of org:holds with the rdfs:domain adjusted to org:Membership instead of foaf:Agent" ;
+  rdfs:domain org:Membership ;
+  rdfs:label "holds"@en ;
+  rdfs:label "occupe"@fr ;
+  rdfs:label "ocupa"@es ;
+  rdfs:label "ricopre"@it ;
+  rdfs:range org:Post ;
+  owl:inverseOf norg:heldBy ;
+.
+norg:postRole
+  rdf:type rdf:Property ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Indicates the Role of the Post in its Organization."@en ;
+  rdfs:comment "This property is a modified clone of org:role with the rdfs:domain limited to org:Post instead of the union of org:Post and org:Membership" ;
+  rdfs:domain org:Post ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/org> ;
+  rdfs:label "desempeña la actividad de"@es ;
+  rdfs:label "role"@en ;
+  rdfs:label "ruolo"@it ;
+  rdfs:label "rôle"@fr ;
+  rdfs:range org:Role ;
+  rdfs:subPropertyOf <http://network.csiro.au/ontology/core#hasRole> ;
+.
+org:organization
+  owl:propertyChainAxiom (
+      norg:holds
+      org:postIn
+    ) ;
+.
+org:role
+  owl:propertyChainAxiom (
+      norg:holds
+      norg:postRole
+    ) ;
+.
