@@ -1,0 +1,216 @@
+# baseURI: http://network.csiro.au/ontology/project
+# imports: http://network.csiro.au/ontology/core
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://vivoweb.org/ontology/core
+# imports: http://www.w3.org/2004/02/skos/core
+# imports: http://www.w3.org/ns/org
+# imports: http://www.w3.org/ns/prov-o
+# imports: http://xmlns.com/foaf/0.1
+
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix project: <http://network.csiro.au/ontology/project/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://network.csiro.au/ontology/core#Project>
+  rdfs:subClassOf project:Project ;
+.
+<http://network.csiro.au/ontology/project>
+  rdf:type owl:Ontology ;
+  dc:contributor "David RATCLIFFE, CSIRO" ;
+  dc:contributor "Jonathan YU, CSIRO" ;
+  dc:contributor "Peter BRENTON, CSIRO" ;
+  dc:creator "Simon J D COX, CSIRO" ;
+  dcterms:created "2017-08-14"^^xsd:date ;
+  dcterms:creator <http://orcid.org/0000-0002-3884-3420> ;
+  dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+  rdfs:comment """A basic ontology for projects, influenced by FOAF, dbPedia, VIVO-ISF, but factored out so that it has minimal dependencies. 
+
+Can be used for alignment of project related classes and properties in more specific applications.""" ;
+  owl:imports <http://network.csiro.au/ontology/core> ;
+  owl:imports dc: ;
+  owl:imports <http://vivoweb.org/ontology/core> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports <http://www.w3.org/ns/org> ;
+  owl:imports <http://www.w3.org/ns/prov-o> ;
+  owl:imports <http://xmlns.com/foaf/0.1> ;
+.
+project:Funder
+  rdf:type prov:Role ;
+.
+project:FundingAssociation
+  rdf:type owl:Class ;
+  rdfs:subClassOf prov:Association ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue project:Funder ;
+      owl:onProperty prov:hadRole ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty project:fundsProvided ;
+    ] ;
+.
+project:Funds
+  rdf:type owl:Class ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty project:currency ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty project:fundsAmount ;
+    ] ;
+.
+project:Leader
+  rdf:type prov:Role ;
+.
+project:Participant
+  rdf:type prov:Role ;
+.
+project:Project
+  rdf:type owl:Class ;
+  rdfs:comment "Basic project class" ;
+  rdfs:label "Project" ;
+  rdfs:subClassOf prov:Activity ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty project:plannedEndTime ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty project:plannedStartTime ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty project:fieldOfResearch ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty project:projectLeader ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty project:wasFundedBy ;
+    ] ;
+  owl:equivalentClass <http://dbpedia.org/ontology/Project> ;
+  owl:equivalentClass <http://vivoweb.org/ontology/core#Project> ;
+  owl:equivalentClass <http://xmlns.com/foaf/0.1/Project> ;
+.
+project:activityLeadAssociation
+  rdf:type owl:ObjectProperty ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      rdfs:subClassOf prov:Association ;
+      rdfs:subClassOf [
+          rdf:type owl:Restriction ;
+          owl:hasValue project:Leader ;
+          owl:onProperty prov:hadRole ;
+        ] ;
+    ] ;
+  rdfs:subPropertyOf prov:qualifiedAssociation ;
+.
+project:activityLeader
+  rdf:type owl:ObjectProperty ;
+  rdfs:subPropertyOf prov:wasAssociatedWith ;
+  owl:propertyChainAxiom (
+      project:activityLeadAssociation
+      prov:agent
+    ) ;
+.
+project:activityParticipant
+  rdf:type owl:ObjectProperty ;
+  rdfs:subPropertyOf prov:wasAssociatedWith ;
+  owl:propertyChainAxiom (
+      project:activityParticipantAssociation
+      prov:agent
+    ) ;
+.
+project:activityParticipantAssociation
+  rdf:type owl:ObjectProperty ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      rdfs:subClassOf prov:Association ;
+      rdfs:subClassOf [
+          rdf:type owl:Restriction ;
+          owl:hasValue project:Participant ;
+          owl:onProperty prov:hadRole ;
+        ] ;
+    ] ;
+  rdfs:subPropertyOf prov:qualifiedAssociation ;
+.
+project:budgetTotal
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain project:Project ;
+  rdfs:range project:Funds ;
+.
+project:currency
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain project:Funds ;
+.
+project:fieldOfResearch
+  rdf:type owl:ObjectProperty ;
+  rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+  rdfs:subPropertyOf dcterms:subject ;
+.
+project:fundsAmount
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain project:Funds ;
+  rdfs:range xsd:decimal ;
+.
+project:fundsProvided
+  rdf:type owl:ObjectProperty ;
+  rdfs:range project:Funds ;
+.
+project:name
+  rdf:type owl:AnnotationProperty ;
+  rdfs:domain project:Project ;
+  rdfs:subPropertyOf rdfs:label ;
+.
+project:objective
+  rdf:type owl:AnnotationProperty ;
+  rdfs:domain project:Project ;
+  rdfs:subPropertyOf rdfs:comment ;
+.
+project:plannedEndTime
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The time at which an activity was planned to end. See also project:plannedStartTime."@en ;
+  rdfs:domain prov:Activity ;
+  rdfs:label "planned end-time" ;
+  rdfs:range xsd:dateTime ;
+.
+project:plannedStartTime
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The time at which an activity was planned to start. See also project:plannedEndTime."@en ;
+  rdfs:domain prov:Activity ;
+  rdfs:label "planned start-time" ;
+  rdfs:range xsd:dateTime ;
+.
+project:projectLeader
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain project:Project ;
+  rdfs:subPropertyOf project:activityLeader ;
+.
+project:projectParticipant
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain project:Project ;
+  rdfs:subPropertyOf project:activityParticipant ;
+.
+project:wasFundedBy
+  rdf:type owl:ObjectProperty ;
+  rdfs:range project:FundingAssociation ;
+  rdfs:subPropertyOf prov:qualifiedAssociation ;
+.
