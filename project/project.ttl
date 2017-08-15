@@ -1,4 +1,6 @@
 # baseURI: http://network.csiro.au/ontology/project
+# imports: http://dbpedia.org/ontology/Project
+# imports: http://dbpedia.org/ontology/UnitOfWork
 # imports: http://network.csiro.au/ontology/core
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://vivoweb.org/ontology/core
@@ -32,6 +34,8 @@
   rdfs:comment """A basic ontology for projects, influenced by FOAF, dbPedia, VIVO-ISF, but factored out so that it has minimal dependencies. 
 
 Can be used for alignment of project related classes and properties in more specific applications.""" ;
+  owl:imports <http://dbpedia.org/ontology/Project> ;
+  owl:imports <http://dbpedia.org/ontology/UnitOfWork> ;
   owl:imports <http://network.csiro.au/ontology/core> ;
   owl:imports dc: ;
   owl:imports <http://vivoweb.org/ontology/core> ;
@@ -42,9 +46,11 @@ Can be used for alignment of project related classes and properties in more spec
 .
 project:Funder
   rdf:type prov:Role ;
+  rdfs:label "funding agent" ;
 .
 project:FundingAssociation
   rdf:type owl:Class ;
+  rdfs:label "funding association" ;
   rdfs:subClassOf prov:Association ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -59,6 +65,7 @@ project:FundingAssociation
 .
 project:Funds
   rdf:type owl:Class ;
+  rdfs:label "Funds or money" ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
@@ -72,9 +79,11 @@ project:Funds
 .
 project:Leader
   rdf:type prov:Role ;
+  rdfs:label "project leader role" ;
 .
 project:Participant
   rdf:type prov:Role ;
+  rdfs:label "project participant role" ;
 .
 project:Project
   rdf:type owl:Class ;
@@ -112,6 +121,7 @@ project:Project
 .
 project:activityLeadAssociation
   rdf:type owl:ObjectProperty ;
+  rdfs:label "activity lead association" ;
   rdfs:range [
       rdf:type owl:Class ;
       rdfs:subClassOf prov:Association ;
@@ -125,6 +135,7 @@ project:activityLeadAssociation
 .
 project:activityLeader
   rdf:type owl:ObjectProperty ;
+  rdfs:label "activity leader" ;
   rdfs:subPropertyOf prov:wasAssociatedWith ;
   owl:propertyChainAxiom (
       project:activityLeadAssociation
@@ -133,6 +144,7 @@ project:activityLeader
 .
 project:activityParticipant
   rdf:type owl:ObjectProperty ;
+  rdfs:label "activity participant" ;
   rdfs:subPropertyOf prov:wasAssociatedWith ;
   owl:propertyChainAxiom (
       project:activityParticipantAssociation
@@ -141,6 +153,7 @@ project:activityParticipant
 .
 project:activityParticipantAssociation
   rdf:type owl:ObjectProperty ;
+  rdfs:label "activity participant association" ;
   rdfs:range [
       rdf:type owl:Class ;
       rdfs:subClassOf prov:Association ;
@@ -155,34 +168,41 @@ project:activityParticipantAssociation
 project:budgetTotal
   rdf:type owl:ObjectProperty ;
   rdfs:domain project:Project ;
+  rdfs:label "total budget" ;
   rdfs:range project:Funds ;
 .
 project:currency
   rdf:type owl:ObjectProperty ;
   rdfs:domain project:Funds ;
+  rdfs:label "currency" ;
 .
 project:fieldOfResearch
   rdf:type owl:ObjectProperty ;
+  rdfs:label "field of research" ;
   rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
   rdfs:subPropertyOf dcterms:subject ;
 .
 project:fundsAmount
   rdf:type owl:DatatypeProperty ;
   rdfs:domain project:Funds ;
+  rdfs:label "funds amount" ;
   rdfs:range xsd:decimal ;
 .
 project:fundsProvided
   rdf:type owl:ObjectProperty ;
+  rdfs:label "funding provided" ;
   rdfs:range project:Funds ;
 .
 project:name
   rdf:type owl:AnnotationProperty ;
   rdfs:domain project:Project ;
+  rdfs:label "project name" ;
   rdfs:subPropertyOf rdfs:label ;
 .
 project:objective
   rdf:type owl:AnnotationProperty ;
   rdfs:domain project:Project ;
+  rdfs:label "project objective" ;
   rdfs:subPropertyOf rdfs:comment ;
 .
 project:plannedEndTime
@@ -202,15 +222,18 @@ project:plannedStartTime
 project:projectLeader
   rdf:type owl:ObjectProperty ;
   rdfs:domain project:Project ;
+  rdfs:label "project leader" ;
   rdfs:subPropertyOf project:activityLeader ;
 .
 project:projectParticipant
   rdf:type owl:ObjectProperty ;
   rdfs:domain project:Project ;
+  rdfs:label "project participant" ;
   rdfs:subPropertyOf project:activityParticipant ;
 .
 project:wasFundedBy
   rdf:type owl:ObjectProperty ;
+  rdfs:label "was funded by" ;
   rdfs:range project:FundingAssociation ;
   rdfs:subPropertyOf prov:qualifiedAssociation ;
 .
