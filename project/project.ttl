@@ -17,6 +17,7 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://network.csiro.au/ontology/core#Project>
@@ -31,7 +32,7 @@
   dcterms:created "2017-08-14"^^xsd:date ;
   dcterms:creator <http://orcid.org/0000-0002-3884-3420> ;
   dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-  rdfs:comment """A basic ontology for projects, influenced by FOAF, dbPedia, VIVO-ISF, but factored out so that it has minimal dependencies. 
+  rdfs:comment """A basic ontology for projects, influenced by FOAF, dbPedia, VIVO-ISF, but only depending on W3C PROV-O.
 
 Can be used for alignment of project related classes and properties in more specific applications.""" ;
   owl:imports <http://dbpedia.org/ontology/Project> ;
@@ -46,11 +47,12 @@ Can be used for alignment of project related classes and properties in more spec
 .
 project:Funder
   rdf:type prov:Role ;
-  rdfs:label "funding agent" ;
+  rdfs:label "funding agent role" ;
+  skos:broader project:Sponsor ;
 .
 project:FundingAssociation
   rdf:type owl:Class ;
-  rdfs:label "funding association" ;
+  rdfs:label "Funding association" ;
   rdfs:subClassOf prov:Association ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -79,11 +81,17 @@ project:Funds
 .
 project:Leader
   rdf:type prov:Role ;
-  rdfs:label "project leader role" ;
+  rdfs:label "activity leader role" ;
+  skos:broader project:Participant ;
 .
 project:Participant
   rdf:type prov:Role ;
-  rdfs:label "project participant role" ;
+  rdfs:label "activity participant role" ;
+.
+project:PrincipalInvestigator
+  rdf:type prov:Role ;
+  rdfs:label "principal investigator role" ;
+  skos:broader project:Leader ;
 .
 project:Project
   rdf:type owl:Class ;
@@ -118,6 +126,15 @@ project:Project
   owl:equivalentClass <http://dbpedia.org/ontology/Project> ;
   owl:equivalentClass <http://vivoweb.org/ontology/core#Project> ;
   owl:equivalentClass <http://xmlns.com/foaf/0.1/Project> ;
+.
+project:ResearchProject
+  rdf:type owl:Class ;
+  rdfs:label "Research Project" ;
+  rdfs:subClassOf project:Project ;
+.
+project:Sponsor
+  rdf:type prov:Role ;
+  rdfs:label "sponsor role" ;
 .
 project:activityLeadAssociation
   rdf:type owl:ObjectProperty ;
@@ -165,6 +182,12 @@ project:activityParticipantAssociation
     ] ;
   rdfs:subPropertyOf prov:qualifiedAssociation ;
 .
+project:areaOfInterest
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "address, place, locality, location, etc" ;
+  rdfs:domain project:Project ;
+  rdfs:label "area of interest" ;
+.
 project:budgetTotal
   rdf:type owl:ObjectProperty ;
   rdfs:domain project:Project ;
@@ -179,7 +202,7 @@ project:currency
 project:fieldOfResearch
   rdf:type owl:ObjectProperty ;
   rdfs:label "field of research" ;
-  rdfs:range <http://www.w3.org/2004/02/skos/core#Concept> ;
+  rdfs:range skos:Concept ;
   rdfs:subPropertyOf dcterms:subject ;
 .
 project:fundsAmount
@@ -219,6 +242,12 @@ project:plannedStartTime
   rdfs:label "planned start-time" ;
   rdfs:range xsd:dateTime ;
 .
+project:principalInvestigator
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain project:ResearchProject ;
+  rdfs:label "principal investigator" ;
+  rdfs:subPropertyOf project:projectLeader ;
+.
 project:projectLeader
   rdf:type owl:ObjectProperty ;
   rdfs:domain project:Project ;
@@ -236,4 +265,19 @@ project:wasFundedBy
   rdfs:label "was funded by" ;
   rdfs:range project:FundingAssociation ;
   rdfs:subPropertyOf prov:qualifiedAssociation ;
+.
+<http://www.w3.org/ns/dcat#Dataset>
+  rdf:type owl:Class ;
+  rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
+.
+<http://www.w3.org/ns/dcat#Distribution>
+  rdf:type owl:Class ;
+  rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
+.
+org:Membership
+  rdf:type owl:Class ;
+  rdfs:subClassOf <http://network.csiro.au/ontology/core#Relationship> ;
+.
+prov:Role
+  rdfs:subClassOf skos:Concept ;
 .
