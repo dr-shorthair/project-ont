@@ -35,6 +35,8 @@
   rdfs:comment """A basic ontology for projects, influenced by FOAF, dbPedia, VIVO-ISF, but only depending on W3C PROV-O.
 
 Can be used for alignment of project related classes and properties in more specific applications.""" ;
+  rdfs:comment """TODO: 
+1. figure out how to link to prov:Plan""" ;
   owl:imports <http://dbpedia.org/ontology/Project> ;
   owl:imports <http://dbpedia.org/ontology/UnitOfWork> ;
   owl:imports <http://network.csiro.au/ontology/core> ;
