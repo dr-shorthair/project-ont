@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <title>A core project description ontology</title>
+    <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c-common"></script>
+    <script class="remove" src="project-config.js"></script>
+    </style>
+  </head>
+  <body>
+    <section id="abstract">
+      <p>This document describes a core ontology for the description of a project. </p>
+    </section>
+    <section id="sotd">
+      <p>This Working Draft is considered ...    </section>
+    <section id="intro" class="informative">
+      <h2>Introduction</h2>
+      <p>Lots of words ...</p>
+    </section>
+    <section id="audience" class="informative">
+      <h2>Audience</h2>
+      <p>Our goal in writing this best practice document is to support ...</p>
+    </section>
+    <section id="scope" class="informative">
+      <h2>Scope</h2>
+      <section id="scope-project">
+        <h3>Project</h3>
+        <p>All the best practices described ...</p>
+      </section>
+      <section id="scope-datapub">
+        <h3>Data publication</h3>
+        <p>In this document, we focus on the needs of data publishers and the developers that provide tools for them. That said, we recognize that value can only be gained from <em>publishing</em> the <a>spatial data</a> when people <em>use</em> it! Although we do not directly address the needs of those users, we ask that data publishers and developers reading this document do not forget about them; moreover, that they always consider the needs of users when publishing spatial data or developing the supporting tools. All our best practices are intended to provide guidance about publishing <a>spatial data</a> to improve ease of use.</p>
+        <p>Neither the wider topic of spatial data <em>management</em> nor <a>Spatial Data Infrastructures</a> are covered. We assume that your spatial data already exists and will be available from one of the following places:</p>
+        <ol>
+          <li>plain text documents; e.g. historical texts, government reports, blog posts etc.</li>
+          <li>data files containing structured content or markup; e.g. geospatial vector data in Shapefile or [[GML]] format, statistical data in tabular <a>CSV</a> format or a spreadsheet, as GPX data with “waypoints” and “tracks”, satellite imagery in GeoTIFF, climate simulations in CF-NetCDF etc.</li>
+          <li>a data repository; e.g. PostGIS (a spatially enabled relational database), Elasticsearch (a document-oriented noSQL repository based on Apache Lucene), Apache Jena’s TDB (an RDF <a>triple store</a>)</li>
+          <li>exposed via an existing API; including OGC-compliant Web services such as <a>WFS</a> [[WFS]] and <a>WCS</a> [[WCS]].</li>
+        </ol>
+        <p>If your <a>spatial data</a> is managed within a software system it is likely that you will be able to access that data through one or more of the methods identified above; as structured data from a bulk extract (e.g. a “data dump”), via direct access to the underpinning data repository or through a bespoke or standards-compliant API provided by the system.</p>
+
+        <p>Each of the four starting points outlined above have their own challenges, but working with plain text documents can be particularly tricky as you will need to parse the natural language to identify the <a>Spatial Things</a> and their properties before you can proceed any further. Natural Language Processing (NLP) is a complex topic in its own right and is beyond the scope of this best practice document. We will assume that you’ve already completed this step and have parsed any plain documents into structured data records of some kind.</p>
+      </section>
+      <section id="scope-privacy">
+        <h3>Privacy considerations</h3>
+        <p>There are many situations where ... Like all personally identifiable information, great care must be taken as the collection, management and security of such information is the subject of legal frameworks. We do not attempt to provide guidance as to legal aspects of storing potentially personally identifiable spatial information; expert legal advice should be obtained. In summary: legal and privacy considerations relating to spatial data are out of scope.</p>
+      </section>
+    </section>
+    <section id="project-summary">
+      <h2>Project ontology summary</h2>
+      <p>This document ...</p>
+    </section>
+
+    <section id="namespaces" class="informative">
+      <h2> Namespaces </h2>
+      <section id="ns-intro">
+      <h3> General remarks </h3>
+      <p>This document uses a unique abbreviation ("prefix") for each RDF namespace and XML namespace listed in this section. The namespace IRI can always be determined from the declaration of the namespace abbreviation.</p>
+      </section>
+      <section id="ns-rdf">
+      <h3> RDF Namespaces </h3>
+      <p>The following RDF namespace prefixes are used within this document. Use of a namespace does not imply endorsement of the associated data platform or vocabulary.</p>
+      <table id="ns-rdf-table">
+        <caption>RDF namespaces used in the document</caption>
+        <tbody>
+          <tr>
+            <th>Prefix</th>
+            <th>Namespace IRI</th>
+            <th>Source</th>
+          </tr>
+          <tr>
+            <td><code>admingeo</code></td>
+            <td>http://data.ordnancesurvey.co.uk/ontology/admingeo/</td>
+            <td><a href="https://www.ordnancesurvey.co.uk/">Ordnance Survey's</a> <a href="http://data.ordnancesurvey.co.uk/ontology/admingeo/">Administrative geography and civil voting area ontology</a></td>
+          </tr>
+          <tr>
+            <td><code>adms</code></td>
+            <td>http://www.w3.org/ns/adms#</td>
+            <td><a href="#bib-VOCAB-ADMS">Asset Description Metadata Schema (ADMS)</a></td>
+          </tr>
+          <tr>
+            <td><code>bag</code></td>
+            <td>http://bag.basisregistraties.overheid.nl/def/bag#</td>
+            <td><a href="http://bag.basisregistraties.overheid.nl">Dutch Government Base Registry Adressen en Gebouwen (BAG)</a></td>
+          </tr>
+          <tr>
+            <td><code>dcat</code></td>
+            <td>http://www.w3.org/ns/dcat#</td>
+            <td><a href="#bib-VOCAB-DCAT">Data Catalog Vocabulary (DCAT)</a></td>
+          </tr>
+          <tr>
+            <td><code>dcterms</code></td>
+            <td>http://purl.org/dc/terms/</td>
+            <td><a href="#bib-DCTERMS">Dublin Core Metadata Initiative (DCMI) Metadata Terms</a></td>
+          </tr>
+          <tr>
+            <td><code>dqv</code></td>
+            <td>http://www.w3.org/ns/dqv#</td>
+            <td><a href="#bib-VOCAB-DQV">DWBP Data Quality Vocabulary (DQV)</a></td>
+          </tr>
+          <tr>
+            <td><code>foaf</code></td>
+            <td>http://xmlns.com/foaf/0.1/</td>
+            <td><a href="http://xmlns.com/foaf/spec/">FOAF Vocabulary Specification</a></td>
+          </tr>
+          <tr>
+            <td><code>geom</code></td>
+            <td>http://data.ordnancesurvey.co.uk/ontology/geometry/</td>
+            <td><a href="https://www.ordnancesurvey.co.uk/">Ordnance Survey's</a> <a href="http://data.ordnancesurvey.co.uk/ontology/geometry/">Geometry Ontology</a></td>
+          </tr>
+          <tr>
+            <td><code>geonames</code></td>
+            <td>http://www.geonames.org/ontology#</td>
+            <td><a href="http://www.geonames.org/ontology/documentation.html">GeoNames Ontology</a></td>
+          </tr>
+          <tr>
+            <td><code>georss</code></td>
+            <td>http://www.georss.org/georss/</td>
+            <td><a href="#bib-GeoRSS">GeoRSS :: Geographically Encoded Objects for RSS feeds</a>, Geo OWL encoding</td>
+          </tr>
+          <tr>
+            <td><code>geosparql</code></td>
+            <td>http://www.opengis.net/ont/geosparql#</td>
+            <td><a href="#bib-GeoSPARQL">GeoSPARQL - A Geographic Query Language for RDF Data</a></td>
+          </tr>
+	  <tr>
+            <td><code>gml-ont</code></td>
+            <td>http://www.opengis.net/ont/gml#</td>
+            <td><a href="#bib-GeoSPARQL">GeoSPARQL - A Geographic Query Language for RDF Data</a></td>
+          </tr>
+          <tr>
+            <td><code>locn</code></td>
+            <td>http://www.w3.org/ns/locn#</td>
+            <td><a href="#bib-LOCN">ISA Location Core Vocabulary</a></td>
+          </tr>
+          <tr>
+            <td><code>osuk</code></td>
+            <td>http://data.ordnancesurvey.co.uk/id/</td>
+            <td><a href="http://data.ordnancesurvey.co.uk/">Ordnance Survey Linked Data Platform</a></td>
+          </tr>
+          <tr>
+            <td><code>ov</code></td>
+            <td>http://open.vocab.org/terms/</td>
+            <td><a href="http://vocab.org/open/">Open.vocab.org</a></td>
+          </tr>
+          <tr>
+            <td><code>owl</code></td>
+            <td>http://www.w3.org/2002/07/owl#</td>
+            <td><a href="#bib-OWL2-OVERVIEW">Web Ontology Language (OWL)</a></td>
+          </tr>
+          <tr>
+            <td><code>pdok</code></td>
+            <td>http://data.pdok.nl/def/pdok#</td>
+            <td><a href="https://data.pdok.nl/def/pdok">PDOK Data Platform</a></td>
+          </tr>
+          <tr>
+            <td><code>qudt</code></td>
+            <td>http://qudt.org/schema/qudt#</td>
+            <td><a href="http://qudt.org/">Quantities, Units, Dimensions and Data Types Ontologies (QUDT)</a></td>
+          </tr>
+          <tr>
+            <td><code>rdf</code></td>
+            <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+            <td>Resource Description Framework (RDF)</td>
+          </tr>
+          <tr>
+            <td><code>rdfs</code></td>
+            <td>http://www.w3.org/2000/01/rdf-schema#</td>
+            <td><a href="#bib-RDF-SCHEMA">RDF Schema vocabulary (RDFS)</a></td>
+          </tr>
+          <tr>
+            <td><code>schema</code></td>
+            <td>http://schema.org/</td>
+            <td><A HREF="#bib-SCHEMA-ORG">Schema.org</A></td>
+          </tr>
+          <tr>
+            <td><code>scotgov-stat</code></td>
+            <td>http://statistics.gov.scot/id/statistical-geography/</td>
+            <td><a href="http://statistics.gov.scot/">STATISTICS.GOV.SCOT</a> Geography Linked Data</td>
+          </tr>
+          <tr>
+            <td><code>sf</code></td>
+            <td>http://www.opengis.net/ont/sf#</td>
+            <td><a href="#bib-GeoSPARQL">GeoSPARQL - A Geographic Query Language for RDF Data</a></td>
+          </tr>
+	  <tr>
+            <td><code>skos</code></td>
+            <td>http://www.w3.org/2004/02/skos/core#</td>
+            <td><a href="#bib-SKOS-PRIMER">Simple Knowledge Organization System (SKOS)</a> [[SKOS-PRIMER]]</td>
+          </tr>
+          <tr>
+            <td><code>ukgov-stat</code></td>
+            <td>http://statistics.data.gov.uk/id/statistical-geography/</td>
+            <td><a href="http://statistics.data.gov.uk/">Office for National Statistics</a> Geography Linked Data</td>
+          </tr>
+          <tr>
+            <td><code>vcard</code></td>
+            <td>http://www.w3.org/2006/vcard/ns#</td>
+            <td><a href="#bib-VCARD-RDF">vCard Ontology - for describing People and Organizations</a></td>
+          </tr>
+          <tr>
+            <td><code>void</code></td>
+            <td>http://rdfs.org/ns/void#</td>
+            <td><a href="#bib-VoID">Describing Linked Datasets with the VoID Vocabulary</a></td>
+          </tr>
+          <tr>
+            <td><code>w3cgeo</code></td>
+            <td>http://www.w3.org/2003/01/geo/wgs84_pos#</td>
+            <td><a href="#bib-W3C-BASIC-GEO">Basic Geo (WGS 84 lat/long) Vocabulary</a></td>
+          </tr>
+        </tbody>
+      </table>
+      </section>
+    </section>
+    <section id="section 1">
+      <h2>Section 1</h2>
+      <p> ... </p>
+      <div class="note">
+        <p>...</p>
+      </div>
+      <p>....</p>
+      <pre class="example" id="ex-eddystone-geometry" title="Eddystone Lighthouse geometry (encoded as GeoJSON [RFC7946])">
+{
+  “geometry”: {
+    “type”: “Point”,
+    “coordinates”: [50.184, -4.268]
+  }
+}
+      </pre>
+
+    </section>
+  </body>
+</html>
