@@ -3,14 +3,17 @@
 # imports: http://dbpedia.org/ontology/UnitOfWork
 # imports: http://network.csiro.au/ontology/core
 # imports: http://purl.org/dc/elements/1.1/
+# imports: http://usefulinc.com/ns/doap
 # imports: http://vivoweb.org/ontology/core
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://www.w3.org/ns/org
 # imports: http://www.w3.org/ns/prov-o
 # imports: http://xmlns.com/foaf/0.1
 
+@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix project: <http://network.csiro.au/ontology/project/> .
@@ -18,6 +21,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://network.csiro.au/ontology/core#Project>
@@ -37,10 +41,11 @@
 Can be used for alignment of project related classes and properties in more specific applications.""" ;
   rdfs:comment """TODO: 
 1. figure out how to link to prov:Plan""" ;
-  owl:imports <http://dbpedia.org/ontology/Project> ;
-  owl:imports <http://dbpedia.org/ontology/UnitOfWork> ;
+  owl:imports dbo:Project ;
+  owl:imports dbo:UnitOfWork ;
   owl:imports <http://network.csiro.au/ontology/core> ;
   owl:imports dc: ;
+  owl:imports <http://usefulinc.com/ns/doap> ;
   owl:imports <http://vivoweb.org/ontology/core> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/ns/org> ;
@@ -125,8 +130,8 @@ project:Project
       owl:minCardinality "1"^^xsd:nonNegativeInteger ;
       owl:onProperty project:wasFundedBy ;
     ] ;
-  owl:equivalentClass <http://dbpedia.org/ontology/Project> ;
-  owl:equivalentClass <http://vivoweb.org/ontology/core#Project> ;
+  owl:equivalentClass dbo:Project ;
+  owl:equivalentClass vivo:Project ;
   owl:equivalentClass <http://xmlns.com/foaf/0.1/Project> ;
 .
 project:ResearchProject
@@ -267,6 +272,9 @@ project:wasFundedBy
   rdfs:label "was funded by" ;
   rdfs:range project:FundingAssociation ;
   rdfs:subPropertyOf prov:qualifiedAssociation ;
+.
+<http://usefulinc.com/ns/doap#Project>
+  rdfs:subClassOf project:Project ;
 .
 <http://www.w3.org/ns/dcat#Dataset>
   rdf:type owl:Class ;
