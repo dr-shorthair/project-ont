@@ -1,0 +1,59 @@
+# baseURI: http://www.w3.org/ns/project-alignments
+# imports: http://dbpedia.org/ontology/Project
+# imports: http://dbpedia.org/ontology/UnitOfWork
+# imports: http://network.csiro.au/ontology/core
+# imports: http://purl.org/dc/elements/1.1/
+# imports: http://usefulinc.com/ns/doap
+# imports: http://vivoweb.org/ontology/core
+# imports: http://www.w3.org/2004/02/skos/core
+# imports: http://www.w3.org/ns/org
+# imports: http://www.w3.org/ns/project
+# imports: http://www.w3.org/ns/prov-o
+# imports: http://xmlns.com/foaf/0.1
+
+@prefix project: <http://www.w3.org/ns/project#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix proji: <http://www.w3.org/ns/project/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://network.csiro.au/ontology/core#Project>
+  rdfs:subClassOf project:Project ;
+.
+doap:Project
+  rdfs:subClassOf project:Project ;
+.
+<http://www.w3.org/ns/project-alignments>
+  rdf:type owl:Ontology ;
+  dc:creator "Simon J D COX, CSIRO" ;
+  dcterms:created "2017-08-14"^^xsd:date ;
+  dcterms:creator <http://orcid.org/0000-0002-3884-3420> ;
+  dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+  rdfs:comment """ALignment of the basic ontology for projects to FOAF, dbPedia, VIVO-ISF.""" ;
+  owl:imports dbo:Project ;
+  owl:imports dbo:UnitOfWork ;
+  owl:imports <http://network.csiro.au/ontology/core> ;
+  owl:imports dc: ;
+  owl:imports <http://usefulinc.com/ns/doap> ;
+  owl:imports <http://www.w3.org/ns/project> ;
+  owl:imports <http://vivoweb.org/ontology/core> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports <http://www.w3.org/ns/org> ;
+  owl:imports <http://www.w3.org/ns/prov-o> ;
+  owl:imports <http://xmlns.com/foaf/0.1> ;
+.
+project:Project
+  owl:equivalentClass dbo:Project ;
+  owl:equivalentClass vivo:Project ;
+  owl:equivalentClass <http://xmlns.com/foaf/0.1/Project> ;
+.

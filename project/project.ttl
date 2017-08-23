@@ -1,22 +1,19 @@
-# baseURI: http://network.csiro.au/ontology/project
-# imports: http://dbpedia.org/ontology/Project
-# imports: http://dbpedia.org/ontology/UnitOfWork
-# imports: http://network.csiro.au/ontology/core
+# baseURI: http://www.w3.org/ns/project
 # imports: http://purl.org/dc/elements/1.1/
-# imports: http://usefulinc.com/ns/doap
-# imports: http://vivoweb.org/ontology/core
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://www.w3.org/ns/org
 # imports: http://www.w3.org/ns/prov-o
 # imports: http://xmlns.com/foaf/0.1
 
+@prefix : <http://www.w3.org/ns/project#> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix project: <http://network.csiro.au/ontology/project/> .
+@prefix proji: <http://www.w3.org/ns/project/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -24,10 +21,19 @@
 @prefix vivo: <http://vivoweb.org/ontology/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://network.csiro.au/ontology/core#Project>
-  rdfs:subClassOf project:Project ;
+<http://www.w3.org/ns/dcat#Dataset>
+  rdf:type owl:Class ;
+  rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
 .
-<http://network.csiro.au/ontology/project>
+<http://www.w3.org/ns/dcat#Distribution>
+  rdf:type owl:Class ;
+  rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
+.
+org:Membership
+  rdf:type owl:Class ;
+  rdfs:subClassOf <http://network.csiro.au/ontology/core#Relationship> ;
+.
+<http://www.w3.org/ns/project>
   rdf:type owl:Ontology ;
   dc:contributor "David RATCLIFFE, CSIRO" ;
   dc:contributor "Jonathan YU, CSIRO" ;
@@ -41,66 +47,42 @@
 Can be used for alignment of project related classes and properties in more specific applications.""" ;
   rdfs:comment """TODO: 
 1. figure out how to link to prov:Plan""" ;
-  owl:imports dbo:Project ;
-  owl:imports dbo:UnitOfWork ;
-  owl:imports <http://network.csiro.au/ontology/core> ;
   owl:imports dc: ;
-  owl:imports <http://usefulinc.com/ns/doap> ;
-  owl:imports <http://vivoweb.org/ontology/core> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/ns/org> ;
   owl:imports <http://www.w3.org/ns/prov-o> ;
   owl:imports <http://xmlns.com/foaf/0.1> ;
 .
-project:Funder
-  rdf:type prov:Role ;
-  rdfs:label "funding agent role" ;
-  skos:broader project:Sponsor ;
-.
-project:FundingAssociation
+:FundingAssociation
   rdf:type owl:Class ;
   rdfs:label "Funding association" ;
   rdfs:subClassOf prov:Association ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue project:Funder ;
+      owl:hasValue proji:Funder ;
       owl:onProperty prov:hadRole ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty project:fundsProvided ;
+      owl:onProperty :fundsProvided ;
     ] ;
 .
-project:Funds
+:Funds
   rdf:type owl:Class ;
   rdfs:label "Funds or money" ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty project:currency ;
+      owl:onProperty :currency ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty project:fundsAmount ;
+      owl:onProperty :fundsAmount ;
     ] ;
 .
-project:Leader
-  rdf:type prov:Role ;
-  rdfs:label "activity leader role" ;
-  skos:broader project:Participant ;
-.
-project:Participant
-  rdf:type prov:Role ;
-  rdfs:label "activity participant role" ;
-.
-project:PrincipalInvestigator
-  rdf:type prov:Role ;
-  rdfs:label "principal investigator role" ;
-  skos:broader project:Leader ;
-.
-project:Project
+:Project
   rdf:type owl:Class ;
   rdfs:comment "Basic project class" ;
   rdfs:label "Project" ;
@@ -108,42 +90,40 @@ project:Project
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty project:plannedEndTime ;
+      owl:onProperty :plannedEndTime ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty project:plannedStartTime ;
+      owl:onProperty :plannedStartTime ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty project:fieldOfResearch ;
+      owl:onProperty :fieldOfResearch ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty project:projectLeader ;
+      owl:onProperty :projectLeader ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty project:wasFundedBy ;
+      owl:onProperty :wasFundedBy ;
     ] ;
-  owl:equivalentClass dbo:Project ;
-  owl:equivalentClass vivo:Project ;
-  owl:equivalentClass <http://xmlns.com/foaf/0.1/Project> ;
 .
-project:ResearchProject
+:RelatedActivity
+  rdf:type owl:Class ;
+  rdfs:label "Related activity" ;
+  rdfs:subClassOf prov:ActivityInfluence ;
+.
+:ResearchProject
   rdf:type owl:Class ;
   rdfs:label "Research Project" ;
-  rdfs:subClassOf project:Project ;
+  rdfs:subClassOf :Project ;
 .
-project:Sponsor
-  rdf:type prov:Role ;
-  rdfs:label "sponsor role" ;
-.
-project:activityLeadAssociation
+:activityLeadAssociation
   rdf:type owl:ObjectProperty ;
   rdfs:label "activity lead association" ;
   rdfs:range [
@@ -151,31 +131,31 @@ project:activityLeadAssociation
       rdfs:subClassOf prov:Association ;
       rdfs:subClassOf [
           rdf:type owl:Restriction ;
-          owl:hasValue project:Leader ;
+          owl:hasValue proji:Leader ;
           owl:onProperty prov:hadRole ;
         ] ;
     ] ;
   rdfs:subPropertyOf prov:qualifiedAssociation ;
 .
-project:activityLeader
+:activityLeader
   rdf:type owl:ObjectProperty ;
   rdfs:label "activity leader" ;
   rdfs:subPropertyOf prov:wasAssociatedWith ;
   owl:propertyChainAxiom (
-      project:activityLeadAssociation
+      :activityLeadAssociation
       prov:agent
     ) ;
 .
-project:activityParticipant
+:activityParticipant
   rdf:type owl:ObjectProperty ;
   rdfs:label "activity participant" ;
   rdfs:subPropertyOf prov:wasAssociatedWith ;
   owl:propertyChainAxiom (
-      project:activityParticipantAssociation
+      :activityParticipantAssociation
       prov:agent
     ) ;
 .
-project:activityParticipantAssociation
+:activityParticipantAssociation
   rdf:type owl:ObjectProperty ;
   rdfs:label "activity participant association" ;
   rdfs:range [
@@ -183,110 +163,158 @@ project:activityParticipantAssociation
       rdfs:subClassOf prov:Association ;
       rdfs:subClassOf [
           rdf:type owl:Restriction ;
-          owl:hasValue project:Participant ;
+          owl:hasValue proji:Participant ;
           owl:onProperty prov:hadRole ;
         ] ;
     ] ;
   rdfs:subPropertyOf prov:qualifiedAssociation ;
 .
-project:areaOfInterest
+:budgetTotal
   rdf:type owl:ObjectProperty ;
-  rdfs:comment "address, place, locality, location, etc" ;
-  rdfs:domain project:Project ;
-  rdfs:label "area of interest" ;
-.
-project:budgetTotal
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain project:Project ;
+  rdfs:domain :Project ;
   rdfs:label "total budget" ;
-  rdfs:range project:Funds ;
+  rdfs:range :Funds ;
 .
-project:currency
+:currency
   rdf:type owl:ObjectProperty ;
-  rdfs:domain project:Funds ;
+  rdfs:domain :Funds ;
   rdfs:label "currency" ;
 .
-project:fieldOfResearch
+:fieldOfResearch
   rdf:type owl:ObjectProperty ;
   rdfs:label "field of research" ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf dcterms:subject ;
 .
-project:fundsAmount
+:fundsAmount
   rdf:type owl:DatatypeProperty ;
-  rdfs:domain project:Funds ;
+  rdfs:domain :Funds ;
   rdfs:label "funds amount" ;
   rdfs:range xsd:decimal ;
 .
-project:fundsProvided
+:fundsProvided
   rdf:type owl:ObjectProperty ;
   rdfs:label "funding provided" ;
-  rdfs:range project:Funds ;
+  rdfs:range :Funds ;
 .
-project:name
+:hasAreaOfInterest
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "address, place, locality, location, etc" ;
+  rdfs:domain :Project ;
+  rdfs:label "has area of interest" ;
+.
+:hasRelatedActivity
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment """Relationship from an activity to a related activity. 
+
+This is more general than prov:qualifiedCommunication since it is not predicated on the exchange of an entity. """ ;
+  rdfs:domain prov:Activity ;
+  rdfs:label "has related activity" ;
+  rdfs:range :RelatedActivity ;
+.
+:hasSubActivity
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment """Relationship from an activity to a subsidiary activity. 
+
+This is more general than prov:wasInformedBy since it is not predicated on the exchange of an entity. """ ;
+  rdfs:domain prov:Activity ;
+  rdfs:label "has sub-activity" ;
+  rdfs:range prov:Activity ;
+  owl:propertyChainAxiom (
+      :subActivityAssociation
+      prov:activity
+    ) ;
+.
+:name
   rdf:type owl:AnnotationProperty ;
-  rdfs:domain project:Project ;
+  rdfs:domain :Project ;
   rdfs:label "project name" ;
   rdfs:subPropertyOf rdfs:label ;
 .
-project:objective
+:objective
   rdf:type owl:AnnotationProperty ;
-  rdfs:domain project:Project ;
+  rdfs:domain :Project ;
   rdfs:label "project objective" ;
   rdfs:subPropertyOf rdfs:comment ;
 .
-project:plannedEndTime
+:plannedEndTime
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "The time at which an activity was planned to end. See also project:plannedStartTime."@en ;
   rdfs:domain prov:Activity ;
   rdfs:label "planned end-time" ;
   rdfs:range xsd:dateTime ;
 .
-project:plannedStartTime
+:plannedStartTime
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "The time at which an activity was planned to start. See also project:plannedEndTime."@en ;
   rdfs:domain prov:Activity ;
   rdfs:label "planned start-time" ;
   rdfs:range xsd:dateTime ;
 .
-project:principalInvestigator
+:principalInvestigator
   rdf:type owl:ObjectProperty ;
-  rdfs:domain project:ResearchProject ;
+  rdfs:domain :ResearchProject ;
   rdfs:label "principal investigator" ;
-  rdfs:subPropertyOf project:projectLeader ;
+  rdfs:subPropertyOf :projectLeader ;
 .
-project:projectLeader
+:projectLeader
   rdf:type owl:ObjectProperty ;
-  rdfs:domain project:Project ;
+  rdfs:domain :Project ;
   rdfs:label "project leader" ;
-  rdfs:subPropertyOf project:activityLeader ;
+  rdfs:subPropertyOf :activityLeader ;
 .
-project:projectParticipant
+:projectParticipant
   rdf:type owl:ObjectProperty ;
-  rdfs:domain project:Project ;
+  rdfs:domain :Project ;
   rdfs:label "project participant" ;
-  rdfs:subPropertyOf project:activityParticipant ;
+  rdfs:subPropertyOf :activityParticipant ;
 .
-project:wasFundedBy
+:subActivityAssociation
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "sub-activity association" ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      rdfs:subClassOf :RelatedActivity ;
+      rdfs:subClassOf [
+          rdf:type owl:Restriction ;
+          owl:hasValue proji:SubActivity ;
+          owl:onProperty prov:hadRole ;
+        ] ;
+    ] ;
+  rdfs:subPropertyOf :hasRelatedActivity ;
+.
+:wasFundedBy
   rdf:type owl:ObjectProperty ;
   rdfs:label "was funded by" ;
-  rdfs:range project:FundingAssociation ;
+  rdfs:range :FundingAssociation ;
   rdfs:subPropertyOf prov:qualifiedAssociation ;
 .
-<http://usefulinc.com/ns/doap#Project>
-  rdfs:subClassOf project:Project ;
+proji:Funder
+  rdf:type prov:Role ;
+  rdfs:label "funding agent role" ;
+  skos:broader proji:Sponsor ;
 .
-<http://www.w3.org/ns/dcat#Dataset>
-  rdf:type owl:Class ;
-  rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
+proji:Leader
+  rdf:type prov:Role ;
+  rdfs:label "activity leader role" ;
+  skos:broader proji:Participant ;
 .
-<http://www.w3.org/ns/dcat#Distribution>
-  rdf:type owl:Class ;
-  rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
+proji:Participant
+  rdf:type prov:Role ;
+  rdfs:label "activity participant role" ;
 .
-org:Membership
-  rdf:type owl:Class ;
-  rdfs:subClassOf <http://network.csiro.au/ontology/core#Relationship> ;
+proji:PrincipalInvestigator
+  rdf:type prov:Role ;
+  rdfs:label "principal investigator role" ;
+  skos:broader proji:Leader ;
+.
+proji:Sponsor
+  rdf:type prov:Role ;
+  rdfs:label "sponsor role" ;
+.
+proji:SubActivity
+  rdf:type prov:Role ;
+  rdfs:label "sub-activity" ;
 .
 prov:Role
   rdfs:subClassOf skos:Concept ;
