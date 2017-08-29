@@ -6,11 +6,8 @@
 # imports: http://xmlns.com/foaf/0.1
 
 @prefix : <http://www.w3.org/ns/project#> .
-@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix doap: <http://usefulinc.com/ns/doap#> .
-@prefix obo: <http://purl.obolibrary.org/obo/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix proji: <http://www.w3.org/ns/project/> .
@@ -18,7 +15,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix vivo: <http://vivoweb.org/ontology/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://www.w3.org/ns/dcat#Dataset>
@@ -84,9 +81,20 @@ Can be used for alignment of project related classes and properties in more spec
 .
 :Project
   rdf:type owl:Class ;
-  rdfs:comment "Basic project class" ;
+  rdfs:comment """Basic project class. 
+
+A Project is an activity with a budget, a sponsor, and a leader. It has planned start and end dates, which may differ from the actuals. 
+
+Project stakeholders are indicated using the prov:qualifiedAssociation structure which allows their role to be catpured. Some special stakeholders have specific sub-properties with the roles fixed, including project-leader, project-participant, and project-funder. 
+
+Activities within a project are indicated using the hasSubActivity (simple) or subActivityAssociation properties - the latter allowing the nature of the relationshp to be described as well. """ ;
   rdfs:label "Project" ;
   rdfs:subClassOf prov:Activity ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty :budgetTotal ;
+    ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
@@ -96,11 +104,6 @@ Can be used for alignment of project related classes and properties in more spec
       rdf:type owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
       owl:onProperty :plannedStartTime ;
-    ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty :fieldOfResearch ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -120,8 +123,19 @@ Can be used for alignment of project related classes and properties in more spec
 .
 :ResearchProject
   rdf:type owl:Class ;
+  rdfs:comment "A research project has one or more PIs who are individual persons, and should be classified according to standard research classification such as the Australian Bureau of Statistics ANZSRC-FOR or NASA's Global Change Master Directory - Science Keywords." ;
   rdfs:label "Research Project" ;
   rdfs:subClassOf :Project ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom <http://xmlns.com/foaf/0.1/Person> ;
+      owl:onProperty :principalInvestigator ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty :fieldOfResearch ;
+    ] ;
 .
 :activityLeadAssociation
   rdf:type owl:ObjectProperty ;
@@ -202,6 +216,7 @@ Can be used for alignment of project related classes and properties in more spec
   rdfs:comment "address, place, locality, location, etc" ;
   rdfs:domain :Project ;
   rdfs:label "has area of interest" ;
+  rdfs:subPropertyOf prov:atLocation ;
 .
 :hasRelatedActivity
   rdf:type owl:ObjectProperty ;
@@ -239,14 +254,14 @@ This is more general than prov:wasInformedBy since it is not predicated on the e
 .
 :plannedEndTime
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment "The time at which an activity was planned to end. See also project:plannedStartTime."@en ;
+  rdfs:comment "The time at which an project was planned to end. See also project:plannedStartTime."@en ;
   rdfs:domain prov:Activity ;
   rdfs:label "planned end-time" ;
   rdfs:range xsd:dateTime ;
 .
 :plannedStartTime
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment "The time at which an activity was planned to start. See also project:plannedEndTime."@en ;
+  rdfs:comment "The time at which an project was planned to start. See also project:plannedEndTime."@en ;
   rdfs:domain prov:Activity ;
   rdfs:label "planned start-time" ;
   rdfs:range xsd:dateTime ;
@@ -285,6 +300,7 @@ This is more general than prov:wasInformedBy since it is not predicated on the e
 .
 :wasFundedBy
   rdf:type owl:ObjectProperty ;
+  rdfs:domain :Project ;
   rdfs:label "was funded by" ;
   rdfs:range :FundingAssociation ;
   rdfs:subPropertyOf prov:qualifiedAssociation ;
