@@ -68,19 +68,25 @@
         | <a href="#proj:fieldOfResearch">fieldOfResearch</a>
         | ...
       </p>
+      <h2>Examples</h2>
+      <p>
+        here we present two examples to illustrate the scope and some of the capabilities of the PROJECT ontology.
+      </p>
+      <h3>Construction project example</h3>
+      <p>
+        The first example is a description of a recent public works project carried out in Melbourne, Victoria.
+        This concerns a phase of an initiative to replace level-crossings on the suburban rail network.
+        It was funded by the state government at an expense of AUD524 Million.
+        This phase involved the removal of four level crossings, which are modeled as sub-activities, with the description of only one shown here.
+        The project was led by a consortium with two members, the description of which is given using the W3C Organization Ontology.
+        Three public transport bodies also participated.
+        The project ran ahead of schedule and was completed several months early.
+        However, a number of local businesses were negatively impacted during the course of the activities.
+      </p>
+      <p>
+        The level of detail shown here is intended only to illustrate the expressivity of the PROJECT ontology, and the use of structures from existing vocabularies (PROV-O and ORG) to complement.
+      </p>
 
-
-
-    </section>
-
-
-    <section id="description">
-      <h2>Description</h2>
-      <p> ... </p>
-      <div class="note">
-        <p>...</p>
-      </div>
-      <p>....</p>
       <pre class="example" id="level-crossing" title="Construction project example">
 ex:VictoriaLevelCrossingRemovalPhase1
   rdf:type proj:Project ;
@@ -98,24 +104,23 @@ ex:VictoriaLevelCrossingRemovalPhase1
   proj:name "Victoria level-crossing removal - phase 1" ;
   proj:plannedEndTime "2017-03-31T23:59:00"^^xsd:dateTime ;
   proj:plannedStartTime "2015-10-01T00:00:00"^^xsd:dateTime ;
-  proj:projectLeader &lt;http://www.johnholland.com.au&gt ;
-  proj:projectParticipant &lt;http://www.metrotrains.com.au/&gt ;
-  proj:projectParticipant &lt;https://www.kbr.com/&gt ;
-  proj:projectParticipant &lt;https://www.ptv.vic.gov.au/&gt ;
-  proj:projectParticipant &lt;https://www.vicroads.vic.gov.au/&gt ;
+  proj:projectLeader ex:johnholland-kbr ;
+  proj:projectParticipant &lt;http://www.metrotrains.com.au/&gt; ;
+  proj:projectParticipant &lt;https://www.ptv.vic.gov.au/&gt; ;
+  proj:projectParticipant &lt;https://www.vicroads.vic.gov.au/&gt; ;
   proj:wasFundedBy [
     rdf:type proj:FundingAssociation ;
     rdfs:label "Level crossing removal project funder" ;
     rdfs:seeAlso &lt;http://www.johnholland.com.au/who-we-are/latest-news/john-holland-wins-level-crossing-removal-projects-in-victoria/&gt ;
-    rdfs:seeAlso &lt;http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/&gt ;
+    rdfs:seeAlso &lt;http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/&gt; ;
     proj:fundsProvided [
       rdf:type proj:Funds ;
-      proj:currency &lt;https://dbpedia.org/resource/Australian_dollar&gt ;
+      proj:currency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
       proj:fundsAmount "524000000"^^xsd:decimal ;
     ] ;
-    prov:agent &lt;http://www.vic.gov.au/&gt ;
+    prov:agent &lt;http://www.vic.gov.au/&gt; ;
   ] ;
-  prov:atLocation &lt;https://dbpedia.org/resource/Melbourne&gt ;
+  prov:atLocation &lt;https://dbpedia.org/resource/Melbourne&gt; ;
   prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
   prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
 .
@@ -125,16 +130,56 @@ ex:McKinnonRoadLevelCrossingRemoval
   rdfs:label "McKinnon Road level crossing removal" ;
   proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
   proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
-  prov:atLocation &lt;https://dbpedia.org/resource/McKinnon_railway_station&gt ;
+  prov:atLocation &lt;https://dbpedia.org/resource/McKinnon_railway_station&gt; ;
   prov:endedAtTime "2017-10-31T00:00:00"^^xsd:dateTime ;
   prov:qualifiedAssociation [
     rdf:type prov:Association ;
-    prov:agent &lt;https://www.zomato.com/melbourne/fabulous-fine-foods-ormond-mckinnon&gt ;
+    prov:agent &lt;https://www.zomato.com/melbourne/fabulous-fine-foods-ormond-mckinnon&gt; ;
     prov:hadRole ex:Negative-economic-impact ;
   ] ;
   prov:startedAtTime "2016-01-31T00:00:00"^^xsd:dateTime ;
 .
+
+ex:johnholland-kbr
+  rdf:type org:FormalOrganization ;
+  rdfs:label "John Holland - KBR Joint Venture" ;
+  org:hasMembership [
+      rdf:type org:Membership ;
+      org:member &lt;http://www.johnholland.com.au&gt; ;
+      org:role ex:Joint-Venture-Partner ;
+    ] ;
+  org:hasMembership [
+      rdf:type org:Membership ;
+      org:member &lt;https://www.kbr.com/&gt; ;
+      org:role ex:Joint-Venture-Partner ;
+    ] ;
+.
     </pre>
+
+      <h3>Research project example</h3>
+      <p>
+
+      </p>
+
+      <pre class="example" id="research project" title="Research project example">
+
+        
+      </pre>
+
+
+
+
+    </section>
+
+
+    <section id="description">
+      <h2>Description</h2>
+      <p> ... </p>
+      <div class="note">
+        <p>...</p>
+      </div>
+      <p>....</p>
+
 
     </section>
 

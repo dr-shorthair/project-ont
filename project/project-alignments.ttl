@@ -4,6 +4,7 @@
 # imports: http://network.csiro.au/ontology/core
 # imports: http://purl.org/cerif/frapo
 # imports: http://purl.org/dc/elements/1.1/
+# imports: http://schema.org
 # imports: http://usefulinc.com/ns/doap
 # imports: http://vivoweb.org/ontology/core
 # imports: http://vocab.deri.ie/pdo
@@ -19,6 +20,7 @@
 @prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix frapo: <http://purl.org/cerif/frapo/> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix ocre: <http://purl.org/net/OCRe/study_protocol.owl#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pdo: <http://ontologies.smile.deri.ie/pdo#> .
@@ -27,7 +29,13 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schemaorg: <http://schema.org/> .
+@prefix scires: <http://vivoweb.org/ontology/scientific-research#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skos-r: <http://www.w3.org/2008/05/skos#> .
+@prefix stats: <http://purl.org/net/OCRe/statistics.owl#> .
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix talis: <http://schemas.talis.com/2005/address/schema#> .
 @prefix vivo: <http://vivoweb.org/ontology/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -54,6 +62,7 @@ project:Project
   owl:imports <http://network.csiro.au/ontology/core> ;
   owl:imports <http://purl.org/cerif/frapo> ;
   owl:imports dc: ;
+  owl:imports <http://schema.org> ;
   owl:imports <http://usefulinc.com/ns/doap> ;
   owl:imports <http://vivoweb.org/ontology/core> ;
   owl:imports <http://vocab.deri.ie/pdo> ;

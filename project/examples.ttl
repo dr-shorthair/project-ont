@@ -1,4 +1,5 @@
 # baseURI: http://www.w3.org/ns/project/examples
+# imports: http://www.w3.org/ns/org
 # imports: http://www.w3.org/ns/project
 # prefix: ex
 
@@ -15,6 +16,9 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+org:Organization
+  owl:equivalentClass prov:Organization ;
+.
 proji:examples
   rdf:type owl:Ontology ;
   dcterms:created "2017-08-29" ;
@@ -26,6 +30,7 @@ proji:examples
       owl:sameAs <http://researchgate.net/profile/Simon_Cox3> ;
     ] ;
   rdfs:comment "Some examples using the proposed PROJECT ontology" ;
+  owl:imports <http://www.w3.org/ns/org> ;
   owl:imports <http://www.w3.org/ns/project> ;
 .
 ex:BentleighLevelCrossingRemoval
@@ -51,6 +56,10 @@ ex:BurkeRoadLevelCrossingRemoval
   prov:atLocation <https://dbpedia.org/resource/Gardiner_railway_station> ;
   prov:endedAtTime "2016-02-28T00:00:00"^^xsd:dateTime ;
   prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
+.
+ex:Joint-Venture-Partner
+  rdf:type org:Role ;
+  rdfs:label "Joint Venture Partner" ;
 .
 ex:McKinnonRoadLevelCrossingRemoval
   rdf:type prov:Activity ;
@@ -101,9 +110,8 @@ ex:VictoriaLevelCrossingRemovalPhase1
   proj:name "Victoria level-crossing removal - phase 1" ;
   proj:plannedEndTime "2017-03-31T23:59:00"^^xsd:dateTime ;
   proj:plannedStartTime "2015-10-01T00:00:00"^^xsd:dateTime ;
-  proj:projectLeader <http://www.johnholland.com.au> ;
+  proj:projectLeader ex:johnholland-kbr ;
   proj:projectParticipant <http://www.metrotrains.com.au/> ;
-  proj:projectParticipant <https://www.kbr.com/> ;
   proj:projectParticipant <https://www.ptv.vic.gov.au/> ;
   proj:projectParticipant <https://www.vicroads.vic.gov.au/> ;
   proj:wasFundedBy [
@@ -121,4 +129,18 @@ ex:VictoriaLevelCrossingRemovalPhase1
   prov:atLocation <https://dbpedia.org/resource/Melbourne> ;
   prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
   prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
+.
+ex:johnholland-kbr
+  rdf:type org:FormalOrganization ;
+  rdfs:label "John Holland - KBR Joint Venture" ;
+  org:hasMembership [
+      rdf:type org:Membership ;
+      org:member <http://www.johnholland.com.au> ;
+      org:role ex:Joint-Venture-Partner ;
+    ] ;
+  org:hasMembership [
+      rdf:type org:Membership ;
+      org:member <https://www.kbr.com/> ;
+      org:role ex:Joint-Venture-Partner ;
+    ] ;
 .
