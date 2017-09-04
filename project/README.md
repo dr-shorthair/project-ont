@@ -7,12 +7,6 @@ The goal is a 'core' ontology which can be extended for more domain specific app
 
 plus requirements from TDWG through the PPSR project.
 
-Though the intention is to provide a re-usable ontology pattern with minimal dependencies, it was hard to look past PROV-O http://www.w3.org/ns/prov-o, specifically the prov:Activity class as a basis for a Project class, because of
-1. its essence as a time-bounded thing with outputs
-1. support for rich relationships with Agents and Entities
-
-so a dependency on PROV-O is built in to the initial strawman at least. 
-
-The goal is project description, not project management.
+The goal is project description, not project management. The core Project class is modeled as a specialization of the Activity class from PROV-O http://www.w3.org/ns/prov-o, adding properties commonly required for describing projects. Otherwise, the Project ontology has no dependencies except for the standard RDF/OWL infrastructure.
 
 Alignments with FOAF, DOAP, and other project ontologies will be considered.
