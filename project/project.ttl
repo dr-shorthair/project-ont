@@ -1,35 +1,20 @@
 # baseURI: http://www.w3.org/ns/project
 # imports: http://purl.org/dc/elements/1.1/
-# imports: http://www.w3.org/2004/02/skos/core
-# imports: http://www.w3.org/ns/org
 # imports: http://www.w3.org/ns/prov-o
-# imports: http://xmlns.com/foaf/0.1
+# imports: http://xmlns.com/foaf/0.1/
 
 @prefix : <http://www.w3.org/ns/project#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix org: <http://www.w3.org/ns/org#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix proji: <http://www.w3.org/ns/project/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.w3.org/ns/dcat#Dataset>
-  rdf:type owl:Class ;
-  rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
-.
-<http://www.w3.org/ns/dcat#Distribution>
-  rdf:type owl:Class ;
-  rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
-.
-org:Membership
-  rdf:type owl:Class ;
-  rdfs:subClassOf <http://network.csiro.au/ontology/core#Relationship> ;
-.
 <http://www.w3.org/ns/project>
   rdf:type owl:Ontology ;
   dc:contributor "David RATCLIFFE, CSIRO" ;
@@ -45,10 +30,8 @@ Can be used for alignment of project related classes and properties in more spec
   rdfs:comment """TODO: 
 1. figure out how to link to prov:Plan""" ;
   owl:imports dc: ;
-  owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <http://www.w3.org/ns/org> ;
   owl:imports <http://www.w3.org/ns/prov-o> ;
-  owl:imports <http://xmlns.com/foaf/0.1> ;
+  owl:imports foaf: ;
 .
 :FundingAssociation
   rdf:type owl:Class ;
@@ -71,12 +54,12 @@ Can be used for alignment of project related classes and properties in more spec
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty :currency ;
+      owl:onProperty :fundsAmount ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty :fundsAmount ;
+      owl:onProperty :inCurrency ;
     ] ;
 .
 :Project
@@ -93,7 +76,7 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty :budgetTotal ;
+      owl:onProperty :hasBudgetTotal ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -108,12 +91,12 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty :projectLeader ;
+      owl:onProperty :hasLeader ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty :wasFundedBy ;
+      owl:onProperty :hasSponsor ;
     ] ;
 .
 :RelatedActivity
@@ -128,18 +111,13 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
   rdfs:subClassOf :Project ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:allValuesFrom <http://xmlns.com/foaf/0.1/Person> ;
-      owl:onProperty :principalInvestigator ;
-    ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
       owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty :fieldOfResearch ;
+      owl:onProperty :hasFieldOfResearch ;
     ] ;
 .
-:activityLeadAssociation
+:activityLeadingAssociation
   rdf:type owl:ObjectProperty ;
-  rdfs:label "activity lead association" ;
+  rdfs:label "activity leading association" ;
   rdfs:range [
       rdf:type owl:Class ;
       rdfs:subClassOf prov:Association ;
@@ -151,27 +129,9 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
     ] ;
   rdfs:subPropertyOf prov:qualifiedAssociation ;
 .
-:activityLeader
+:activityParticipationAssociation
   rdf:type owl:ObjectProperty ;
-  rdfs:label "activity leader" ;
-  rdfs:subPropertyOf prov:wasAssociatedWith ;
-  owl:propertyChainAxiom (
-      :activityLeadAssociation
-      prov:agent
-    ) ;
-.
-:activityParticipant
-  rdf:type owl:ObjectProperty ;
-  rdfs:label "activity participant" ;
-  rdfs:subPropertyOf prov:wasAssociatedWith ;
-  owl:propertyChainAxiom (
-      :activityParticipantAssociation
-      prov:agent
-    ) ;
-.
-:activityParticipantAssociation
-  rdf:type owl:ObjectProperty ;
-  rdfs:label "activity participant association" ;
+  rdfs:label "activity participation association" ;
   rdfs:range [
       rdf:type owl:Class ;
       rdfs:subClassOf prov:Association ;
@@ -183,22 +143,19 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
     ] ;
   rdfs:subPropertyOf prov:qualifiedAssociation ;
 .
-:budgetTotal
+:activitySponsorshipAssociation
   rdf:type owl:ObjectProperty ;
-  rdfs:domain :Project ;
-  rdfs:label "total budget" ;
-  rdfs:range :Funds ;
-.
-:currency
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain :Funds ;
-  rdfs:label "currency" ;
-.
-:fieldOfResearch
-  rdf:type owl:ObjectProperty ;
-  rdfs:label "field of research" ;
-  rdfs:range skos:Concept ;
-  rdfs:subPropertyOf dcterms:subject ;
+  rdfs:label "activity sponsorship association" ;
+  rdfs:range [
+      rdf:type owl:Class ;
+      rdfs:subClassOf prov:Association ;
+      rdfs:subClassOf [
+          rdf:type owl:Restriction ;
+          owl:hasValue proji:Sponsor ;
+          owl:onProperty prov:hadRole ;
+        ] ;
+    ] ;
+  rdfs:subPropertyOf prov:qualifiedAssociation ;
 .
 :fundsAmount
   rdf:type owl:DatatypeProperty ;
@@ -218,6 +175,43 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
   rdfs:label "has area of interest" ;
   rdfs:subPropertyOf prov:atLocation ;
 .
+:hasBudgetTotal
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Project ;
+  rdfs:label "total budget" ;
+  rdfs:range :Funds ;
+.
+:hasFieldOfResearch
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "field of research" ;
+  rdfs:range skos:Concept ;
+  rdfs:subPropertyOf dcterms:subject ;
+.
+:hasLeader
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "activity leader" ;
+  rdfs:subPropertyOf prov:wasAssociatedWith ;
+  owl:propertyChainAxiom (
+      :activityLeadingAssociation
+      prov:agent
+    ) ;
+.
+:hasParticipant
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "activity participant" ;
+  rdfs:subPropertyOf prov:wasAssociatedWith ;
+  owl:propertyChainAxiom (
+      :activityParticipationAssociation
+      prov:agent
+    ) ;
+.
+:hasPrincipalInvestigator
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :ResearchProject ;
+  rdfs:label "principal investigator" ;
+  rdfs:range foaf:Person ;
+  rdfs:subPropertyOf :hasLeader ;
+.
 :hasRelatedActivity
   rdf:type owl:ObjectProperty ;
   rdfs:comment """Relationship from an activity to a related activity. 
@@ -227,6 +221,16 @@ This is more general than prov:qualifiedCommunication since it is not predicated
   rdfs:label "has related activity" ;
   rdfs:range :RelatedActivity ;
 .
+:hasSponsor
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Project ;
+  rdfs:label "activity sponsor" ;
+  rdfs:subPropertyOf prov:wasAssociatedWith ;
+  owl:propertyChainAxiom (
+      :activitySponsorshipAssociation
+      prov:agent
+    ) ;
+.
 :hasSubActivity
   rdf:type owl:ObjectProperty ;
   rdfs:comment """Relationship from an activity to a subsidiary activity. 
@@ -235,10 +239,28 @@ This is more general than prov:wasInformedBy since it is not predicated on the e
   rdfs:domain prov:Activity ;
   rdfs:label "has sub-activity" ;
   rdfs:range prov:Activity ;
+  owl:inverseOf :isSubActivityOf ;
   owl:propertyChainAxiom (
       :subActivityAssociation
       prov:activity
     ) ;
+.
+:inCurrency
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Funds ;
+  rdfs:label "currency" ;
+.
+:isFundedThrough
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Project ;
+  rdfs:label "has funding association" ;
+  rdfs:range :FundingAssociation ;
+  rdfs:subPropertyOf :activitySponsorshipAssociation ;
+.
+:isSubActivityOf
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relationship from an activity to its parent activity or project." ;
+  rdfs:label "is sub-activity of" ;
 .
 :name
   rdf:type owl:AnnotationProperty ;
@@ -266,24 +288,6 @@ This is more general than prov:wasInformedBy since it is not predicated on the e
   rdfs:label "planned start-time" ;
   rdfs:range xsd:dateTime ;
 .
-:principalInvestigator
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain :ResearchProject ;
-  rdfs:label "principal investigator" ;
-  rdfs:subPropertyOf :projectLeader ;
-.
-:projectLeader
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain :Project ;
-  rdfs:label "project leader" ;
-  rdfs:subPropertyOf :activityLeader ;
-.
-:projectParticipant
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain :Project ;
-  rdfs:label "project participant" ;
-  rdfs:subPropertyOf :activityParticipant ;
-.
 :subActivityAssociation
   rdf:type owl:ObjectProperty ;
   rdfs:label "sub-activity association" ;
@@ -298,13 +302,6 @@ This is more general than prov:wasInformedBy since it is not predicated on the e
     ] ;
   rdfs:subPropertyOf :hasRelatedActivity ;
 .
-:wasFundedBy
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain :Project ;
-  rdfs:label "was funded by" ;
-  rdfs:range :FundingAssociation ;
-  rdfs:subPropertyOf prov:qualifiedAssociation ;
-.
 proji:Funder
   rdf:type prov:Role ;
   rdfs:label "funding agent role" ;
@@ -314,6 +311,7 @@ proji:Leader
   rdf:type prov:Role ;
   rdfs:label "activity leader role" ;
   skos:broader proji:Participant ;
+  skos:narrower proji:PrincipalInvestigator ;
 .
 proji:Participant
   rdf:type prov:Role ;
@@ -327,6 +325,7 @@ proji:PrincipalInvestigator
 proji:Sponsor
   rdf:type prov:Role ;
   rdfs:label "sponsor role" ;
+  skos:narrower proji:Funder ;
 .
 proji:SubActivity
   rdf:type prov:Role ;

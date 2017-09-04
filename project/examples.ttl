@@ -97,35 +97,47 @@ ex:NorthRoadLevelCrossingRemoval
 ex:VictoriaLevelCrossingRemovalPhase1
   rdf:type proj:Project ;
   rdfs:label "Victoria level-crossing removal - phase 1" ;
-  proj:budgetTotal [
+  proj:hasBudgetTotal [
       rdf:type proj:Funds ;
       rdfs:label "Level crossing removal phase 1 budget " ;
-      proj:currency <https://dbpedia.org/resource/Australian_dollar> ;
       proj:fundsAmount "524000000"^^xsd:decimal ;
+      proj:inCurrency <https://dbpedia.org/resource/Australian_dollar> ;
     ] ;
+  proj:hasLeader ex:johnholland-kbr ;
+  proj:hasParticipant <http://www.metrotrains.com.au/> ;
+  proj:hasParticipant <https://www.ptv.vic.gov.au/> ;
+  proj:hasParticipant <https://www.vicroads.vic.gov.au/> ;
+  proj:hasSponsor <http://levelcrossings.vic.gov.au/about/about-the-authority> ;
   proj:hasSubActivity ex:BentleighLevelCrossingRemoval ;
   proj:hasSubActivity ex:BurkeRoadLevelCrossingRemoval ;
   proj:hasSubActivity ex:McKinnonRoadLevelCrossingRemoval ;
   proj:hasSubActivity ex:NorthRoadLevelCrossingRemoval ;
-  proj:name "Victoria level-crossing removal - phase 1" ;
-  proj:plannedEndTime "2017-03-31T23:59:00"^^xsd:dateTime ;
-  proj:plannedStartTime "2015-10-01T00:00:00"^^xsd:dateTime ;
-  proj:projectLeader ex:johnholland-kbr ;
-  proj:projectParticipant <http://www.metrotrains.com.au/> ;
-  proj:projectParticipant <https://www.ptv.vic.gov.au/> ;
-  proj:projectParticipant <https://www.vicroads.vic.gov.au/> ;
-  proj:wasFundedBy [
+  proj:isFundedThrough [
       rdf:type proj:FundingAssociation ;
       rdfs:label "Level crossing removal project funder" ;
       rdfs:seeAlso <http://www.johnholland.com.au/who-we-are/latest-news/john-holland-wins-level-crossing-removal-projects-in-victoria/> ;
       rdfs:seeAlso <http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/> ;
       proj:fundsProvided [
           rdf:type proj:Funds ;
-          proj:currency <https://dbpedia.org/resource/Australian_dollar> ;
           proj:fundsAmount "524000000"^^xsd:decimal ;
+          proj:inCurrency <https://dbpedia.org/resource/Australian_dollar> ;
         ] ;
       prov:agent <http://www.vic.gov.au/> ;
     ] ;
+  proj:name "Victoria level-crossing removal - phase 1" ;
+  proj:objective """<p>Phase 1 of project to remove 50 dangerous and congested level crossings across Melbourne. </p>
+<p>Removing the crossings will:</p>
+<ul>
+<li>deliver significant safety improvements for drivers and pedestrians</li>
+<li>improve travel around Melbourne  whether you're a train user, pedestrian, cyclist or driver </li>
+<li>get people home safer and faster</li>
+<li>make our roads more reliable, enabling people to better predict their travel times</li>
+<li>stimulate economic growth by creating thousands of jobs during construction</li>
+<li>revitalise local communities, with many areas benefiting from station rebuilds</li>
+<li>enable more trains to run more often and on time.</li>
+</ul>"""^^rdf:HTML ;
+  proj:plannedEndTime "2017-03-31T23:59:00"^^xsd:dateTime ;
+  proj:plannedStartTime "2015-10-01T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/Melbourne> ;
   prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
   prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;

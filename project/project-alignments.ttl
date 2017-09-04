@@ -42,8 +42,20 @@
 <http://network.csiro.au/ontology/core#Project>
   rdfs:subClassOf project:Project ;
 .
+<http://www.w3.org/ns/dcat#Dataset>
+  rdf:type owl:Class ;
+  rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
+.
+<http://www.w3.org/ns/dcat#Distribution>
+  rdf:type owl:Class ;
+  rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
+.
 doap:Project
   rdfs:subClassOf project:Project ;
+.
+org:Membership
+  rdf:type owl:Class ;
+  rdfs:subClassOf <http://network.csiro.au/ontology/core#Relationship> ;
 .
 project:Project
   owl:equivalentClass dbo:Project ;
