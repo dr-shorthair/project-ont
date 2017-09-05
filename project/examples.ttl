@@ -98,10 +98,10 @@ ex:VictoriaLevelCrossingRemovalPhase1
   rdf:type proj:Project ;
   rdfs:label "Victoria level-crossing removal - phase 1" ;
   proj:hasBudgetTotal [
-      rdf:type proj:Funds ;
+      rdf:type proj:SumOfMoney ;
       rdfs:label "Level crossing removal phase 1 budget " ;
-      proj:fundsAmount "524000000"^^xsd:decimal ;
-      proj:inCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+      proj:moneyAmount "524000000"^^xsd:decimal ;
+      proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
     ] ;
   proj:hasLeader ex:johnholland-kbr ;
   proj:hasParticipant <http://www.metrotrains.com.au/> ;
@@ -114,13 +114,12 @@ ex:VictoriaLevelCrossingRemovalPhase1
   proj:hasSubActivity ex:NorthRoadLevelCrossingRemoval ;
   proj:isFundedThrough [
       rdf:type proj:FundingAssociation ;
-      rdfs:label "Level crossing removal project funder" ;
-      rdfs:seeAlso <http://www.johnholland.com.au/who-we-are/latest-news/john-holland-wins-level-crossing-removal-projects-in-victoria/> ;
+      rdfs:label "Level crossing removal project phase 1 funding arrangement" ;
       rdfs:seeAlso <http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/> ;
       proj:fundsProvided [
-          rdf:type proj:Funds ;
-          proj:fundsAmount "524000000"^^xsd:decimal ;
-          proj:inCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+          rdf:type proj:SumOfMoney ;
+          proj:moneyAmount "524000000"^^xsd:decimal ;
+          proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
         ] ;
       prov:agent <http://www.vic.gov.au/> ;
     ] ;
@@ -145,6 +144,7 @@ ex:VictoriaLevelCrossingRemovalPhase1
 ex:johnholland-kbr
   rdf:type org:FormalOrganization ;
   rdfs:label "John Holland - KBR Joint Venture" ;
+  rdfs:seeAlso <http://www.johnholland.com.au/who-we-are/latest-news/john-holland-wins-level-crossing-removal-projects-in-victoria/> ;
   org:hasMembership [
       rdf:type org:Membership ;
       org:member <http://www.johnholland.com.au> ;

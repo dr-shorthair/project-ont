@@ -89,7 +89,7 @@
           </p>
             <img src="images/Project-summary.png" alt="summary of PROJECT ontology showing how the Project class extends prov:Activity"/>
           <p class="caption">
-            Figure 1: Core classes from PROJECT vocabulary, with their relationships to PROV-O. <i>rough draft to indicate scope of a properl drafted figure to be included here</i>
+            Figure 1: Core classes from PROJECT vocabulary, with their relationships to PROV-O. Rough draft to indicate scope of a properly drafted figure to be included here
           </p>
         </section>
 
@@ -127,15 +127,14 @@
             proj:hasParticipant &lt;http://www.metrotrains.com.au/&gt ;
             proj:hasParticipant &lt;https://www.ptv.vic.gov.au/&gt ;
             proj:hasParticipant &lt;https://www.vicroads.vic.gov.au/&gt ;
-            proj:hasSponsor &lt;http://www.vic.gov.au/&gt ;
+            proj:hasSponsor &lt;http://levelcrossings.vic.gov.au/about/about-the-authority&gt ;
             proj:hasSubActivity ex:BentleighLevelCrossingRemoval ;
             proj:hasSubActivity ex:BurkeRoadLevelCrossingRemoval ;
             proj:hasSubActivity ex:McKinnonRoadLevelCrossingRemoval ;
             proj:hasSubActivity ex:NorthRoadLevelCrossingRemoval ;
             proj:isFundedThrough [
               rdf:type proj:FundingAssociation ;
-              rdfs:label "Level crossing removal project funder" ;
-              rdfs:seeAlso &lt;http://www.johnholland.com.au/who-we-are/latest-news/john-holland-wins-level-crossing-removal-projects-in-victoria/&gt ;
+              rdfs:label "Level crossing removal project phase 1 funding arrangement" ;
               rdfs:seeAlso &lt;http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/&gt ;
               proj:fundsProvided [
                 rdf:type proj:SumOfMoney ;
@@ -170,6 +169,7 @@
             ex:johnholland-kbr
             rdf:type org:FormalOrganization ;
             rdfs:label "John Holland - KBR Joint Venture" ;
+            rdfs:seeAlso &lt;http://www.johnholland.com.au/who-we-are/latest-news/john-holland-wins-level-crossing-removal-projects-in-victoria/&gt ;
             org:hasMembership [
               rdf:type org:Membership ;
               org:member &lt;http://www.johnholland.com.au&gt; ;
@@ -204,7 +204,7 @@
           <h3>Project structure</h3>
           <img src="images/Project-sub-activities.png" alt="Relationship of a project to its sub-activities"/>
           <p class="caption">
-            Figure 2: Relationship of a project to its sub-activities. <i>rough draft to indicate scope of a properl drafted figure to be included here</i>
+            Figure 2: Relationship of a project to its sub-activities. Rough draft to indicate scope of a properly drafted figure to be included here
           </p>
           <p>
             The core class in the ontology is <a href="#proj:Project">proj:Project</a> which is intended to be applicable to a broad range of project types. A <i>project</i> is an activity with a planned start and end time, a designated leader, a known sponsor and budget, and is modelled as a specialization of the <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> class.
@@ -221,7 +221,7 @@
           <h3>Project stakeholders and funding</h3>
           <img src="images/Project-funding.png" alt="Relationship of a project to its stakeholders"/>
           <p class="caption">
-            Figure 3: Relationship of a project to its stakeholders. <i>rough draft to indicate scope of a properl drafted figure to be included here</i>
+            Figure 3: Relationship of a project to its stakeholders. Rough draft to indicate scope of a properly drafted figure to be included here
           </p>
           <p>
             There are a number of distinctive stakeholders in a project, in particular: a leader who is accountable for the delivery of project outcomes; a sponsor under whose authority the project is undertaken; funders; and project staff or participants.
