@@ -10,7 +10,6 @@ var respecConfig = {
     key: "Contributors",
     data: [
       { value: "Peter Brenton" },
-      { value: "Dan Brickley" }
     ]
   }],
   shortName: "dxwg-project",

@@ -34,7 +34,7 @@
 </head>
 <body>
   <section id="abstract">
-    <p>This document describes a core ontology for the description of a project, aimed at supporting linked data publishing of project descriptions across a number of domains. The ontology extends W3C [[PROV-O]]]] with typical features of a project description, including sub-activities, specific agent roles, and funding arrangements. It is expected to be specialized for applications that have more detailed requirements.   </p>
+    <p>This document describes a core ontology for the description of a project, aimed at supporting linked data publishing of project descriptions across a number of domains. The ontology extends W3C [[PROV-O]] with typical features of a project description, including sub-activities, specific agent roles, and funding arrangements. It is expected to be specialized for applications that have more detailed requirements.   </p>
     <p>
       The namespace for terms in this ontology is: <a href="http://www.w3.org/ns/project#">http://www.w3.org/ns/project#</a>
     </p>
@@ -45,8 +45,15 @@
     <p>This is an initial draft produced for consideration by the W3C Data eXchange Working Group.  </section>
       <section id="intro" class="informative">
         <h2>Introduction</h2>
-        <p>This document describes a core ontology for the description of a project, known as PROJECT. The project is a key unit of activity in modern business. A <i>project</i> is a time-bounded activity, in which one or more agent participants fill specific roles (e.g. project leader, sponsor or funder), which is typically structured as a set of sub-activities, and generates products. A project provides key context for many productive activities and their outputs, including datasets. </p>
-        <p>A number of previous initiatives have developed project ontologies. ... FOAF, DOAP, VIVO-ISF, dbPedia ... </p>
+        <p>
+          This document describes a core ontology for the description of a project, known as PROJECT.
+          A <i>project</i> is a time-bounded activity, in which one or more agent participants fill specific roles (e.g. project leader, sponsor or funder), which is typically structured as a set of sub-activities, and generates products.
+          The project is a key unit of activity in modern business.
+          A project provides key context for many productive activities and their outputs, including datasets.
+        </p>
+        <p>
+          A number of previous initiatives have developed project ontologies. ... FOAF, DOAP, VIVO-ISF, dbPedia ...
+        </p>
         <p>
           The Project ontology is designed as an extension to the W3C [[PROV-O]] ontology, with a Project class specializing the Activity class by adding support for the key project-related concepts.
         </p>
@@ -56,7 +63,9 @@
         <h2>Overview of project ontology</h2>
         <section id="scope" class="informative">
           <h3>Scope of the Project ontology</h3>
-          <p>The PROJECT ontology is designed to enable publication of information describing projects, including research projects. It is not designed to support project management, though sub-activities are included. As far as possible PROJECT is intended to be domain-neutral. It is expected that domains and applications will specialize or extend this ontology for more specific purposes. </p>
+          <p>
+            The PROJECT ontology is designed to enable publication of information describing projects, including research projects. It is not designed to support project management, though sub-activities are included. As far as possible PROJECT is intended to be domain-neutral. It is expected that domains and applications will specialize or extend this ontology for more specific purposes.
+          </p>
           <p>
             The ontology gives terms to support the representation of:
           </p>
@@ -73,7 +82,7 @@
             One specialization is included - the <i>Research Project</i> - which has been the subjecct of several predecessor designs that have informed the design of this ontology.
           </p>
           <p>
-            PROJECT extends the W3C [[PROV-O]] ontology. Otherwise, it has no dependencies except for the normal RDF/OWL infrastructure ([[RDF]], [[RDFS]], [[OWL2]]), Dublic Core for some ontology metadata, and [[SKOS]] to support some relationships between Role values.
+            PROJECT extends the W3C [[PROV-O]] ontology. Otherwise, it has no dependencies except for the normal RDF/OWL infrastructure ([[RDF]], [[RDFS]], [[OWL2]]), Dublic Core for some ontology metadata, and [[SKOS]] to support some relationships between Role values, and project classification.
           </p>
           <p>
             A summary of the main classes and relationships in PROJECT is shown in the diagram below, including the key superclass prov:Activity from PROV-O.
