@@ -107,12 +107,12 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty :inCurrency ;
+      owl:onProperty :moneyAmount ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty :moneyAmount ;
+      owl:onProperty :moneyCurrency ;
     ] ;
 .
 :activityLeadingAssociation
@@ -177,6 +177,7 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
 .
 :hasFieldOfResearch
   rdf:type owl:ObjectProperty ;
+  rdfs:domain :ResearchProject ;
   rdfs:label "field of research" ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf dcterms:subject ;
@@ -238,11 +239,6 @@ This is more general than prov:wasInformedBy since it is not predicated on the e
       prov:activity
     ) ;
 .
-:inCurrency
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain :SumOfMoney ;
-  rdfs:label "currency of a sum of money" ;
-.
 :isFundedThrough
   rdf:type owl:ObjectProperty ;
   rdfs:domain :Project ;
@@ -262,6 +258,11 @@ This is more general than prov:wasInformedBy since it is not predicated on the e
   rdfs:domain :SumOfMoney ;
   rdfs:label "Money amount" ;
   rdfs:range xsd:decimal ;
+.
+:moneyCurrency
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :SumOfMoney ;
+  rdfs:label "currency of a sum of money" ;
 .
 :name
   rdf:type owl:AnnotationProperty ;
