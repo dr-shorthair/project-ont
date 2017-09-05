@@ -48,20 +48,6 @@ Can be used for alignment of project related classes and properties in more spec
       owl:onProperty :fundsProvided ;
     ] ;
 .
-:Funds
-  rdf:type owl:Class ;
-  rdfs:label "Funds or money" ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty :fundsAmount ;
-    ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty :inCurrency ;
-    ] ;
-.
 :Project
   rdf:type owl:Class ;
   rdfs:comment """Basic project class. 
@@ -115,6 +101,20 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
       owl:onProperty :hasFieldOfResearch ;
     ] ;
 .
+:SumOfMoney
+  rdf:type owl:Class ;
+  rdfs:label "Amount of money" ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty :inCurrency ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty :moneyAmount ;
+    ] ;
+.
 :activityLeadingAssociation
   rdf:type owl:ObjectProperty ;
   rdfs:label "activity leading association" ;
@@ -157,16 +157,10 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
     ] ;
   rdfs:subPropertyOf prov:qualifiedAssociation ;
 .
-:fundsAmount
-  rdf:type owl:DatatypeProperty ;
-  rdfs:domain :Funds ;
-  rdfs:label "funds amount" ;
-  rdfs:range xsd:decimal ;
-.
 :fundsProvided
   rdf:type owl:ObjectProperty ;
   rdfs:label "funding provided" ;
-  rdfs:range :Funds ;
+  rdfs:range :SumOfMoney ;
 .
 :hasAreaOfInterest
   rdf:type owl:ObjectProperty ;
@@ -179,7 +173,7 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
   rdf:type owl:ObjectProperty ;
   rdfs:domain :Project ;
   rdfs:label "total budget" ;
-  rdfs:range :Funds ;
+  rdfs:range :SumOfMoney ;
 .
 :hasFieldOfResearch
   rdf:type owl:ObjectProperty ;
@@ -239,7 +233,6 @@ This is more general than prov:wasInformedBy since it is not predicated on the e
   rdfs:domain prov:Activity ;
   rdfs:label "has sub-activity" ;
   rdfs:range prov:Activity ;
-  owl:inverseOf :isSubActivityOf ;
   owl:propertyChainAxiom (
       :subActivityAssociation
       prov:activity
@@ -247,8 +240,8 @@ This is more general than prov:wasInformedBy since it is not predicated on the e
 .
 :inCurrency
   rdf:type owl:ObjectProperty ;
-  rdfs:domain :Funds ;
-  rdfs:label "currency" ;
+  rdfs:domain :SumOfMoney ;
+  rdfs:label "currency of a sum of money" ;
 .
 :isFundedThrough
   rdf:type owl:ObjectProperty ;
@@ -261,6 +254,14 @@ This is more general than prov:wasInformedBy since it is not predicated on the e
   rdf:type owl:ObjectProperty ;
   rdfs:comment "Relationship from an activity to its parent activity or project." ;
   rdfs:label "is sub-activity of" ;
+  owl:inverseOf :hasSubActivity ;
+.
+:moneyAmount
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Numeric value of a sum of money, which must be scaled by a specified currency to get the actual value" ;
+  rdfs:domain :SumOfMoney ;
+  rdfs:label "Money amount" ;
+  rdfs:range xsd:decimal ;
 .
 :name
   rdf:type owl:AnnotationProperty ;
@@ -286,7 +287,7 @@ This is more general than prov:wasInformedBy since it is not predicated on the e
   rdfs:comment "The time at which an project was planned to start. See also project:plannedEndTime."@en ;
   rdfs:domain prov:Activity ;
   rdfs:label "planned start-time" ;
-  rdfs:range xsd:dateTime ;
+  rdfs:range xsd:dateTimeStamp ;
 .
 :subActivityAssociation
   rdf:type owl:ObjectProperty ;
