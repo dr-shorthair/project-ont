@@ -82,17 +82,17 @@
             One specialization is included - the <i>Research Project</i> - which has been the subjecct of several predecessor designs that have informed the design of this ontology.
           </p>
           <p>
-            PROJECT extends the W3C [[!prov-o]] ontology. Otherwise, it has no dependencies except for the normal RDF/OWL infrastructure (RDF [[!rdf-concepts]], RDFS [[!rdf-schema]], OWL [[!owl2-quick-reference]]), Dublin Core for some ontology metadata, and [[!skos-reference]] to support some relationships between Role values, and project classification.
+            PROJECT extends the W3C [[!prov-o]] ontology. Otherwise, it has no dependencies except for the normal RDF/OWL infrastructure (RDF [[!rdf11-concepts]], RDFS [[!rdf-schema]], OWL [[!owl2-quick-reference]]), Dublin Core for some ontology metadata, and [[!skos-reference]] to support some relationships between Role values, and project classification.
           </p>
           <p>
             A summary of the main classes and relationships in PROJECT is shown in the diagram below, including the key superclass <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a>.
           </p>
           <figure>
             <img src="images/Project-summary.png" alt="summary of PROJECT ontology showing how the Project class extends prov:Activity"/>
+            <figcaption>
+              Core classes from PROJECT vocabulary, with their relationships to PROV-O. Rough draft to indicate scope of a properly drafted figure to be included here
+            </figcaption>
           </figure>
-          <figcaption>
-            Core classes from PROJECT vocabulary, with their relationships to PROV-O. Rough draft to indicate scope of a properly drafted figure to be included here
-          </figcaption>
           <p>
           </p>
         </section>
@@ -169,7 +169,7 @@
               proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
               proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
               prov:atLocation &lt;https://dbpedia.org/resource/McKinnon_railway_station&gt; ;
-              prov:endedAtTime "2017-10-31T00:00:00"^^xsd:dateTime ;
+              prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
               prov:qualifiedAssociation [
                 rdf:type prov:Association ;
                 prov:agent &lt;https://www.zomato.com/melbourne/fabulous-fine-foods-ormond-mckinnon&gt; ;
@@ -226,10 +226,10 @@
           <h3>Project structure</h3>
           <figure>
             <img src="images/Project-sub-activities.png" alt="Relationship of a project to its sub-activities"/>
+            <figcaption>
+              Relationship of a project to its sub-activities. Rough draft to indicate scope of a properly drafted figure to be included here
+            </figcaption>
           </figure>
-          <figcaption>
-            Figure 2: Relationship of a project to its sub-activities. Rough draft to indicate scope of a properly drafted figure to be included here
-          </figcaption>
           <p>
             The core class in the ontology is <a href="#proj:Project">proj:Project</a> which is intended to be applicable to a broad range of project types. A <i>project</i> is a planned activity with a designated leader, a known sponsor and budget, and is modelled as a specialization of the <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> class.
           </p>
@@ -245,10 +245,10 @@
           <h3>Project stakeholders and funding</h3>
           <figure>
             <img src="images/Project-funding.png" alt="Relationship of a project to its stakeholders"/>
+            <figcaption>
+              Relationship of a project to its stakeholders. Rough draft to indicate scope of a properly drafted figure to be included here
+            </figcaption>
           </figure>
-          <figcaption>
-            Figure 3: Relationship of a project to its stakeholders. Rough draft to indicate scope of a properly drafted figure to be included here
-          </figcaption>
           <p>
             There are a number of distinctive stakeholders in a project, in particular: a leader who is accountable for the delivery of project outcomes; a sponsor under whose authority the project is undertaken; funders; and project staff or participants.
             In some cases it is useful to provide specific details of a participant's role in the project.
@@ -348,7 +348,7 @@
                 <tr>
                   <td><code>rdf</code></td>
                   <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
-                  <td>Resource Description Framework [[rdf-concepts]]</td>
+                  <td>Resource Description Framework [[rdf11-concepts]]</td>
                 </tr>
                 <tr>
                   <td><code>rdfs</code></td>

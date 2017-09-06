@@ -41,7 +41,7 @@ ex:BentleighLevelCrossingRemoval
   proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
   proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/Bentleigh_railway_station> ;
-  prov:endedAtTime "2017-10-31T00:00:00"^^xsd:dateTime ;
+  prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
   prov:qualifiedAssociation [
       rdf:type prov:Association ;
       prov:agent <http://www.paintspot.com.au/paint-spot-bentleigh.html> ;
@@ -70,7 +70,7 @@ ex:McKinnonRoadLevelCrossingRemoval
   proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
   proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/McKinnon_railway_station> ;
-  prov:endedAtTime "2017-10-31T00:00:00"^^xsd:dateTime ;
+  prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
   prov:qualifiedAssociation [
       rdf:type prov:Association ;
       prov:agent <https://www.zomato.com/melbourne/fabulous-fine-foods-ormond-mckinnon> ;
@@ -90,7 +90,7 @@ ex:NorthRoadLevelCrossingRemoval
   proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
   proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/Ormond_railway_station> ;
-  prov:endedAtTime "2017-10-31T00:00:00"^^xsd:dateTime ;
+  prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
   prov:qualifiedAssociation [
       rdf:type prov:Association ;
       prov:agent <https://www.zomato.com/melbourne/gilis-ormond-mckinnon> ;
