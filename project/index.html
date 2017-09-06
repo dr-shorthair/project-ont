@@ -47,7 +47,7 @@
         <h2>Introduction</h2>
         <p>
           This document describes a core ontology for the description of a project, known as PROJECT.
-          A <i>project</i> is a time-bounded activity, in which one or more agent participants fill specific roles (e.g. project leader, sponsor or funder), which is typically structured as a set of sub-activities, and generates products.
+          A <i>project</i> is a planned activity, in which one or more agent participants fill specific roles (e.g. project leader, sponsor or funder), which is typically structured as a set of sub-activities, and generates products.
           The project is a key unit of activity in modern business.
           A project provides key context for many productive activities and their outputs, including datasets.
         </p>
@@ -71,7 +71,7 @@
           </p>
           <ul>
             <li>
-              project timing, funding, goals
+              project planning, funding, goals
             </li><li>
               project stakeholders and relationships
             </li><li>
@@ -231,7 +231,7 @@
             Figure 2: Relationship of a project to its sub-activities. Rough draft to indicate scope of a properly drafted figure to be included here
           </figcaption>
           <p>
-            The core class in the ontology is <a href="#proj:Project">proj:Project</a> which is intended to be applicable to a broad range of project types. A <i>project</i> is an activity with a planned start and end time, a designated leader, a known sponsor and budget, and is modelled as a specialization of the <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> class.
+            The core class in the ontology is <a href="#proj:Project">proj:Project</a> which is intended to be applicable to a broad range of project types. A <i>project</i> is a planned activity with a designated leader, a known sponsor and budget, and is modelled as a specialization of the <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> class.
           </p>
           <p>
             A project is typically organized through a set of sub-activities, which may be undertaken concurrently or consecutively, and may themselves be composed of further sub-activities. A project is often related to or influenced by other activities in addition to its sub-activities.
@@ -413,6 +413,7 @@
               | <a href="#proj:objective">objective</a>
               | <a href="#proj:plannedEndTime">plannedEndTime</a>
               | <a href="#proj:plannedStartTime">plannedStartTime</a>
+              | <a href="#proj:projectPlan">projectPlan</a>
               | <a href="#proj:subActivityAssociation">subActivityAssociation</a>
               |
             </p>
@@ -463,6 +464,23 @@
                   <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#AnnotationProperty">owl:AnnotationProperty</a></td></tr>
                   <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
                   <tr><td class="prop">subpropertyOf:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a></td></tr>
+                  <tr><td class="prop">Usage note:</td><td></td></tr>
+                </tbody>
+              </table>
+            </section>
+            <section id="proj:projectPlan">
+              <h4>Property: projectPlan</h4>
+              <p>
+                The project plan.
+              </p>
+
+              <table class="definition">
+                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#projectPlan">proj:projectPlan</a></th></tr></thead>
+                <tbody>
+                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                  <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
+                  <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Plan</a></td></tr>
+                  <tr><td class="prop">subpropertyOf:</td><td><a href="http://www.w3.org/ns/prov#used">prov:used</a></td></tr>
                   <tr><td class="prop">Usage note:</td><td></td></tr>
                 </tbody>
               </table>

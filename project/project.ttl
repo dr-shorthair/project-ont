@@ -296,6 +296,13 @@ proj:plannedStartTime
   rdfs:label "planned start-time" ;
   rdfs:range xsd:dateTimeStamp ;
 .
+proj:projectPlan
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain proj:Project ;
+  rdfs:label "Project plan" ;
+  rdfs:range prov:Plan ;
+  rdfs:subPropertyOf prov:used ;
+.
 proj:subActivityAssociation
   rdf:type owl:ObjectProperty ;
   rdfs:label "sub-activity association" ;
