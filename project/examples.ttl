@@ -36,6 +36,7 @@ proji:examples
 ex:BentleighLevelCrossingRemoval
   rdf:type prov:Activity ;
   rdfs:label "Bentleigh level crossing removal" ;
+  proj:isSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
   proj:name "Bentleigh level crossing removal" ;
   proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
   proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
@@ -51,6 +52,7 @@ ex:BentleighLevelCrossingRemoval
 ex:BurkeRoadLevelCrossingRemoval
   rdf:type prov:Activity ;
   rdfs:label "Burke Road level crossing removal" ;
+  proj:isSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
   proj:plannedEndTime "2016-03-31T00:00:00"^^xsd:dateTime ;
   proj:plannedStartTime "2015-10-01T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/Gardiner_railway_station> ;
@@ -64,6 +66,7 @@ ex:Joint-Venture-Partner
 ex:McKinnonRoadLevelCrossingRemoval
   rdf:type prov:Activity ;
   rdfs:label "McKinnon Road level crossing removal" ;
+  proj:isSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
   proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
   proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/McKinnon_railway_station> ;
@@ -82,6 +85,7 @@ ex:Negative-economic-impact
 ex:NorthRoadLevelCrossingRemoval
   rdf:type prov:Activity ;
   rdfs:label "North Road level crossing removal (Ormond)" ;
+  proj:isSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
   proj:name "North Road level crossing removal (Ormond)" ;
   proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
   proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
