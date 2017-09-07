@@ -32,7 +32,6 @@ ex:feralcy
   rdfs:label " Improved management of feral animals in remote tropical Australia" ;
   proj:budgetTotal [
       rdf:type proj:SumOfMoney ;
-      rdfs:label "Funding" ;
       proj:moneyAmount 0 ;
       proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
     ] ;
@@ -52,7 +51,7 @@ ex:feralcy
       rdf:type proj:FundingAssociation ;
       rdfs:seeAlso proji:FeralCapeYork ;
       proj:fundsProvided [
-          rdf:type proj:Funds ;
+          rdf:type proj:SumOfMoney ;
           proj:moneyAmount 0 ;
           proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
         ] ;
