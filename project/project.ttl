@@ -294,7 +294,7 @@ proj:plannedStartTime
   rdfs:comment "The time at which an project was planned to start. See also project:plannedEndTime."@en ;
   rdfs:domain prov:Activity ;
   rdfs:label "planned start-time" ;
-  rdfs:range xsd:dateTimeStamp ;
+  rdfs:range xsd:dateTime ;
 .
 proj:projectPlan
   rdf:type owl:ObjectProperty ;
