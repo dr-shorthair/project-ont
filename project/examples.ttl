@@ -19,7 +19,7 @@
 org:Organization
   owl:equivalentClass prov:Organization ;
 .
-proji:examples
+ex:examples
   rdf:type owl:Ontology ;
   dcterms:created "2017-08-29" ;
   dcterms:creator [

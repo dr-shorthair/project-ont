@@ -1,0 +1,64 @@
+# baseURI: http://www.w3.org/ns/project/FeralCapeYork
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://www.w3.org/ns/project/examples#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix proj: <http://www.w3.org/ns/project#> .
+@prefix proji: <http://www.w3.org/ns/project/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:Aerial
+  rdf:type prov:Activity ;
+  rdfs:label "Aerial feral animals survey" ;
+  proj:isSubActivityOf ex:feralcy ;
+  proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
+  proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
+  prov:endedAtTime "2017-10-31T00:00:00"^^xsd:dateTime ;
+  prov:startedAtTime "2016-01-31T00:00:00"^^xsd:dateTime ;
+.
+ex:FeralCapeYork
+  rdf:type owl:Ontology ;
+  owl:imports <http://www.w3.org/ns/org> ;
+  owl:imports <http://www.w3.org/ns/project> ;
+.
+ex:feralcy
+  rdf:type proj:Project ;
+  rdfs:label " Improved management of feral animals in remote tropical Australia" ;
+  proj:budgetTotal [
+      rdf:type proj:SumOfMoney ;
+      rdfs:label "Funding" ;
+      proj:moneyAmount 0 ;
+      proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+    ] ;
+  proj:hasSubActivity ex:Aerial ;
+  proj:hasSubActivity ex:Incidental ;
+  proj:hasSubActivity ex:Limnology ;
+  proj:hasSubActivity ex:Terrestrial ;
+  proj:hasSubActivity ex:Wetland ;
+  proj:name "Improved management of feral animals in remote tropical Australia" ;
+  proj:objective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
+  proj:plannedEndTime "2022-12-31T23:59:00"^^xsd:dateTime ;
+  proj:plannedStartTime "2012-12-31T00:00:00"^^xsd:dateTime ;
+  proj:projectLeader <http://network.csiro.au/data/justin.perry> ;
+  proj:projectParticipant <http://network.csiro.au/data/peter.brenton> ;
+  proj:projectPlan <FCY-project-plan> ;
+  proj:wasFundedBy [
+      rdf:type proj:FundingAssociation ;
+      rdfs:seeAlso proji:FeralCapeYork ;
+      proj:fundsProvided [
+          rdf:type proj:Funds ;
+          proj:moneyAmount 0 ;
+          proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+        ] ;
+      prov:agent <http://www.gov.au> ;
+    ] ;
+  prov:atLocation <http://dbpedia.org/resource/Archer_River,_Queensland> ;
+  prov:generated <http://network.csiro.au/publication?id=http://network.csiro.au/data/pub_EP152962> ;
+  prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
+.
