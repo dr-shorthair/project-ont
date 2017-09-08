@@ -1,4 +1,6 @@
 # baseURI: http://www.w3.org/ns/project/FeralCapeYork
+# imports: http://www.w3.org/ns/org
+# imports: http://www.w3.org/ns/project
 
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -14,6 +16,11 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+proji:FeralCapeYork
+  rdf:type owl:Ontology ;
+  owl:imports <http://www.w3.org/ns/org> ;
+  owl:imports <http://www.w3.org/ns/project> ;
+.
 ex:Aerial
   rdf:type prov:Activity ;
   rdfs:label "Aerial feral animals survey" ;
@@ -138,22 +145,28 @@ ex:cyferal-biocollect
 .
 ex:cyferal-impact
   rdf:type proj:Project ;
+  rdf:type proj:ResearchProject ;
   rdfs:label "Improved management of feral animals in remote tropical Australia" ;
   proj:budgetTotal [
       rdf:type proj:SumOfMoney ;
       proj:moneyAmount 0 ;
       proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
     ] ;
+  proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202> ;
+  proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050204> ;
+  proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050205> ;
+  proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050206> ;
+  proj:hasPrincipalInvestigator <http://network.csiro.au/data/justin.perry> ;
   proj:hasSubActivity ex:Aerial ;
   proj:hasSubActivity ex:Incidental ;
   proj:hasSubActivity ex:Limnology ;
   proj:hasSubActivity ex:Terrestrial ;
   proj:hasSubActivity ex:Wetland ;
+  proj:isSubActivityOf <http://www.environment.gov.au/science/nesp> ;
   proj:name "Improved management of feral animals in remote tropical Australia" ;
   proj:objective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
   proj:plannedEndTime "2022-12-31T23:59:00"^^xsd:dateTime ;
   proj:plannedStartTime "2012-12-31T00:00:00"^^xsd:dateTime ;
-  proj:projectLeader <http://network.csiro.au/data/justin.perry> ;
   proj:projectParticipant <http://network.csiro.au/data/peter.brenton> ;
   proj:projectPlan ex:FCY-project-plan ;
   proj:wasFundedBy [

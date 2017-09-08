@@ -1,6 +1,18 @@
 # baseURI: http://www.w3.org/ns/project-alignments
 # imports: http://dbpedia.org/ontology/Project
+# imports: http://dbpedia.org/ontology/ResearchProject
 # imports: http://dbpedia.org/ontology/UnitOfWork
+# imports: http://dbpedia.org/ontology/fundedBy
+# imports: http://dbpedia.org/ontology/projectBudgetFunding
+# imports: http://dbpedia.org/ontology/projectBudgetTotal
+# imports: http://dbpedia.org/ontology/projectCoordinator
+# imports: http://dbpedia.org/ontology/projectEndDate
+# imports: http://dbpedia.org/ontology/projectKeyword
+# imports: http://dbpedia.org/ontology/projectObjective
+# imports: http://dbpedia.org/ontology/projectParticipant
+# imports: http://dbpedia.org/ontology/projectReferenceID
+# imports: http://dbpedia.org/ontology/projectStartDate
+# imports: http://dbpedia.org/ontology/projectType
 # imports: http://network.csiro.au/ontology/core
 # imports: http://purl.org/cerif/frapo
 # imports: http://purl.org/dc/elements/1.1/
@@ -42,6 +54,9 @@
 <http://network.csiro.au/ontology/core#Project>
   rdfs:subClassOf project:Project ;
 .
+doap:Project
+  rdfs:subClassOf project:Project ;
+.
 <http://www.w3.org/ns/dcat#Dataset>
   rdf:type owl:Class ;
   rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
@@ -49,9 +64,6 @@
 <http://www.w3.org/ns/dcat#Distribution>
   rdf:type owl:Class ;
   rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
-.
-doap:Project
-  rdfs:subClassOf project:Project ;
 .
 org:Membership
   rdf:type owl:Class ;
@@ -68,9 +80,21 @@ project:Project
   dcterms:created "2017-08-14"^^xsd:date ;
   dcterms:creator <http://orcid.org/0000-0002-3884-3420> ;
   dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-  rdfs:comment "ALignment of the basic ontology for projects to FOAF, dbPedia, VIVO-ISF." ;
+  rdfs:comment "Alignment of the basic ontology for projects to FOAF, dbPedia, VIVO-ISF." ;
   owl:imports dbo:Project ;
+  owl:imports dbo:ResearchProject ;
   owl:imports dbo:UnitOfWork ;
+  owl:imports dbo:fundedBy ;
+  owl:imports dbo:projectBudgetFunding ;
+  owl:imports dbo:projectBudgetTotal ;
+  owl:imports dbo:projectCoordinator ;
+  owl:imports dbo:projectEndDate ;
+  owl:imports dbo:projectKeyword ;
+  owl:imports dbo:projectObjective ;
+  owl:imports dbo:projectParticipant ;
+  owl:imports dbo:projectReferenceID ;
+  owl:imports dbo:projectStartDate ;
+  owl:imports dbo:projectType ;
   owl:imports <http://network.csiro.au/ontology/core> ;
   owl:imports <http://purl.org/cerif/frapo> ;
   owl:imports dc: ;
