@@ -12,7 +12,7 @@ var respecConfig = {
       { value: "Peter Brenton" },
     ]
   }],
-  shortName: "dxwg-project",
+  shortName: "vocab-project",
   edDraftURI: "http://dr-shorthair.github.io/ont/project/",
   wg: "Data eXchange Working Group",
   wgURI: "https://www.w3.org/2017/dxwg/",
