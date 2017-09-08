@@ -52,23 +52,24 @@
         </p>
         <p>
           A number of previous initiatives have developed project ontologies.
+          In Friend of a Friend (FOAF) [[foaf]] the <a href="http://xmlns.com/foaf/0.1/Project">foaf:Project</a> class is a stub (no specific properties) which was included primarily to act as the topic of a homepage.
+          The Description of a Project ontology (DOAP) [[doap]] is oriented to software development projects.
+          The Project Documents Ontology (PDO) [[pdo]] relates to  various documents in a project-specific setting, like meeting minutes, status reports etc.
+          The Funding, Research Administration and Projects Ontology (FRAPO) [[frapo]] is similarly aimed at describing administrative information relating to grant funding and research projects. There are classes for the characterization of <a href="http://purl.org/cerif/frapo/Grant">grant applications</a>, <a href="http://purl.org/cerif/frapo/University">funding bodies</a>, project partners etc, but FRAPO uses the <a href="http://xmlns.com/foaf/0.1/Project">foaf:Project</a> class directly with just one additional property related to identification, not function.
+          In VIVO-ISF [[vivo-isf]] the <a href="http://vivoweb.org/ontology/core#Project">vivo:Project</a> class is very lightweight, characterised only by its timing and geographic focus. VIVO is linked to the OBO Foundry [[obo]] and other ontologies there (e.g. the Open-Med <a href="https://open.med.harvard.edu/wiki/display/eaglei/Ontology">eagle-i</a> ontology) provide specializations, but in the context of relatively narrow domain applications.
         </p>
         <p>
-          In Friend of a Friend (FOAF) [[foaf]] the <a href="http://xmlns.com/foaf/0.1/Project">foaf:Project</a> class is a stub (no specific properties) which was included primarily to act as the topic of a homepage.
-          The Description of a Project ontology (DOAP) [[doap]] is oriented towards <i>software development</i> projects.
-          The Project Documents Ontology (PDO) [[pdo]] relates to  various <i>documents</i> in a project-specific setting, like meeting minutes, status reports etc.
-          The Funding, Research Administration and Projects Ontology (FRAPO) [[frapo]] is similarly aimed at describing administrative information relating to grant funding and <i>research projects</i>. There are classes for the characterization of <a href="http://purl.org/cerif/frapo/Grant">grant applications</a>, <a href="http://purl.org/cerif/frapo/University">funding bodies</a>, project partners etc, but FRAPO uses the <a href="http://xmlns.com/foaf/0.1/Project">foaf:Project</a> class directly with just one additional property related to identification, not function.
-          In VIVO-ISF [[vivo-isf]] the <a href="http://vivoweb.org/ontology/core#Project">vivo:Project</a> class is very lightweight, characterised only by its timing and geographic focus. VIVO is linked to the OBO Foundry [[obo]] and other ontologies there (e.g. the Open-Med <a href="https://open.med.harvard.edu/wiki/display/eaglei/Ontology">eagle-i</a> ontology) provide specializations, but these are in the context of relatively narrow domain applications.
-          The <a href="http://dbpedia.org/ontology/Project">dbo:Project</a> class from the DBPedia ontology [[dbpedia-ont]] is defined as "a temporary endeavor undertaken to achieve defined objectives" with key properties relating to timing, objectives, and classification (keywords). A specialization <a href="http://dbpedia.org/ontology/ResearchProject">dbo:ResearchProject</a> adds information about funding and key stakeholders (coordinator, participant, funder).
-          DBPedia provides what is probably the most general purpose class for projects.
+          The DBPedia ontology [[dbpedia-ont]] provides what is probably the most general purpose class for projects.
+          The <a href="http://dbpedia.org/ontology/Project">dbo:Project</a> class is described as "a temporary endeavor undertaken to achieve defined objectives" and has key properties relating to timing, objectives, and classification (keywords).
+          A specialization <a href="http://dbpedia.org/ontology/ResearchProject">dbo:ResearchProject</a> adds information about funding and key stakeholders (coordinator, participant, funder).
         </p>
         <p>
           PPSR-Core ?
         </p>
         <p>
-          None of these supports the variety of relationships between projects, stakeholders, inputs and outputs, and sub-activities that are characteristic of projects.
-          However, these are templated in the W3C PROV ontology [[!prov-o]] which provides quite rich, though generic, support for many kinds of relationships between activities, stakeholders (agents) and artefacts (entities) related to projects.
-          Thus, the Project ontology is designed as an extension to PROV-O, with the core proj:Project class specializing the <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a> class by adding the key project-related concepts.
+          However, none of the models discussed here supports the variety of relationships with stakeholders, inputs and outputs, and sub-activities that are characteristic of projects.
+          Nevertheless, these relations are templated in the W3C PROV-O ontology [[!prov-o]] which provides quite rich, though generic, support for many kinds of links between activities, stakeholders (agents) and artefacts (entities) related to projects.
+          Thus, the Project ontology is designed as an extension to PROV-O, with the core proj:Project class specializing <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a> by adding the key project-related concepts.
         </p>
       </section>
 
@@ -77,7 +78,9 @@
         <section id="scope" class="informative">
           <h3>Scope of the Project ontology</h3>
           <p>
-            The PROJECT ontology is designed to enable publication of information describing projects, including research projects. It is not designed to support project management, though sub-activities are included. As far as possible PROJECT is intended to be domain-neutral. It is expected that domains and applications will specialize or extend this ontology for more specific purposes.
+            The PROJECT ontology is designed to enable publication of information describing projects, including research projects.
+            It is not designed to support project management, though sub-activities are included.
+            As far as possible PROJECT is intended to be domain-neutral, and it is expected that domains and applications will specialize or extend this ontology for more specific purposes.
           </p>
           <p>
             The ontology gives terms to support the representation of:
@@ -92,7 +95,7 @@
             </li>
           </ul>
           <p>
-            One specialization is included - the <i>Research Project</i> - which has been the subjecct of several predecessor designs that have informed the design of this ontology.
+            One specialization is included - the <i>Research Project</i> - which has been the subject of several predecessor designs that have informed the design of this ontology.
           </p>
           <p>
             PROJECT extends the W3C [[!prov-o]] ontology. Otherwise, it has no dependencies except for the normal RDF/OWL infrastructure (RDF [[!rdf11-concepts]], RDFS [[!rdf-schema]], OWL [[!owl2-quick-reference]]), Dublin Core for some ontology metadata, and [[!skos-reference]] to support some relationships between Role values, and project classification.
@@ -222,10 +225,9 @@
 This example is a scientific research project to assess the impact of feral animals on natural and social values in the Archer River Basin of Australia’s Cape York Peninsula.
 The objective is to establish a robust baseline of feral animal distribution and describe the impact of these animals on freshwater ecosystems, biodiversity and cultural values.
 The project has five separate surveys which each apply different methodologies (dwcterms:samplingProtocol) to collect different data sets, each with a different survey schema.
-These are modelled as sub-activities, with the description of only one shown here.
-The project commenced on 31st Dec 2012, but is open ended in that no end date has been specified.
+The project commenced on 31st Dec 2012, but no end date has been specified.
 It was set up under the National Environmental Science Programme, but has not had a funding value attributed to it yet.
-It is being run by CSIRO with a CSIRO officer managing the it and two other organisations associated with it <b>work needed on org description</b>.
+It is being run by CSIRO with a CSIRO officer managing the it and two other organisations associated with it <b>... work needed on org description ...</b>.
 A research paper has been published as an output.
             </p>
 
@@ -237,36 +239,36 @@ A research paper has been published as an output.
                 proj:budgetTotal [
                     rdf:type proj:SumOfMoney ;
                     proj:moneyAmount 0 ;
-                    proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+                    proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
                   ] ;
-                proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202> ;
-                proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050204> ;
-                proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050205> ;
-                proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050206> ;
-                proj:hasPrincipalInvestigator <http://network.csiro.au/data/justin.perry> ;
+                proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202&gt; ;
+                proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050204&gt; ;
+                proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050205&gt; ;
+                proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050206&gt; ;
+                proj:hasPrincipalInvestigator &lt;http://network.csiro.au/data/justin.perry&gt; ;
                 proj:hasSubActivity ex:Aerial ;
                 proj:hasSubActivity ex:Incidental ;
                 proj:hasSubActivity ex:Limnology ;
                 proj:hasSubActivity ex:Terrestrial ;
                 proj:hasSubActivity ex:Wetland ;
-                proj:isSubActivityOf <http://www.environment.gov.au/science/nesp> ;
+                proj:isSubActivityOf &lt;http://www.environment.gov.au/science/nesp&gt; ;
                 proj:name "Improved management of feral animals in remote tropical Australia" ;
                 proj:objective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
                 proj:plannedEndTime "2022-12-31T23:59:00"^^xsd:dateTime ;
                 proj:plannedStartTime "2012-12-31T00:00:00"^^xsd:dateTime ;
-                proj:projectParticipant <http://network.csiro.au/data/peter.brenton> ;
+                proj:projectParticipant &lt;http://network.csiro.au/data/peter.brenton&gt; ;
                 proj:projectPlan ex:FCY-project-plan ;
                 proj:wasFundedBy [
                     rdf:type proj:FundingAssociation ;
                     proj:fundsProvided [
                         rdf:type proj:SumOfMoney ;
                         proj:moneyAmount 0 ;
-                        proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+                        proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
                       ] ;
-                    prov:agent <http://www.gov.au> ;
+                    prov:agent &lt;http://www.gov.au&gt; ;
                   ] ;
-                prov:atLocation <http://dbpedia.org/resource/Archer_River,_Queensland> ;
-                prov:generated <http://network.csiro.au/publication?id=http://network.csiro.au/data/pub_EP152962> ;
+                prov:atLocation &lt;http://dbpedia.org/resource/Archer_River,_Queensland&gt; ;
+                prov:generated &lt;http://network.csiro.au/publication?id=http://network.csiro.au/data/pub_EP152962&gt; ;
                 prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
               .
             </pre>
@@ -329,7 +331,8 @@ A research paper has been published as an output.
             The standard roles of <i>leader</i>, <i>participant</i> are each implemented as a directly named property from an <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> to a <a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a>, and <i>sponsor</i> as a directly named property from a <a href="#proj:Project">proj:Project</a> to a <a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a>.
           </p>
           <p>
-            Basic funding arrangements are captured through the <a href="#proj:hasSponsor">proj:hasSponsor</a> and <a href="#proj:hasBudgetTotal">proj:hasBudgetTotal</a> properties. More complex arrangements, for example if multiple funders are involved, can be captured through the <a href="#proj:isFundedThrough">proj:isFundedThrough</a> property, which links a funding agent with a funding amount in the context of a project.
+            Basic funding arrangements are captured through the <a href="#proj:hasSponsor">proj:hasSponsor</a> and <a href="#proj:hasBudgetTotal">proj:hasBudgetTotal</a> properties.
+            More complex arrangements, for example if multiple funders are involved, can be captured through the <a href="#proj:isFundedThrough">proj:isFundedThrough</a> property, which links a funding agent with a funding amount in the context of a project.
           </p>
           <p>
             The details of any other relationship may be expressed using the <a href="https://www.w3.org/TR/prov-o/#qualifiedAssociation">prov:qualifiedAssociation</a> property.
@@ -936,7 +939,7 @@ A research paper has been published as an output.
         <section id="alignments" class="informative">
           <h2>Alignments with related ontologies</h2>
 
-          [[frapo]] [[schema-org]] [[doap]] [[pdo]] [[vivo-isf]] [[foaf]] [[dbpedia-ont]] [[PPSR-Core]]
+          [[frapo]] [[schema-org]] [[doap]] [[pdo]] [[vivo-isf]] [[foaf]] [[dbpedia-ont]] [[PPSR-Core]] [[eagle-i]]
 
         </section>
 
