@@ -156,7 +156,8 @@ ex:cyferal-impact
   proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050204> ;
   proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050205> ;
   proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050206> ;
-  proj:hasPrincipalInvestigator <http://network.csiro.au/data/justin.perry> ;
+  proj:hasPrincipalInvestigator <http://orcid.org/0000-0002-5823-7364> ;
+  proj:hasSponsor <http://dbpedia.org/resource/Commonwealth_Scientific_and_Industrial_Research_Organisation> ;
   proj:hasSubActivity ex:Aerial ;
   proj:hasSubActivity ex:Incidental ;
   proj:hasSubActivity ex:Limnology ;
@@ -167,7 +168,7 @@ ex:cyferal-impact
   proj:objective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
   proj:plannedEndTime "2022-12-31T23:59:00"^^xsd:dateTime ;
   proj:plannedStartTime "2012-12-31T00:00:00"^^xsd:dateTime ;
-  proj:projectParticipant <http://network.csiro.au/data/peter.brenton> ;
+  proj:projectParticipant <mailto:peter.brenton@csiro.au> ;
   proj:projectPlan ex:FCY-project-plan ;
   proj:wasFundedBy [
       rdf:type proj:FundingAssociation ;
@@ -176,10 +177,10 @@ ex:cyferal-impact
           proj:moneyAmount 0 ;
           proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
         ] ;
-      prov:agent <http://www.gov.au> ;
+      prov:agent <http://dbpedia.org/resource/Government_of_Australia> ;
     ] ;
   prov:atLocation <http://dbpedia.org/resource/Archer_River,_Queensland> ;
-  prov:generated <http://network.csiro.au/publication?id=http://network.csiro.au/data/pub_EP152962> ;
+  prov:generated <https://doi.org/10.1071/WF15133> ;
   prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
 .
 prov:Organization
