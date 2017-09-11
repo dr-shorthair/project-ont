@@ -1,4 +1,5 @@
 # baseURI: http://www.w3.org/ns/project-alignments
+# imports: http://dbpedia.org/ontology/Organisation
 # imports: http://dbpedia.org/ontology/Project
 # imports: http://dbpedia.org/ontology/ResearchProject
 # imports: http://dbpedia.org/ontology/UnitOfWork
@@ -51,11 +52,83 @@
 @prefix vivo: <http://vivoweb.org/ontology/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+dbo:Organisation
+  rdfs:subClassOf prov:Agent ;
+.
+dbo:Project
+  owl:equivalentClass project:Project ;
+.
+dbo:ResearchProject
+  owl:equivalentClass project:ResearchProject ;
+.
+dbo:fundedBy
+  owl:propertyChainAxiom (
+      project:isFundedThrough
+      prov:agent
+    ) ;
+.
+dbo:projectBudgetFunding
+  owl:propertyChainAxiom (
+      project:isFundedThrough
+      project:fundsProvided
+    ) ;
+.
+dbo:projectBudgetTotal
+  owl:equivalentProperty project:hasBudgetTotal ;
+.
+dbo:projectCoordinator
+  rdfs:subPropertyOf project:hasLeader ;
+.
+dbo:projectEndDate
+  rdfs:subPropertyOf prov:endedAtTime ;
+.
+dbo:projectObjective
+  owl:equivalentProperty project:objective ;
+.
+dbo:projectParticipant
+  rdfs:subPropertyOf project:hasParticipant ;
+.
+dbo:projectStartDate
+  rdfs:subPropertyOf prov:startedAtTime ;
+.
 <http://network.csiro.au/ontology/core#Project>
   rdfs:subClassOf project:Project ;
 .
+obo:ERO_0000014
+  rdfs:subClassOf project:ResearchProject ;
+.
 doap:Project
   rdfs:subClassOf project:Project ;
+.
+doap:developer
+  rdfs:subPropertyOf project:hasParticipant ;
+.
+doap:documenter
+  rdfs:subPropertyOf project:hasParticipant ;
+.
+doap:helper
+  rdfs:subPropertyOf project:hasParticipant ;
+.
+doap:implements
+  rdfs:subPropertyOf project:projectPlan ;
+.
+doap:maintainer
+  rdfs:subPropertyOf project:hasParticipant ;
+.
+doap:tester
+  rdfs:subPropertyOf project:hasParticipant ;
+.
+doap:translator
+  rdfs:subPropertyOf project:hasParticipant ;
+.
+doap:vendor
+  rdfs:subPropertyOf project:hasSponsor ;
+.
+vivo:Project
+  owl:equivalentClass project:Project ;
+.
+vivo:geographicFocus
+  owl:equivalentProperty project:hasAreaOfInterest ;
 .
 <http://www.w3.org/ns/dcat#Dataset>
   rdf:type owl:Class ;
@@ -81,6 +154,7 @@ project:Project
   dcterms:creator <http://orcid.org/0000-0002-3884-3420> ;
   dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
   rdfs:comment "Alignment of the basic ontology for projects to FOAF, dbPedia, VIVO-ISF." ;
+  owl:imports dbo:Organisation ;
   owl:imports dbo:Project ;
   owl:imports dbo:ResearchProject ;
   owl:imports dbo:UnitOfWork ;
@@ -107,4 +181,19 @@ project:Project
   owl:imports <http://www.w3.org/ns/project> ;
   owl:imports <http://www.w3.org/ns/prov-o> ;
   owl:imports <http://xmlns.com/foaf/0.1> ;
+.
+prov:endedAtTime
+  owl:propertyChainAxiom (
+      vivo:dateTimeInterval
+      vivo:end
+    ) ;
+.
+prov:startedAtTime
+  owl:propertyChainAxiom (
+      vivo:dateTimeInterval
+      vivo:start
+    ) ;
+.
+<http://xmlns.com/foaf/0.1/Project>
+  owl:equivalentClass project:Project ;
 .
