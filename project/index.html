@@ -41,915 +41,922 @@
     <p>The vocabulary defined in this document is also available in these non-normative formats: <a href="https://github.com/dr-shorthair/ont/tree/gh-pages/project/rdf">Turtle</a>.</p>
   </section>
   <section id="sotd">
-    <p>This is an initial draft produced for consideration by the W3C Data eXchange Working Group.  </section>
-      <section id="intro" class="informative">
-        <h2>Introduction</h2>
+    <p>This is an initial draft produced for consideration by the W3C Data eXchange Working Group.</p>
+  </section>
+  <section id="intro" class="informative">
+    <h2>Introduction</h2>
+    <p>
+      This document describes a core ontology for the description of a project, known as PROJECT.
+      A <i>project</i> is a formal, planned activity, in which one or more agent participants fill specific roles (e.g. project leader, sponsor or funder), which is typically structured as a set of sub-activities, and generates products.
+      The project is a key unit of activity in modern business.
+      A project provides key context for many productive activities and their outputs, including datasets.
+    </p>
+    <p>
+      A number of previous initiatives have developed project ontologies.
+      In Friend of a Friend (FOAF) [[foaf]] the <a href="http://xmlns.com/foaf/0.1/Project">foaf:Project</a> class is a stub (no specific properties) which was included primarily to act as the topic of a homepage.
+      The Description of a Project ontology (DOAP) [[doap]] is oriented to software development projects.
+      The Project Documents Ontology (PDO) [[pdo]] relates to  various documents in a project-specific setting, like meeting minutes, status reports etc.
+      The Funding, Research Administration and Projects Ontology (FRAPO) [[frapo]] is similarly aimed at describing administrative information relating to grant funding and research projects. There are classes for the characterization of <a href="http://purl.org/cerif/frapo/Grant">grant applications</a>, <a href="http://purl.org/cerif/frapo/University">funding bodies</a>, project partners etc, but FRAPO uses the <a href="http://xmlns.com/foaf/0.1/Project">foaf:Project</a> class directly with just one additional property related to identification, not function.
+      In VIVO-ISF [[vivo-isf]] the <a href="http://vivoweb.org/ontology/core#Project">vivo:Project</a> class is very lightweight, characterised only by its timing and geographic focus. VIVO is linked to the OBO Foundry [[obo]] and other ontologies there (e.g. the Open-Med <a href="https://open.med.harvard.edu/wiki/display/eaglei/Ontology">eagle-i</a> ontology) provide specializations, but in the context of relatively narrow domain applications.
+    </p>
+    <p>
+      The DBPedia ontology [[dbpedia-ont]] provides what is probably the most general purpose class for projects.
+      The <a href="http://dbpedia.org/ontology/Project">dbo:Project</a> class is described as "a temporary endeavor undertaken to achieve defined objectives" and has key properties relating to timing, objectives, and classification (keywords).
+      A specialization <a href="http://dbpedia.org/ontology/ResearchProject">dbo:ResearchProject</a> adds information about funding and key stakeholders (coordinator, participant, funder).
+    </p>
+    <p>
+      PPSR-Core ?
+    </p>
+    <p>
+      However, none of the models discussed here supports the variety of relationships with stakeholders, inputs and outputs, and sub-activities that are characteristic of projects.
+      Nevertheless, these relations are templated in the W3C PROV-O ontology [[!prov-o]] which provides quite rich, though generic, support for many kinds of links between activities, stakeholders (agents) and artefacts (entities) related to projects.
+      Thus, the Project ontology is designed as an extension to PROV-O, with the core proj:Project class specializing <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a> by adding the key project-related concepts.
+    </p>
+  </section>
+
+  <section id="overview" class="informative">
+    <h2>Overview of project ontology</h2>
+    <section id="scope" class="informative">
+      <h3>Scope of the Project ontology</h3>
+      <p>
+        The PROJECT ontology is designed to enable publication of information describing projects, including research projects.
+        It is not designed to support project management, though sub-activities are included.
+        As far as possible PROJECT is intended to be domain-neutral, and it is expected that domains and applications will specialize or extend this ontology for more specific purposes.
+      </p>
+      <p>
+        The ontology gives terms to support the representation of:
+      </p>
+      <ul>
+        <li>
+          project planning, funding, goals
+        </li><li>
+          project stakeholders and relationships
+        </li><li>
+          project activities and timeline
+        </li>
+      </ul>
+      <p>
+        One specialization is included - the <i>Research Project</i> - which has been the subject of several predecessor designs that have informed the design of this ontology.
+      </p>
+      <p>
+        PROJECT extends the W3C [[!prov-o]] ontology. Otherwise, it has no dependencies except for the normal RDF/OWL infrastructure (RDF [[!rdf11-concepts]], RDFS [[!rdf-schema]], OWL [[!owl2-quick-reference]]), Dublin Core for some ontology metadata, and [[!skos-reference]] to support some relationships between Role values, and project classification.
+      </p>
+      <p>
+        A summary of the main classes and relationships in PROJECT is shown in the diagram below, including the key superclass <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a>.
+      </p>
+      <figure>
+        <img src="images/Project-summary.png" alt="summary of PROJECT ontology showing how the Project class extends prov:Activity"/>
+        <figcaption>
+          Core classes from PROJECT vocabulary, with their relationships to PROV-O. Rough draft to indicate scope of a properly drafted figure to be included here
+        </figcaption>
+      </figure>
+      <p>
+      </p>
+    </section>
+
+    <section id="examples" class="informative">
+      <h3>Examples</h3>
+      <p>
+        We present two examples to illustrate the scope and some of the capabilities of the PROJECT ontology.
+      </p>
+      <section id="construction-project">
+        <h4>Construction project</h4>
         <p>
-          This document describes a core ontology for the description of a project, known as PROJECT.
-          A <i>project</i> is a formal, planned activity, in which one or more agent participants fill specific roles (e.g. project leader, sponsor or funder), which is typically structured as a set of sub-activities, and generates products.
-          The project is a key unit of activity in modern business.
-          A project provides key context for many productive activities and their outputs, including datasets.
+          This example describes a recent public works project carried out in Melbourne, Australia.
+          It concerns a phase of an initiative to replace level-crossings on the suburban rail network.
+          It was sponsored by the state government, who were also the sole funders.
+          This phase involved the removal of four level crossings.
+          The project was led by a consortium.
+          Three public transport bodies also participated.
+          The project was completed several months early.
         </p>
         <p>
-          A number of previous initiatives have developed project ontologies.
-          In Friend of a Friend (FOAF) [[foaf]] the <a href="http://xmlns.com/foaf/0.1/Project">foaf:Project</a> class is a stub (no specific properties) which was included primarily to act as the topic of a homepage.
-          The Description of a Project ontology (DOAP) [[doap]] is oriented to software development projects.
-          The Project Documents Ontology (PDO) [[pdo]] relates to  various documents in a project-specific setting, like meeting minutes, status reports etc.
-          The Funding, Research Administration and Projects Ontology (FRAPO) [[frapo]] is similarly aimed at describing administrative information relating to grant funding and research projects. There are classes for the characterization of <a href="http://purl.org/cerif/frapo/Grant">grant applications</a>, <a href="http://purl.org/cerif/frapo/University">funding bodies</a>, project partners etc, but FRAPO uses the <a href="http://xmlns.com/foaf/0.1/Project">foaf:Project</a> class directly with just one additional property related to identification, not function.
-          In VIVO-ISF [[vivo-isf]] the <a href="http://vivoweb.org/ontology/core#Project">vivo:Project</a> class is very lightweight, characterised only by its timing and geographic focus. VIVO is linked to the OBO Foundry [[obo]] and other ontologies there (e.g. the Open-Med <a href="https://open.med.harvard.edu/wiki/display/eaglei/Ontology">eagle-i</a> ontology) provide specializations, but in the context of relatively narrow domain applications.
+          The level of detail shown here is intended only to illustrate the expressivity of the PROJECT ontology, and the use of structures from an external vocabulary (W3C ORG [[vocab-org]]) to complement.
         </p>
+
+        <pre class="example" id="level-crossing" title="Construction project">
+          ex:VictoriaLevelCrossingRemovalPhase1
+          rdf:type proj:Project ;
+          rdfs:label "Victoria level-crossing removal - phase 1" ;
+          proj:hasBudgetTotal [
+          rdf:type proj:SumOfMoney ;
+          rdfs:label "Level crossing removal phase 1 budget " ;
+          proj:moneyAmount "524000000"^^xsd:decimal ;
+          proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt ;
+          ] ;
+          proj:hasLeader ex:johnholland-kbr ;
+          proj:hasParticipant &lt;http://www.metrotrains.com.au/&gt ;
+          proj:hasParticipant &lt;https://www.ptv.vic.gov.au/&gt ;
+          proj:hasParticipant &lt;https://www.vicroads.vic.gov.au/&gt ;
+          proj:hasSponsor &lt;http://levelcrossings.vic.gov.au/about/about-the-authority&gt ;
+          proj:hasSubActivity ex:BentleighLevelCrossingRemoval ;
+          proj:hasSubActivity ex:BurkeRoadLevelCrossingRemoval ;
+          proj:hasSubActivity ex:McKinnonRoadLevelCrossingRemoval ;
+          proj:hasSubActivity ex:NorthRoadLevelCrossingRemoval ;
+          proj:isFundedThrough [
+          rdf:type proj:FundingAssociation ;
+          rdfs:label "Level crossing removal project phase 1 funding arrangement" ;
+          rdfs:seeAlso &lt;http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/&gt ;
+          proj:fundsProvided [
+          rdf:type proj:SumOfMoney ;
+          proj:moneyAmount "524000000"^^xsd:decimal ;
+          proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt ;
+          ] ;
+          prov:agent &lt;http://www.vic.gov.au/&gt ;
+          ] ;
+          proj:name "Victoria level-crossing removal - phase 1" ;
+          proj:plannedEndTime "2017-03-31T23:59:00"^^xsd:dateTime ;
+          proj:plannedStartTime "2015-10-01T00:00:00"^^xsd:dateTime ;
+          prov:atLocation &lt;https://dbpedia.org/resource/Melbourne&gt ;
+          prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
+          prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
+          .
+        </pre>
+
         <p>
-          The DBPedia ontology [[dbpedia-ont]] provides what is probably the most general purpose class for projects.
-          The <a href="http://dbpedia.org/ontology/Project">dbo:Project</a> class is described as "a temporary endeavor undertaken to achieve defined objectives" and has key properties relating to timing, objectives, and classification (keywords).
-          A specialization <a href="http://dbpedia.org/ontology/ResearchProject">dbo:ResearchProject</a> adds information about funding and key stakeholders (coordinator, participant, funder).
+          Each individual level crossing removal has its own timeline and may be modeled as a <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a>.
+          A number of local businesses were negatively impacted during the course of the activities.
         </p>
+
+        <pre class="example" id="level-crossing-mckinnon" title="Construction project sub-activity">
+          ex:McKinnonRoadLevelCrossingRemoval
+          rdf:type prov:Activity ;
+          rdfs:label "McKinnon Road level crossing removal" ;
+          proj:isSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
+          proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
+          proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
+          prov:atLocation &lt;https://dbpedia.org/resource/McKinnon_railway_station&gt; ;
+          prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
+          prov:qualifiedAssociation [
+          rdf:type prov:Association ;
+          prov:agent &lt;https://www.zomato.com/melbourne/fabulous-fine-foods-ormond-mckinnon&gt; ;
+          prov:hadRole ex:Negative-economic-impact ;
+          ] ;
+          prov:startedAtTime "2016-01-31T00:00:00"^^xsd:dateTime ;
+          .
+        </pre>
+
         <p>
-          PPSR-Core ?
+          The project leader was a consortium with two members, the description of which is represented as an <a href="http://www.w3.org/ns/org#FormalOrganization">org:FormalOrganization</a>.
         </p>
-        <p>
-          However, none of the models discussed here supports the variety of relationships with stakeholders, inputs and outputs, and sub-activities that are characteristic of projects.
-          Nevertheless, these relations are templated in the W3C PROV-O ontology [[!prov-o]] which provides quite rich, though generic, support for many kinds of links between activities, stakeholders (agents) and artefacts (entities) related to projects.
-          Thus, the Project ontology is designed as an extension to PROV-O, with the core proj:Project class specializing <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a> by adding the key project-related concepts.
-        </p>
+        <pre class="example" id="level-crossing-mckinnon" title="Construction project leader">
+          ex:johnholland-kbr
+          rdf:type org:FormalOrganization ;
+          rdfs:label "John Holland - KBR Joint Venture" ;
+          rdfs:seeAlso &lt;http://www.johnholland.com.au/who-we-are/latest-news/john-holland-wins-level-crossing-removal-projects-in-victoria/&gt ;
+          org:hasMembership [
+          rdf:type org:Membership ;
+          org:member &lt;http://www.johnholland.com.au&gt; ;
+          org:role ex:Joint-Venture-Partner ;
+          ] ;
+          org:hasMembership [
+          rdf:type org:Membership ;
+          org:member &lt;https://www.kbr.com/&gt; ;
+          org:role ex:Joint-Venture-Partner ;
+          ] ;
+          .
+        </pre>
+
+
       </section>
 
-      <section id="overview" class="informative">
-        <h2>Overview of project ontology</h2>
-        <section id="scope" class="informative">
-          <h3>Scope of the Project ontology</h3>
-          <p>
-            The PROJECT ontology is designed to enable publication of information describing projects, including research projects.
-            It is not designed to support project management, though sub-activities are included.
-            As far as possible PROJECT is intended to be domain-neutral, and it is expected that domains and applications will specialize or extend this ontology for more specific purposes.
-          </p>
-          <p>
-            The ontology gives terms to support the representation of:
-          </p>
-          <ul>
-            <li>
-              project planning, funding, goals
-            </li><li>
-              project stakeholders and relationships
-            </li><li>
-              project activities and timeline
-            </li>
-          </ul>
-          <p>
-            One specialization is included - the <i>Research Project</i> - which has been the subject of several predecessor designs that have informed the design of this ontology.
-          </p>
-          <p>
-            PROJECT extends the W3C [[!prov-o]] ontology. Otherwise, it has no dependencies except for the normal RDF/OWL infrastructure (RDF [[!rdf11-concepts]], RDFS [[!rdf-schema]], OWL [[!owl2-quick-reference]]), Dublin Core for some ontology metadata, and [[!skos-reference]] to support some relationships between Role values, and project classification.
-          </p>
-          <p>
-            A summary of the main classes and relationships in PROJECT is shown in the diagram below, including the key superclass <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a>.
-          </p>
-          <figure>
-            <img src="images/Project-summary.png" alt="summary of PROJECT ontology showing how the Project class extends prov:Activity"/>
-            <figcaption>
-              Core classes from PROJECT vocabulary, with their relationships to PROV-O. Rough draft to indicate scope of a properly drafted figure to be included here
-            </figcaption>
-          </figure>
-          <p>
-          </p>
-        </section>
+      <section id="research-project">
+        <h4>Research project</h4>
+        <p>
+          This example is a scientific research project to assess the impact of feral animals on natural and social values in the Archer River Basin of Australia’s Cape York Peninsula.
+          The objective is to establish a robust baseline of feral animal distribution and describe the impact of these animals on freshwater ecosystems, biodiversity and cultural values.
+          The project has five separate surveys which each apply different methodologies (dwcterms:samplingProtocol) to collect different data sets, each with a different survey schema.
+          The project commenced on 31st Dec 2012, but no end date has been specified.
+          It was set up under the National Environmental Science Programme, but has not had a funding value attributed to it yet.
+          It is being run by CSIRO with a CSIRO officer managing the it and two other organisations associated with it <b>... work needed on org description ...</b>.
+          A research paper has been published as an output.
+        </p>
 
-        <section id="examples" class="informative">
-          <h3>Examples</h3>
-          <p>
-            We present two examples to illustrate the scope and some of the capabilities of the PROJECT ontology.
-          </p>
-          <section id="construction-project">
-            <h4>Construction project</h4>
-            <p>
-              This example describes a recent public works project carried out in Melbourne, Australia.
-              It concerns a phase of an initiative to replace level-crossings on the suburban rail network.
-              It was sponsored by the state government, who were also the sole funders.
-              This phase involved the removal of four level crossings.
-              The project was led by a consortium.
-              Three public transport bodies also participated.
-              The project was completed several months early.
-            </p>
-            <p>
-              The level of detail shown here is intended only to illustrate the expressivity of the PROJECT ontology, and the use of structures from an external vocabulary (W3C ORG [[vocab-org]]) to complement.
-            </p>
+        <pre class="example" id="research project" title="Research project">
+          ex:cyferal-impact
+          rdf:type proj:Project ;
+          rdf:type proj:ResearchProject ;
+          rdfs:label "Improved management of feral animals in remote tropical Australia" ;
+          proj:budgetTotal [
+          rdf:type proj:SumOfMoney ;
+          proj:moneyAmount 0 ;
+          proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
+          ] ;
+          proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202&gt; ;
+          proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050204&gt; ;
+          proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050205&gt; ;
+          proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050206&gt; ;
+          proj:hasPrincipalInvestigator &lt;http://orcid.org/0000-0002-5823-7364&gt; ;
+          proj:hasSponsor &lt;http://dbpedia.org/resource/Commonwealth_Scientific_and_Industrial_Research_Organisation&gt; ;
+          proj:hasSubActivity ex:Aerial ;
+          proj:hasSubActivity ex:Incidental ;
+          proj:hasSubActivity ex:Limnology ;
+          proj:hasSubActivity ex:Terrestrial ;
+          proj:hasSubActivity ex:Wetland ;
+          proj:isSubActivityOf &lt;http://www.environment.gov.au/science/nesp&gt; ;
+          proj:name "Improved management of feral animals in remote tropical Australia" ;
+          proj:objective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
+          proj:plannedEndTime "2022-12-31T23:59:00"^^xsd:dateTime ;
+          proj:plannedStartTime "2012-12-31T00:00:00"^^xsd:dateTime ;
+          proj:projectParticipant &lt;mailto:peter.brenton@csiro.au&gt; ;
+          proj:projectPlan ex:FCY-project-plan ;
+          proj:wasFundedBy [
+          rdf:type proj:FundingAssociation ;
+          proj:fundsProvided [
+          rdf:type proj:SumOfMoney ;
+          proj:moneyAmount 0 ;
+          proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
+          ] ;
+          prov:agent &lt;http://dbpedia.org/resource/Government_of_Australia&gt; ;
+          ] ;
+          prov:atLocation &lt;http://dbpedia.org/resource/Archer_River,_Queensland&gt; ;
+          prov:generated &lt;https://doi.org/10.1071/WF15133&gt; ;
+          prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
+          .
+        </pre>
 
-            <pre class="example" id="level-crossing" title="Construction project">
-            ex:VictoriaLevelCrossingRemovalPhase1
-              rdf:type proj:Project ;
-              rdfs:label "Victoria level-crossing removal - phase 1" ;
-              proj:hasBudgetTotal [
-                rdf:type proj:SumOfMoney ;
-                rdfs:label "Level crossing removal phase 1 budget " ;
-                proj:moneyAmount "524000000"^^xsd:decimal ;
-                proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt ;
-                ] ;
-              proj:hasLeader ex:johnholland-kbr ;
-              proj:hasParticipant &lt;http://www.metrotrains.com.au/&gt ;
-              proj:hasParticipant &lt;https://www.ptv.vic.gov.au/&gt ;
-              proj:hasParticipant &lt;https://www.vicroads.vic.gov.au/&gt ;
-              proj:hasSponsor &lt;http://levelcrossings.vic.gov.au/about/about-the-authority&gt ;
-              proj:hasSubActivity ex:BentleighLevelCrossingRemoval ;
-              proj:hasSubActivity ex:BurkeRoadLevelCrossingRemoval ;
-              proj:hasSubActivity ex:McKinnonRoadLevelCrossingRemoval ;
-              proj:hasSubActivity ex:NorthRoadLevelCrossingRemoval ;
-              proj:isFundedThrough [
-                rdf:type proj:FundingAssociation ;
-                rdfs:label "Level crossing removal project phase 1 funding arrangement" ;
-                rdfs:seeAlso &lt;http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/&gt ;
-                proj:fundsProvided [
-                  rdf:type proj:SumOfMoney ;
-                  proj:moneyAmount "524000000"^^xsd:decimal ;
-                  proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt ;
-                  ] ;
-                prov:agent &lt;http://www.vic.gov.au/&gt ;
-                ] ;
-              proj:name "Victoria level-crossing removal - phase 1" ;
-              proj:plannedEndTime "2017-03-31T23:59:00"^^xsd:dateTime ;
-              proj:plannedStartTime "2015-10-01T00:00:00"^^xsd:dateTime ;
-              prov:atLocation &lt;https://dbpedia.org/resource/Melbourne&gt ;
-              prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
-              prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
-            .
-            </pre>
-
-            <p>
-              Each individual level crossing removal has its own timeline and may be modeled as a <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a>.
-              A number of local businesses were negatively impacted during the course of the activities.
-            </p>
-
-            <pre class="example" id="level-crossing-mckinnon" title="Construction project sub-activity">
-            ex:McKinnonRoadLevelCrossingRemoval
-              rdf:type prov:Activity ;
-              rdfs:label "McKinnon Road level crossing removal" ;
-              proj:isSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
-              proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
-              proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
-              prov:atLocation &lt;https://dbpedia.org/resource/McKinnon_railway_station&gt; ;
-              prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
-              prov:qualifiedAssociation [
-                rdf:type prov:Association ;
-                prov:agent &lt;https://www.zomato.com/melbourne/fabulous-fine-foods-ormond-mckinnon&gt; ;
-                prov:hadRole ex:Negative-economic-impact ;
-                ] ;
-              prov:startedAtTime "2016-01-31T00:00:00"^^xsd:dateTime ;
-            .
-            </pre>
-
-            <p>
-              The project leader was a consortium with two members, the description of which is represented as an <a href="http://www.w3.org/ns/org#FormalOrganization">org:FormalOrganization</a>.
-            </p>
-            <pre class="example" id="level-crossing-mckinnon" title="Construction project leader">
-            ex:johnholland-kbr
-              rdf:type org:FormalOrganization ;
-              rdfs:label "John Holland - KBR Joint Venture" ;
-              rdfs:seeAlso &lt;http://www.johnholland.com.au/who-we-are/latest-news/john-holland-wins-level-crossing-removal-projects-in-victoria/&gt ;
-              org:hasMembership [
-                rdf:type org:Membership ;
-                org:member &lt;http://www.johnholland.com.au&gt; ;
-                org:role ex:Joint-Venture-Partner ;
-                ] ;
-              org:hasMembership [
-                rdf:type org:Membership ;
-                org:member &lt;https://www.kbr.com/&gt; ;
-                org:role ex:Joint-Venture-Partner ;
-                ] ;
-            .
-            </pre>
+        <p>
+          The level of detail about sub-activities is limited.
+        </p>
+        <pre class="example" id="research project activity" title="Research project activity">
+          ex:Aerial
+          rdf:type prov:Activity ;
+          rdfs:label "Aerial feral animals survey" ;
+          proj:isSubActivityOf ex:cyferal-impact ;
+          prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
+          prov:startedAtTime "2016-01-31T00:00:00"^^xsd:dateTime ;
+          .
+        </pre>
 
 
-          </section>
-
-          <section id="research-project">
-            <h4>Research project</h4>
-            <p>
-This example is a scientific research project to assess the impact of feral animals on natural and social values in the Archer River Basin of Australia’s Cape York Peninsula.
-The objective is to establish a robust baseline of feral animal distribution and describe the impact of these animals on freshwater ecosystems, biodiversity and cultural values.
-The project has five separate surveys which each apply different methodologies (dwcterms:samplingProtocol) to collect different data sets, each with a different survey schema.
-The project commenced on 31st Dec 2012, but no end date has been specified.
-It was set up under the National Environmental Science Programme, but has not had a funding value attributed to it yet.
-It is being run by CSIRO with a CSIRO officer managing the it and two other organisations associated with it <b>... work needed on org description ...</b>.
-A research paper has been published as an output.
-            </p>
-
-            <pre class="example" id="research project" title="Research project">
-              ex:cyferal-impact
-                rdf:type proj:Project ;
-                rdf:type proj:ResearchProject ;
-                rdfs:label "Improved management of feral animals in remote tropical Australia" ;
-                proj:budgetTotal [
-                    rdf:type proj:SumOfMoney ;
-                    proj:moneyAmount 0 ;
-                    proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
-                  ] ;
-                proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202&gt; ;
-                proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050204&gt; ;
-                proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050205&gt; ;
-                proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050206&gt; ;
-                proj:hasPrincipalInvestigator &lt;http://orcid.org/0000-0002-5823-7364&gt; ;
-                proj:hasSponsor &lt;http://dbpedia.org/resource/Commonwealth_Scientific_and_Industrial_Research_Organisation&gt; ;
-                proj:hasSubActivity ex:Aerial ;
-                proj:hasSubActivity ex:Incidental ;
-                proj:hasSubActivity ex:Limnology ;
-                proj:hasSubActivity ex:Terrestrial ;
-                proj:hasSubActivity ex:Wetland ;
-                proj:isSubActivityOf &lt;http://www.environment.gov.au/science/nesp&gt; ;
-                proj:name "Improved management of feral animals in remote tropical Australia" ;
-                proj:objective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
-                proj:plannedEndTime "2022-12-31T23:59:00"^^xsd:dateTime ;
-                proj:plannedStartTime "2012-12-31T00:00:00"^^xsd:dateTime ;
-                proj:projectParticipant &lt;mailto:peter.brenton@csiro.au&gt; ;
-                proj:projectPlan ex:FCY-project-plan ;
-                proj:wasFundedBy [
-                    rdf:type proj:FundingAssociation ;
-                    proj:fundsProvided [
-                        rdf:type proj:SumOfMoney ;
-                        proj:moneyAmount 0 ;
-                        proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
-                      ] ;
-                    prov:agent &lt;http://dbpedia.org/resource/Government_of_Australia&gt; ;
-                  ] ;
-                prov:atLocation &lt;http://dbpedia.org/resource/Archer_River,_Queensland&gt; ;
-                prov:generated &lt;https://doi.org/10.1071/WF15133&gt; ;
-                prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
-              .
-            </pre>
-
-            <p>
-              The level of detail about sub-activities is limited.
-            </p>
-            <pre class="example" id="research project activity" title="Research project activity">
-              ex:Aerial
-                rdf:type prov:Activity ;
-                rdfs:label "Aerial feral animals survey" ;
-                proj:isSubActivityOf ex:cyferal-impact ;
-                prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
-                prov:startedAtTime "2016-01-31T00:00:00"^^xsd:dateTime ;
-              .
-            </pre>
-
-
-          </section>
-
-        </section>
       </section>
 
+    </section>
+  </section>
 
-      <section id="description" class="informative">
-        <h2>Description and commentary</h2>
-        <section id="project-structure" class="informative">
-          <h3>Project structure</h3>
-          <figure>
-            <img src="images/Project-sub-activities.png" alt="Relationship of a project to its sub-activities"/>
-            <figcaption>
-              Relationship of a project to its sub-activities. Rough draft to indicate scope of a properly drafted figure to be included here
-            </figcaption>
-          </figure>
-          <p>
-            The core class in the ontology is <a href="#proj:Project">proj:Project</a> which is intended to be applicable to a broad range of project types. A <i>project</i> is a planned activity with a designated leader, a known sponsor and budget, and is modelled as a specialization of the <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> class.
-          </p>
-          <p>
-            A project is typically organized through a set of sub-activities, which may be undertaken concurrently or consecutively, and may themselves be composed of further sub-activities. A project is often related to or influenced by other activities in addition to its sub-activities.
-          </p>
-          <p>
-            We distinguish one sub-class, the <a href="#proj:ResearchProject">proj:ResearchProject</a>, in which the leader(s) is known as a <i>Principal Investigator</i>, and which is classified according to its <i>field of research</i>.
-          </p>
+
+  <section id="description" class="informative">
+    <h2>Description and commentary</h2>
+    <section id="project-structure" class="informative">
+      <h3>Project structure</h3>
+      <figure>
+        <img src="images/Project-sub-activities.png" alt="Relationship of a project to its sub-activities"/>
+        <figcaption>
+          Relationship of a project to its sub-activities. Rough draft to indicate scope of a properly drafted figure to be included here
+        </figcaption>
+      </figure>
+      <p>
+        The core class in the ontology is <a href="#proj:Project">proj:Project</a> which is intended to be applicable to a broad range of project types. A <i>project</i> is a planned activity with a designated leader, a known sponsor and budget, and is modelled as a specialization of the <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> class.
+      </p>
+      <p>
+        A project is typically organized through a set of sub-activities, which may be undertaken concurrently or consecutively, and may themselves be composed of further sub-activities. A project is often related to or influenced by other activities in addition to its sub-activities.
+      </p>
+      <p>
+        We distinguish one sub-class, the <a href="#proj:ResearchProject">proj:ResearchProject</a>, in which the leader(s) is known as a <i>Principal Investigator</i>, and which is classified according to its <i>field of research</i>.
+      </p>
+    </section>
+
+    <section id="project-stakeholders" class="informative">
+      <h3>Project stakeholders and funding</h3>
+      <figure>
+        <img src="images/Project-funding.png" alt="Relationship of a project to its stakeholders"/>
+        <figcaption>
+          Relationship of a project to its stakeholders. Rough draft to indicate scope of a properly drafted figure to be included here
+        </figcaption>
+      </figure>
+      <p>
+        There are a number of distinctive stakeholders in a project, in particular: a leader who is accountable for the delivery of project outcomes; a sponsor under whose authority the project is undertaken; funders; and project staff or participants.
+        In some cases it is useful to provide specific details of a participant's role in the project.
+        PROJECT provides a number of ways to represent the relationships of stakeholders to projects and activities.
+      </p>
+      <p>
+        The standard roles of <i>leader</i>, <i>participant</i> are each implemented as a directly named property from an <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> to a <a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a>, and <i>sponsor</i> as a directly named property from a <a href="#proj:Project">proj:Project</a> to a <a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a>.
+      </p>
+      <p>
+        Basic funding arrangements are captured through the <a href="#proj:hasSponsor">proj:hasSponsor</a> and <a href="#proj:hasBudgetTotal">proj:hasBudgetTotal</a> properties.
+        More complex arrangements, for example if multiple funders are involved, can be captured through the <a href="#proj:isFundedThrough">proj:isFundedThrough</a> property, which links a funding agent with a funding amount in the context of a project.
+      </p>
+      <p>
+        The details of any other relationship may be expressed using the <a href="https://www.w3.org/TR/prov-o/#qualifiedAssociation">prov:qualifiedAssociation</a> property.
+      </p>
+    </section>
+  </section>
+
+  <section id="conventions" class="informative">
+    <h2>Notation and conventions</h2>
+    <section id="ns-rdf">
+      <h3> RDF Namespaces </h3>
+      <p>The following RDF namespace prefixes are used within this document. Use of a namespace does not imply endorsement of the associated data platform or vocabulary.</p>
+      <table id="ns-rdf-table">
+        <caption>RDF namespaces used in the document</caption>
+        <tbody>
+          <tr>
+            <th>Prefix</th>
+            <th>Namespace IRI</th>
+            <th>Source</th>
+          </tr>
+          <tr>
+            <td><code>dbo</code></td>
+            <td>http://dbpedia.org/ontology/</td>
+            <td>dbPedia ontology [[dbpedia-ont]]</td>
+          </tr>
+          <tr>
+            <td><code>dcat</code></td>
+            <td>http://www.w3.org/ns/dcat#</td>
+            <td>Data Catalog Vocabulary [[vocab-dcat]]</td>
+          </tr>
+          <tr>
+            <td><code>dcterms</code></td>
+            <td>http://purl.org/dc/terms/</td>
+            <td>Dublin Core Metadata Initiative (DCMI) Metadata Terms [[dc-terms]]</td>
+          </tr>
+          <tr>
+            <td><code>doap</code></td>
+            <td>http://usefulinc.com/ns/doap#</td>
+            <td>Description of a (software) project [[doap]]</td>
+          </tr>
+          <tr>
+            <td><code>ex</code></td>
+            <td>http://www.w3.org/ns/project/example/</td>
+            <td>Examples for this document</td>
+          </tr>
+          <tr>
+            <tr>
+              <td><code>foaf</code></td>
+              <td>http://xmlns.com/foaf/0.1/</td>
+              <td>Friend of a friend [[foaf]]</td>
+            </tr>
+            <tr>
+              <tr>
+                <td><code>frapo</code></td>
+                <td>http://purl.org/cerif/frapo/</td>
+                <td>Funding, Research Administration and Projects Ontology [[frapo]]</td>
+              </tr>
+              <tr>
+                <td><code>obo</code></td>
+                <td>http://purl.obolibrary.org/obo/</td>
+                <td>Open Biomedical Ontologies [[obo]]</td>
+              </tr>
+              <tr>
+                <td><code>org</code></td>
+                <td>http://www.w3.org/ns/org#</td>
+                <td>Organization ontology [[vocab-org]]</a></td>
+              </tr>
+              <tr>
+                <td><code>owl</code></td>
+                <td>http://www.w3.org/2002/07/owl#</td>
+                <td>Web Ontology Language [[owl2-quick-reference]]</a></td>
+              </tr>
+              <tr>
+                <td><code>pdo</code></td>
+                <td>http://ontologies.smile.deri.ie/pdo#</td>
+                <td>Project documents ontology [[pdo]]</td>
+              </tr>
+              <tr>
+                <td><i>no namespace</i> or <code>proj</code></td>
+                <td>http://www.w3.org/ns/project#</td>
+                <td>Project Ontology</td>
+              </tr>
+              <tr>
+                <td><code>proji</code></td>
+                <td>http://www.w3.org/ns/project/</td>
+                <td>Individuals in the Project Ontology</td>
+              </tr>
+              <tr>
+                <td><code>prov</code></td>
+                <td>http://www.w3.org/ns/prov#</td>
+                <td>W3C Provenance Ontology [[prov-o]]</td>
+              </tr>
+              <tr>
+                <td><code>rdf</code></td>
+                <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
+                <td>Resource Description Framework [[rdf11-concepts]]</td>
+              </tr>
+              <tr>
+                <td><code>rdfs</code></td>
+                <td>http://www.w3.org/2000/01/rdf-schema#</td>
+                <td>RDF Schema vocabulary [[rdf-schema]]</a></td>
+              </tr>
+              <tr>
+                <td><code>schemaorg</code></td>
+                <td>http://schema.org/</td>
+                <td>schema.org [[schema-org]]</td>
+              </tr>
+              <tr>
+                <td><code>skos</code></td>
+                <td>http://www.w3.org/2004/02/skos/core#</td>
+                <td>Simple Knowledge Organization System (SKOS) [[skos-reference]]</td>
+              </tr>
+              <tr>
+                <td><code>vivo</code></td>
+                <td>http://vivoweb.org/ontology/core#</td>
+                <td>VIVO-ISF [[vivo-isf]]</td>
+              </tr>
+            </tbody>
+          </table>
         </section>
-
-        <section id="project-stakeholders" class="informative">
-          <h3>Project stakeholders and funding</h3>
-          <figure>
-            <img src="images/Project-funding.png" alt="Relationship of a project to its stakeholders"/>
-            <figcaption>
-              Relationship of a project to its stakeholders. Rough draft to indicate scope of a properly drafted figure to be included here
-            </figcaption>
-          </figure>
+        <section id="notation">
+          <h3>Notation</h3>
           <p>
-            There are a number of distinctive stakeholders in a project, in particular: a leader who is accountable for the delivery of project outcomes; a sponsor under whose authority the project is undertaken; funders; and project staff or participants.
-            In some cases it is useful to provide specific details of a participant's role in the project.
-            PROJECT provides a number of ways to represent the relationships of stakeholders to projects and activities.
-          </p>
-          <p>
-            The standard roles of <i>leader</i>, <i>participant</i> are each implemented as a directly named property from an <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> to a <a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a>, and <i>sponsor</i> as a directly named property from a <a href="#proj:Project">proj:Project</a> to a <a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a>.
-          </p>
-          <p>
-            Basic funding arrangements are captured through the <a href="#proj:hasSponsor">proj:hasSponsor</a> and <a href="#proj:hasBudgetTotal">proj:hasBudgetTotal</a> properties.
-            More complex arrangements, for example if multiple funders are involved, can be captured through the <a href="#proj:isFundedThrough">proj:isFundedThrough</a> property, which links a funding agent with a funding amount in the context of a project.
-          </p>
-          <p>
-            The details of any other relationship may be expressed using the <a href="https://www.w3.org/TR/prov-o/#qualifiedAssociation">prov:qualifiedAssociation</a> property.
+            Code examples, including definitions, are shown in Turtle notation [[turtle]], except for class restrictions which use OWL2 Manchester syntax [[owl2-manchester-syntax]].
           </p>
         </section>
       </section>
 
-      <section id="conventions" class="informative">
-        <h2>Notation and conventions</h2>
-        <section id="ns-rdf">
-          <h3> RDF Namespaces </h3>
-          <p>The following RDF namespace prefixes are used within this document. Use of a namespace does not imply endorsement of the associated data platform or vocabulary.</p>
-          <table id="ns-rdf-table">
-            <caption>RDF namespaces used in the document</caption>
-            <tbody>
-              <tr>
-                <th>Prefix</th>
-                <th>Namespace IRI</th>
-                <th>Source</th>
-              </tr>
-              <tr>
-                <td><code>dbo</code></td>
-                <td>http://dbpedia.org/ontology/</td>
-                <td>dbPedia ontology [[dbpedia-ont]]</td>
-              </tr>
-              <tr>
-                <td><code>dcat</code></td>
-                <td>http://www.w3.org/ns/dcat#</td>
-                <td>Data Catalog Vocabulary [[vocab-dcat]]</td>
-              </tr>
-              <tr>
-                <td><code>dcterms</code></td>
-                <td>http://purl.org/dc/terms/</td>
-                <td>Dublin Core Metadata Initiative (DCMI) Metadata Terms [[dc-terms]]</td>
-              </tr>
-              <tr>
-                <td><code>doap</code></td>
-                <td>http://usefulinc.com/ns/doap#</td>
-                <td>Description of a (software) project [[doap]]</td>
-              </tr>
-              <tr>
-                <td><code>ex</code></td>
-                <td>http://www.w3.org/ns/project/example/</td>
-                <td>Examples for this document</td>
-              </tr>
-              <tr>
-                <tr>
-                  <td><code>foaf</code></td>
-                  <td>http://xmlns.com/foaf/0.1/</td>
-                  <td>FOAF Vocabulary Specification [[foaf]]</td>
-                </tr>
-                <tr>
-                  <td><code>obo</code></td>
-                  <td>http://purl.obolibrary.org/obo/</td>
-                  <td>Open Biomedical Ontologies [[obo]]</td>
-                </tr>
-                <tr>
-                  <td><code>org</code></td>
-                  <td>http://www.w3.org/ns/org#</td>
-                  <td>Organization ontology [[vocab-org]]</a></td>
-                </tr>
-                <tr>
-                  <td><code>owl</code></td>
-                  <td>http://www.w3.org/2002/07/owl#</td>
-                  <td>Web Ontology Language [[owl2-quick-reference]]</a></td>
-                </tr>
-                <tr>
-                  <td><code>pdo</code></td>
-                  <td>http://ontologies.smile.deri.ie/pdo#</td>
-                  <td>Project documents ontology [[pdo]]</td>
-                </tr>
-                <tr>
-                  <td><i>no namespace</i> or <code>proj</code></td>
-                  <td>http://www.w3.org/ns/project#</td>
-                  <td>Project Ontology</td>
-                </tr>
-                <tr>
-                  <td><code>proji</code></td>
-                  <td>http://www.w3.org/ns/project/</td>
-                  <td>Individuals in the Project Ontology</td>
-                </tr>
-                <tr>
-                  <td><code>prov</code></td>
-                  <td>http://www.w3.org/ns/prov#</td>
-                  <td>W3C Provenance Ontology [[prov-o]]</td>
-                </tr>
-                <tr>
-                  <td><code>rdf</code></td>
-                  <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td>
-                  <td>Resource Description Framework [[rdf11-concepts]]</td>
-                </tr>
-                <tr>
-                  <td><code>rdfs</code></td>
-                  <td>http://www.w3.org/2000/01/rdf-schema#</td>
-                  <td>RDF Schema vocabulary [[rdf-schema]]</a></td>
-                </tr>
-                <tr>
-                  <td><code>schemaorg</code></td>
-                  <td>http://schema.org/</td>
-                  <td>schema.org [[schema-org]]</td>
-                </tr>
-                <tr>
-                  <td><code>skos</code></td>
-                  <td>http://www.w3.org/2004/02/skos/core#</td>
-                  <td>Simple Knowledge Organization System (SKOS) [[skos-reference]]</td>
-                </tr>
-                <tr>
-                  <td><code>vivo</code></td>
-                  <td>http://vivoweb.org/ontology/core#</td>
-                  <td>VIVO-ISF [[vivo-isf]]</td>
-                </tr>
+      <section id="vocabulary">
+        <h2>Vocabulary reference</h2>
+
+        <section id="vocab-index">
+          <h3 id="index-of-classes-and-properties">Index of classes and properties</h3>
+          <p>
+            <b>Classes:</b>
+            | <a href="#proj:FundingAssociation">FundingAssociation</a>
+            | <a href="#proj:Project">Project</a>
+            | <a href="#proj:RelatedActivity">RelatedActivity</a>
+            | <a href="#proj:ResearchProject">ResearchProject</a>
+            | <a href="#proj:SumOfMoney">SumOfMoney</a>
+            |
+          </p>
+
+          <p>
+            <b>Properties:</b>
+            | <a href="#proj:activityLeadingAssociation">activityLeadingAssociation</a>
+            | <a href="#proj:activityParticipationAssociation">activityParticipationAssociation</a>
+            | <a href="#proj:activitySponsorshipAssociation">activitySponsorshipAssociation</a>
+            | <a href="#proj:fundsProvided">fundsProvided</a>
+            | <a href="#proj:hasAreaOfInterest">hasAreaOfInterest</a>
+            | <a href="#proj:hasBudgetTotal">hasBudgetTotal</a>
+            | <a href="#proj:hasFieldOfResearch">hasFieldOfResearch</a>
+            | <a href="#proj:hasLeader">hasLeader</a>
+            | <a href="#proj:hasParticipant">hasParticipant</a>
+            | <a href="#proj:hasPrincipalInvestigator">hasPrincipalInvestigator</a>
+            | <a href="#proj:hasRelatedActivity">hasRelatedActivity</a>
+            | <a href="#proj:hasSponsor">hasSponsor</a>
+            | <a href="#proj:hasSubActivity">hasSubActivity</a>
+            | <a href="#proj:isFundedThrough">isFundedThrough</a>
+            | <a href="#proj:isSubActivityOf">isSubActivityOf</a>
+            | <a href="#proj:moneyAmount">moneyAmount</a>
+            | <a href="#proj:moneyCurrency">moneyCurrency</a>
+            | <a href="#proj:name">name</a>
+            | <a href="#proj:objective">objective</a>
+            | <a href="#proj:plannedEndTime">plannedEndTime</a>
+            | <a href="#proj:plannedStartTime">plannedStartTime</a>
+            | <a href="#proj:projectPlan">projectPlan</a>
+            | <a href="#proj:subActivityAssociation">subActivityAssociation</a>
+            |
+          </p>
+        </section>
+
+        <section id="vocab-project-core">
+          <h3>Core project characteristics</h3>
+          <section id="proj:Project">
+            <h4>Class: Project</h4>
+            <p>
+              A formal activity with planned start and end dates, leader, sponsor, and a budget.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDFS Class:</th><th><a href="http://www.w3.org/ns/project#Project">proj:Project</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a></td></tr>
+                <tr><td class="prop">subClassOf:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
               </tbody>
             </table>
           </section>
-          <section id="notation">
-            <h3>Notation</h3>
+          <section id="proj:name">
+            <h4>Property: name</h4>
             <p>
-              Code examples, including definitions, are shown in Turtle notation [[turtle]], except for class restrictions which use OWL2 Manchester syntax [[owl2-manchester-syntax]].
+              The name of the project.
             </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#name">proj:name</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#AnnotationProperty">owl:AnnotationProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
+                <tr><td class="prop">subpropertyOf:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:objective">
+            <h4>Property: objective</h4>
+            <p>
+              The objective of the project.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#objective">proj:objective</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#AnnotationProperty">owl:AnnotationProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
+                <tr><td class="prop">subpropertyOf:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:projectPlan">
+            <h4>Property: projectPlan</h4>
+            <p>
+              The project plan.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#projectPlan">proj:projectPlan</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
+                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Plan</a></td></tr>
+                <tr><td class="prop">subpropertyOf:</td><td><a href="http://www.w3.org/ns/prov#used">prov:used</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:plannedStartTime">
+            <h4>Property: plannedStartTime</h4>
+            <p>
+              The planned start date and time for an activity.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#plannedStartTime">proj:plannedStartTime</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
+                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2001/XMLSchema#dateTimeStamp">xsd:dateTimeStamp</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:plannedEndTime">
+            <h4>Property: plannedEndTime</h4>
+            <p>
+              The planned end date and time for an activity.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#plannedEndTime">proj:plannedEndTime</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
+                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2001/XMLSchema#dateTimeStamp">xsd:dateTimeStamp</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:hasLeader">
+            <h4>Property: hasLeader</h4>
+            <p>
+              The party (person or organization) responsible for leading an activity.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasLeader">proj:hasLeader</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:hasSponsor">
+            <h4>Property: hasSponsor</h4>
+            <p>
+              The party (person or organization) who is sponsoring a project.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasSponsor">proj:hasSponsor</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#Project">proj:Project</a></td></tr>
+                <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:hasBudgetTotal">
+            <h4>Property: hasBudgetTotal</h4>
+            <p>
+              The project budget or planned expenditure.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasBudgetTotal">proj:hasBudgetTotal</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#Project">proj:Project</a></td></tr>
+                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/proj#SumOfMoney">proj:SumOfMoney</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:SumOfMoney">
+            <h4>Class: SumOfMoney</h4>
+            <p>
+              A sum of money.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Class:</th><th><a href="http://www.w3.org/ns/project#SumOfMoney">proj:SumOfMoney</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:moneyAmount">
+            <h4>Property: moneyAmount</h4>
+            <p>
+              The numeric value of a sum of money, which must be scaled by a specified currency to get the actual value.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#moneyAmount">proj:moneyAmount</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#SumOfMoney">proj:SumOfMoney</a></td></tr>
+                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:moneyCurrency">
+            <h4>Property: moneyCurrency</h4>
+            <p>
+              The currency in which a sum of money is specified.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#moneyCurrency">proj:moneyCurrency</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#SumOfMoney">proj:SumOfMoney</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td>It is expected that the value will be a link (URI) to a definition of the currency used. </td></tr>
+              </tbody>
+            </table>
           </section>
         </section>
 
-        <section id="vocabulary">
-          <h2>Vocabulary reference</h2>
-
-          <section id="vocab-index">
-            <h3 id="index-of-classes-and-properties">Index of classes and properties</h3>
+        <section id="vocab-project-sub">
+          <h3>Project activity structure</h3>
+          <section id="proj:hasSubActivity">
+            <h4>Property: hasSubActivity</h4>
             <p>
-              <b>Classes:</b>
-              | <a href="#proj:FundingAssociation">FundingAssociation</a>
-              | <a href="#proj:Project">Project</a>
-              | <a href="#proj:RelatedActivity">RelatedActivity</a>
-              | <a href="#proj:ResearchProject">ResearchProject</a>
-              | <a href="#proj:SumOfMoney">SumOfMoney</a>
-              |
+              Direct link to a subsidiary activity.
             </p>
 
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasSubActivity">proj:hasSubActivity</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
+                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td> </td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:isSubActivityOf">
+            <h4>Property: isSubActivityOf</h4>
             <p>
-              <b>Properties:</b>
-              | <a href="#proj:activityLeadingAssociation">activityLeadingAssociation</a>
-              | <a href="#proj:activityParticipationAssociation">activityParticipationAssociation</a>
-              | <a href="#proj:activitySponsorshipAssociation">activitySponsorshipAssociation</a>
-              | <a href="#proj:fundsProvided">fundsProvided</a>
-              | <a href="#proj:hasAreaOfInterest">hasAreaOfInterest</a>
-              | <a href="#proj:hasBudgetTotal">hasBudgetTotal</a>
-              | <a href="#proj:hasFieldOfResearch">hasFieldOfResearch</a>
-              | <a href="#proj:hasLeader">hasLeader</a>
-              | <a href="#proj:hasParticipant">hasParticipant</a>
-              | <a href="#proj:hasPrincipalInvestigator">hasPrincipalInvestigator</a>
-              | <a href="#proj:hasRelatedActivity">hasRelatedActivity</a>
-              | <a href="#proj:hasSponsor">hasSponsor</a>
-              | <a href="#proj:hasSubActivity">hasSubActivity</a>
-              | <a href="#proj:isFundedThrough">isFundedThrough</a>
-              | <a href="#proj:isSubActivityOf">isSubActivityOf</a>
-              | <a href="#proj:moneyAmount">moneyAmount</a>
-              | <a href="#proj:moneyCurrency">moneyCurrency</a>
-              | <a href="#proj:name">name</a>
-              | <a href="#proj:objective">objective</a>
-              | <a href="#proj:plannedEndTime">plannedEndTime</a>
-              | <a href="#proj:plannedStartTime">plannedStartTime</a>
-              | <a href="#proj:projectPlan">projectPlan</a>
-              | <a href="#proj:subActivityAssociation">subActivityAssociation</a>
-              |
+              Direct link to a parent activity.
             </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#isSubActivityOf">proj:isSubActivityOf</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">inverseOf:</td><td><a href="http://www.w3.org/ns/project#hasSubActivity">proj:hasSubActivity</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td> </td></tr>
+              </tbody>
+            </table>
           </section>
+          <section id="proj:hasRelatedActivity">
+            <h4>Property: hasRelatedActivity</h4>
+            <p>
+              Link to a related activity association.
+            </p>
 
-          <section id="vocab-project-core">
-            <h3>Core project characteristics</h3>
-            <section id="proj:Project">
-              <h4>Class: Project</h4>
-              <p>
-                A formal activity with planned start and end dates, leader, sponsor, and a budget.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDFS Class:</th><th><a href="http://www.w3.org/ns/project#Project">proj:Project</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a></td></tr>
-                  <tr><td class="prop">subClassOf:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:name">
-              <h4>Property: name</h4>
-              <p>
-                The name of the project.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#name">proj:name</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#AnnotationProperty">owl:AnnotationProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
-                  <tr><td class="prop">subpropertyOf:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:objective">
-              <h4>Property: objective</h4>
-              <p>
-                The objective of the project.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#objective">proj:objective</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#AnnotationProperty">owl:AnnotationProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
-                  <tr><td class="prop">subpropertyOf:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:projectPlan">
-              <h4>Property: projectPlan</h4>
-              <p>
-                The project plan.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#projectPlan">proj:projectPlan</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
-                  <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Plan</a></td></tr>
-                  <tr><td class="prop">subpropertyOf:</td><td><a href="http://www.w3.org/ns/prov#used">prov:used</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:plannedStartTime">
-              <h4>Property: plannedStartTime</h4>
-              <p>
-                The planned start date and time for an activity.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#plannedStartTime">proj:plannedStartTime</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
-                  <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2001/XMLSchema#dateTimeStamp">xsd:dateTimeStamp</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:plannedEndTime">
-              <h4>Property: plannedEndTime</h4>
-              <p>
-                The planned end date and time for an activity.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#plannedEndTime">proj:plannedEndTime</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
-                  <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2001/XMLSchema#dateTimeStamp">xsd:dateTimeStamp</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:hasLeader">
-              <h4>Property: hasLeader</h4>
-              <p>
-                The party (person or organization) responsible for leading an activity.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasLeader">proj:hasLeader</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:hasSponsor">
-              <h4>Property: hasSponsor</h4>
-              <p>
-                The party (person or organization) who is sponsoring a project.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasSponsor">proj:hasSponsor</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#Project">proj:Project</a></td></tr>
-                  <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:hasBudgetTotal">
-              <h4>Property: hasBudgetTotal</h4>
-              <p>
-                The project budget or planned expenditure.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasBudgetTotal">proj:hasBudgetTotal</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#Project">proj:Project</a></td></tr>
-                  <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/proj#SumOfMoney">proj:SumOfMoney</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:SumOfMoney">
-              <h4>Class: SumOfMoney</h4>
-              <p>
-                A sum of money.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Class:</th><th><a href="http://www.w3.org/ns/project#SumOfMoney">proj:SumOfMoney</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:moneyAmount">
-              <h4>Property: moneyAmount</h4>
-              <p>
-                The numeric value of a sum of money, which must be scaled by a specified currency to get the actual value.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#moneyAmount">proj:moneyAmount</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#DatatypeProperty">owl:DatatypeProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#SumOfMoney">proj:SumOfMoney</a></td></tr>
-                  <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:moneyCurrency">
-              <h4>Property: moneyCurrency</h4>
-              <p>
-                The currency in which a sum of money is specified.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#moneyCurrency">proj:moneyCurrency</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#SumOfMoney">proj:SumOfMoney</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td>It is expected that the value will be a link (URI) to a definition of the currency used. </td></tr>
-                </tbody>
-              </table>
-            </section>
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasRelatedActivity">proj:hasRelatedActivity</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
+                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/project#RelatedActivity">proj:RelatedActivity</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td> </td></tr>
+              </tbody>
+            </table>
           </section>
+          <section id="proj:RelatedActivity">
+            <h4>Class: RelatedActivity</h4>
+            <p>
+              Association class to support description of a related activity.
+            </p>
 
-          <section id="vocab-project-sub">
-            <h3>Project activity structure</h3>
-            <section id="proj:hasSubActivity">
-              <h4>Property: hasSubActivity</h4>
-              <p>
-                Direct link to a subsidiary activity.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasSubActivity">proj:hasSubActivity</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
-                  <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td> </td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:isSubActivityOf">
-              <h4>Property: isSubActivityOf</h4>
-              <p>
-                Direct link to a parent activity.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#isSubActivityOf">proj:isSubActivityOf</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">inverseOf:</td><td><a href="http://www.w3.org/ns/project#hasSubActivity">proj:hasSubActivity</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td> </td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:hasRelatedActivity">
-              <h4>Property: hasRelatedActivity</h4>
-              <p>
-                Link to a related activity association.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasRelatedActivity">proj:hasRelatedActivity</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
-                  <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/project#RelatedActivity">proj:RelatedActivity</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td> </td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:RelatedActivity">
-              <h4>Class: RelatedActivity</h4>
-              <p>
-                Association class to support description of a related activity.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Class:</th><th><a href="http://www.w3.org/ns/project#RelatedActivity">proj:RelatedActivity</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a></td></tr>
-                  <tr><td class="prop">subClassOf:</td><td><a href="http://www.w3.org/ns/prov#ActivityInfluence">prov:ActivityInfluence</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:subActivityAssociation">
-              <h4>Property: subActivityAssociation</h4>
-              <p>
-                Link to a related activity association carrying the role "sub-activity".
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#subActivityAssociation">proj:subActivityAssociation</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/project#hasRelatedActivity">proj:hasRelatedActivity</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td> </td></tr>
-                </tbody>
-              </table>
-            </section>
+            <table class="definition">
+              <thead><tr><th>RDF Class:</th><th><a href="http://www.w3.org/ns/project#RelatedActivity">proj:RelatedActivity</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a></td></tr>
+                <tr><td class="prop">subClassOf:</td><td><a href="http://www.w3.org/ns/prov#ActivityInfluence">prov:ActivityInfluence</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
+              </tbody>
+            </table>
           </section>
+          <section id="proj:subActivityAssociation">
+            <h4>Property: subActivityAssociation</h4>
+            <p>
+              Link to a related activity association carrying the role "sub-activity".
+            </p>
 
-          <section id="vocab-project-stake">
-            <h3>Project stakeholders</h3>
-            <section id="proj:hasParticipant">
-              <h4>Property: hasParticipant</h4>
-              <p>
-                Direct link to a party (person or organization) participating in the activity.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasParticipant">proj:hasParticipant</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td> </td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:activityLeadingAssociation">
-              <h4>Property: activityLeadingAssociation</h4>
-              <p>
-                Link to an association carrying the role "leader".
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#activityLeadingAssociation">proj:activityLeadingAssociation</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#qualifiedAssociation">prov:qualifiedAssociation</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td> </td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:activityParticipationAssociation">
-              <h4>Property: activityParticipationAssociation</h4>
-              <p>
-                Link to an association carrying the role "participant".
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#activityParticipationAssociation">proj:activityParticipationAssociation</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#qualifiedAssociation">prov:qualifiedAssociation</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td> </td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:activitySponsorshipAssociation">
-              <h4>Property: activitySponsorshipAssociation</h4>
-              <p>
-                Link to an association carrying the role "sponsor".
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#activitySponsorshipAssociation">proj:activitySponsorshipAssociation</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#qualifiedAssociation">prov:qualifiedAssociation</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td> </td></tr>
-                </tbody>
-              </table>
-            </section>
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#subActivityAssociation">proj:subActivityAssociation</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/project#hasRelatedActivity">proj:hasRelatedActivity</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td> </td></tr>
+              </tbody>
+            </table>
           </section>
-
-          <section id="vocab-project-funding">
-            <h3>Project funding</h3>
-            <section id="proj:isFundedThrough">
-              <h4>Property: isFundedThrough</h4>
-              <p>
-                Link to a description of a project funding arrangement.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#isFundedThrough">proj:isFundedThrough</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#Project">proj:Project</a></td></tr>
-                  <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/project#FundingAssociation">proj:FundingAssociation</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td> </td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:FundingAssociation">
-              <h4>Class: FundingAssociation</h4>
-              <p>
-                Association class to support description of a project funding arrangement.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Class:</th><th><a href="http://www.w3.org/ns/project#FundingAssociation">proj:FundingAssociation</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a></td></tr>
-                  <tr><td class="prop">subClassOf:</td><td><a href="http://www.w3.org/ns/prov#Association">prov:Association</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:fundsProvided">
-              <h4>Property: fundsProvided</h4>
-              <p>
-                Link to a sum of money.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#fundsProvided">proj:fundsProvided</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/project#SumOfMoney">proj:SumOfMoney</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td> </td></tr>
-                </tbody>
-              </table>
-            </section>
-          </section>
-
-          <section id="vocab-project-research">
-            <h3>Research project</h3>
-            <section id="proj:ResearchProject">
-              <h4>Class: ResearchProject</h4>
-              <p>
-                A research project.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDFS Class:</th><th><a href="http://www.w3.org/ns/project#ResearchProject">proj:ResearchProject</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a></td></tr>
-                  <tr><td class="prop">subClassOf:</td><td><a href="http://www.w3.org/ns/project#Project">proj:Project</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td></td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:hasPrincipalInvestigator">
-              <h4>Property: hasPrincipalInvestigator</h4>
-              <p>
-                The person who acts as principal investigator on the research project.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasPrincipalInvestigator">proj:hasPrincipalInvestigator</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#ResearchProject">proj:ResearchProject</a></td></tr>
-                  <tr><td class="prop">Range:</td><td><a href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td> </td></tr>
-                </tbody>
-              </table>
-            </section>
-            <section id="proj:hasFieldOfResearch">
-              <h4>Property: hasFieldOfResearch</h4>
-              <p>
-                The field of research of the research project.
-              </p>
-
-              <table class="definition">
-                <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasFieldOfResearch">proj:hasFieldOfResearch</a></th></tr></thead>
-                <tbody>
-                  <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                  <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#ResearchProject">proj:ResearchProject</a></td></tr>
-                  <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a></td></tr>
-                  <tr><td class="prop">Usage note:</td><td>The value is usually taken from a curated vocabulary, such as <a href="http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E">ANZSRC Fields of Research</a></td></tr>
-                </tbody>
-              </table>
-            </section>
-
-          </section>
-
-
-
         </section>
 
-        <section id="alignments" class="informative">
-          <h2>Alignments with related ontologies</h2>
+        <section id="vocab-project-stake">
+          <h3>Project stakeholders</h3>
+          <section id="proj:hasParticipant">
+            <h4>Property: hasParticipant</h4>
+            <p>
+              Direct link to a party (person or organization) participating in the activity.
+            </p>
 
-          [[frapo]] [[schema-org]] [[doap]] [[pdo]] [[vivo-isf]] [[foaf]] [[dbpedia-ont]] [[PPSR-Core]] [[eagle-i]]
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasParticipant">proj:hasParticipant</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td> </td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:activityLeadingAssociation">
+            <h4>Property: activityLeadingAssociation</h4>
+            <p>
+              Link to an association carrying the role "leader".
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#activityLeadingAssociation">proj:activityLeadingAssociation</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#qualifiedAssociation">prov:qualifiedAssociation</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td> </td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:activityParticipationAssociation">
+            <h4>Property: activityParticipationAssociation</h4>
+            <p>
+              Link to an association carrying the role "participant".
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#activityParticipationAssociation">proj:activityParticipationAssociation</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#qualifiedAssociation">prov:qualifiedAssociation</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td> </td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:activitySponsorshipAssociation">
+            <h4>Property: activitySponsorshipAssociation</h4>
+            <p>
+              Link to an association carrying the role "sponsor".
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#activitySponsorshipAssociation">proj:activitySponsorshipAssociation</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#qualifiedAssociation">prov:qualifiedAssociation</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td> </td></tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
+
+        <section id="vocab-project-funding">
+          <h3>Project funding</h3>
+          <section id="proj:isFundedThrough">
+            <h4>Property: isFundedThrough</h4>
+            <p>
+              Link to a description of a project funding arrangement.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#isFundedThrough">proj:isFundedThrough</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#Project">proj:Project</a></td></tr>
+                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/project#FundingAssociation">proj:FundingAssociation</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td> </td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:FundingAssociation">
+            <h4>Class: FundingAssociation</h4>
+            <p>
+              Association class to support description of a project funding arrangement.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Class:</th><th><a href="http://www.w3.org/ns/project#FundingAssociation">proj:FundingAssociation</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a></td></tr>
+                <tr><td class="prop">subClassOf:</td><td><a href="http://www.w3.org/ns/prov#Association">prov:Association</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:fundsProvided">
+            <h4>Property: fundsProvided</h4>
+            <p>
+              Link to a sum of money.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#fundsProvided">proj:fundsProvided</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/project#SumOfMoney">proj:SumOfMoney</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td> </td></tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
+
+        <section id="vocab-project-research">
+          <h3>Research project</h3>
+          <section id="proj:ResearchProject">
+            <h4>Class: ResearchProject</h4>
+            <p>
+              A research project.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDFS Class:</th><th><a href="http://www.w3.org/ns/project#ResearchProject">proj:ResearchProject</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a></td></tr>
+                <tr><td class="prop">subClassOf:</td><td><a href="http://www.w3.org/ns/project#Project">proj:Project</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:hasPrincipalInvestigator">
+            <h4>Property: hasPrincipalInvestigator</h4>
+            <p>
+              The person who acts as principal investigator on the research project.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasPrincipalInvestigator">proj:hasPrincipalInvestigator</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#ResearchProject">proj:ResearchProject</a></td></tr>
+                <tr><td class="prop">Range:</td><td><a href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td> </td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="proj:hasFieldOfResearch">
+            <h4>Property: hasFieldOfResearch</h4>
+            <p>
+              The field of research of the research project.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="http://www.w3.org/ns/project#hasFieldOfResearch">proj:hasFieldOfResearch</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/project#ResearchProject">proj:ResearchProject</a></td></tr>
+                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td>The value is usually taken from a curated vocabulary, such as <a href="http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E">ANZSRC Fields of Research</a></td></tr>
+              </tbody>
+            </table>
+          </section>
 
         </section>
 
 
-      </body>
-      </html>
+
+      </section>
+
+      <section id="alignments" class="informative">
+        <h2>Alignments with related ontologies</h2>
+
+        [[frapo]] [[schema-org]] [[doap]] [[pdo]] [[vivo-isf]] [[foaf]] [[dbpedia-ont]] [[PPSR-Core]] [[eagle-i]]
+
+      </section>
+
+
+    </body>
+    </html>
