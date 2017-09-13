@@ -49,14 +49,14 @@
       This document describes a core ontology for the description of a project, known as PROJECT.
       A <i>project</i> is a formal, planned activity, in which one or more agent participants fill specific roles (e.g. project leader, sponsor or funder), which is typically structured as a set of sub-activities, and generates products.
       The project is a key unit of activity in modern business.
-      A project provides key context for many productive activities and their outputs, including datasets.
+      A project provides context for many productive activities and their outputs, including datasets.
     </p>
     <p>
       A number of previous initiatives have developed project ontologies.
       In Friend of a Friend (FOAF) [[foaf]] the <a href="http://xmlns.com/foaf/0.1/Project">foaf:Project</a> class is a stub (no specific properties) which was included primarily to act as the topic of a homepage.
       The Description of a Project ontology (DOAP) [[doap]] is oriented to software development projects.
-      The Project Documents Ontology (PDO) [[pdo]] relates to  various documents in a project-specific setting, like meeting minutes, status reports etc.
       The Funding, Research Administration and Projects Ontology (FRAPO) [[frapo]] is similarly aimed at describing administrative information relating to grant funding and research projects. There are classes for the characterization of <a href="http://purl.org/cerif/frapo/Grant">grant applications</a>, <a href="http://purl.org/cerif/frapo/University">funding bodies</a>, project partners etc, but FRAPO uses the <a href="http://xmlns.com/foaf/0.1/Project">foaf:Project</a> class directly with just one additional property related to identification, not function.
+      The Project Documents Ontology (PDO) [[pdo]] relates to  various documents in a project-specific setting, like meeting minutes, status reports etc.
       In VIVO-ISF [[vivo-isf]] the <a href="http://vivoweb.org/ontology/core#Project">vivo:Project</a> class is very lightweight, characterised only by its timing and geographic focus. VIVO is linked to the OBO Foundry [[obo]] and other ontologies there (e.g. the Open-Med <a href="https://open.med.harvard.edu/wiki/display/eaglei/Ontology">eagle-i</a> ontology) provide specializations, but in the context of relatively narrow domain applications.
     </p>
     <p>
@@ -99,15 +99,19 @@
         One specialization is included - the <i>Research Project</i> - which has been the subject of several predecessor designs that have informed the design of this ontology.
       </p>
       <p>
-        PROJECT extends the W3C [[!prov-o]] ontology. Otherwise, it has no dependencies except for the normal RDF/OWL infrastructure (RDF [[!rdf11-concepts]], RDFS [[!rdf-schema]], OWL [[!owl2-quick-reference]]), Dublin Core for some ontology metadata, and [[!skos-reference]] to support some relationships between Role values, and project classification.
+        PROJECT extends the W3C [[!prov-o]] ontology.
+        Otherwise, it has no dependencies except for the normal RDF/OWL infrastructure
+        (RDF [[!rdf11-concepts]], RDFS [[!rdf-schema]], OWL [[!owl2-quick-reference]]),
+        Dublin Core [[dc-terms]] for some ontology metadata, and SKOS [[!skos-reference]] to support some relationships between Role values, and project classification.
       </p>
       <p>
         A summary of the main classes and relationships in PROJECT is shown in the diagram below, including the key superclass <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a>.
       </p>
       <figure>
-        <img src="images/Project-summary.png" alt="summary of PROJECT ontology showing how the Project class extends prov:Activity"/>
+        <img src="images/Project-overview.png" alt="summary of PROJECT ontology showing how the Project class extends prov:Activity"/>
         <figcaption>
-          Core classes from PROJECT vocabulary, with their relationships to PROV-O. Rough draft to indicate scope of a properly drafted figure to be included here
+          Core classes from PROJECT vocabulary, with their relationships to PROV-O. <br />
+          Rough draft to indicate scope of a properly drafted figure to be included here
         </figcaption>
       </figure>
       <p>
@@ -131,7 +135,7 @@
           The project was completed several months early.
         </p>
         <p>
-          The level of detail shown here is intended only to illustrate the expressivity of the PROJECT ontology, and the use of structures from an external vocabulary (W3C ORG [[vocab-org]]) to complement.
+          The level of detail shown here is intended only to illustrate the expressivity of the PROJECT ontology, and the use of structures from an external vocabulary to complement.
         </p>
 
         <pre class="example" id="level-crossing" title="Construction project">
@@ -175,7 +179,7 @@
 
         <p>
           Each individual level crossing removal has its own timeline and may be modeled as a <a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a>.
-          A number of local businesses were negatively impacted during the course of the activities.
+          Some local businesses were impacted during the course of the activities.
         </p>
 
         <pre class="example" id="level-crossing-mckinnon" title="Construction project sub-activity">
@@ -197,7 +201,7 @@
         </pre>
 
         <p>
-          The project leader was a consortium with two members, the description of which is represented as an <a href="http://www.w3.org/ns/org#FormalOrganization">org:FormalOrganization</a>.
+          The project leader was a consortium with two members, the description of which is represented as an <a href="http://www.w3.org/ns/org#FormalOrganization">org:FormalOrganization</a> using the W3C Organisation ontology [[vocab-org]].
         </p>
         <pre class="example" id="level-crossing-mckinnon" title="Construction project leader">
           ex:johnholland-kbr
@@ -276,7 +280,7 @@
         </pre>
 
         <p>
-          The level of detail about sub-activities is limited.
+          A description of one of the sub-activities is shown next, though with limited detail.
         </p>
         <pre class="example" id="research project activity" title="Research project activity">
           ex:Aerial
@@ -300,28 +304,31 @@
     <section id="project-structure" class="informative">
       <h3>Project structure</h3>
       <figure>
-        <img src="images/Project-sub-activities.png" alt="Relationship of a project to its sub-activities"/>
+        <img src="images/Project-structure.png" alt="Relationship of a project to its sub-activities"/>
         <figcaption>
-          Relationship of a project to its sub-activities. Rough draft to indicate scope of a properly drafted figure to be included here
+          Relationship of a project to its sub-activities. <br />
+          Rough draft to indicate scope of a properly drafted figure to be included here
         </figcaption>
       </figure>
       <p>
-        The core class in the ontology is <a href="#proj:Project">proj:Project</a> which is intended to be applicable to a broad range of project types. A <i>project</i> is a planned activity with a designated leader, a known sponsor and budget, and is modelled as a specialization of the <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> class.
+        The core class in the ontology is <a href="#proj:Project">proj:Project</a> which is intended to be applicable to a broad range of project types.
+        A <i>project</i> is a planned activity that generates outputs, and is modelled as a specialization of the <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> class.
       </p>
       <p>
-        A project is typically organized through a set of sub-activities, which may be undertaken concurrently or consecutively, and may themselves be composed of further sub-activities. A project is often related to or influenced by other activities in addition to its sub-activities.
-      </p>
-      <p>
-        We distinguish one sub-class, the <a href="#proj:ResearchProject">proj:ResearchProject</a>, in which the leader(s) is known as a <i>Principal Investigator</i>, and which is classified according to its <i>field of research</i>.
+        A project or activity is typically organized through a set of sub-activities, which may be undertaken concurrently or consecutively, and may themselves be composed of further sub-activities.
+        Basic structure is captured through the <a href="#proj:hasSubActivity">proj:hasSubActivity</a> and <a href="#proj:isSubActivityOf">proj:isSubActivityOf</a> properties.
+        A project or activity is often related to or influenced by other activities, captured through the <a href="#proj:hasRelatedActivity">proj:hasRelatedActivity</a> property.
+        Details of each relationship are captured as properties of the individual <a href="#proj:RelatedActivity">proj:RelatedActivity</a>, using the <a href="https://www.w3.org/TR/prov-o/#hadRrole">prov:hadRole</a> and <a href="https://www.w3.org/TR/prov-o/#activity">prov:activity</a> properties, plus other properties as required.
       </p>
     </section>
 
     <section id="project-stakeholders" class="informative">
       <h3>Project stakeholders and funding</h3>
       <figure>
-        <img src="images/Project-funding.png" alt="Relationship of a project to its stakeholders"/>
+        <img src="images/Project-stakeholders.png" alt="Relationship of a project to its stakeholders"/>
         <figcaption>
-          Relationship of a project to its stakeholders. Rough draft to indicate scope of a properly drafted figure to be included here
+          Relationship of a project to its stakeholders. <br />
+          Rough draft to indicate scope of a properly drafted figure to be included here
         </figcaption>
       </figure>
       <p>
@@ -337,7 +344,11 @@
         More complex arrangements, for example if multiple funders are involved, can be captured through the <a href="#proj:isFundedThrough">proj:isFundedThrough</a> property, which links a funding agent with a funding amount in the context of a project.
       </p>
       <p>
-        The details of any other relationship may be expressed using the <a href="https://www.w3.org/TR/prov-o/#qualifiedAssociation">prov:qualifiedAssociation</a> property.
+        Other relationships may be expressed using the <a href="https://www.w3.org/TR/prov-o/#qualifiedAssociation">prov:qualifiedAssociation</a> property.
+        Details of each relationship are captured as properties of the individual <a href="https://www.w3.org/TR/prov-o/#Association">prov:Association</a>, using the <a href="https://www.w3.org/TR/prov-o/#role">prov:role</a> and <a href="https://www.w3.org/TR/prov-o/#agent">prov:agent</a> properties, plus other properties as required.
+      </p>
+      <p>
+        We distinguish one sub-class, the <a href="#proj:ResearchProject">proj:ResearchProject</a>, in which the leader(s) is known as a <i>Principal Investigator</i>, and which is classified according to its <i>field of research</i>.
       </p>
     </section>
   </section>
