@@ -18,6 +18,7 @@
 # imports: http://purl.org/cerif/frapo
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://schema.org
+# imports: http://sweetontology.net/sweetAll
 # imports: http://usefulinc.com/ns/doap
 # imports: http://vivoweb.org/ontology/core
 # imports: http://vocab.deri.ie/pdo
@@ -29,12 +30,14 @@
 
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix frapo: <http://purl.org/cerif/frapo/> .
+@prefix humanres: <http://sweetontology.net/humanResearch#> .
+@prefix network: <http://network.csiro.au/ontology/core#> .
 @prefix obo: <http://purl.obolibrary.org/obo/> .
-@prefix ocre: <http://purl.org/net/OCRe/study_protocol.owl#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pdo: <http://ontologies.smile.deri.ie/pdo#> .
@@ -92,10 +95,13 @@ dbo:projectParticipant
 dbo:projectStartDate
   rdfs:subPropertyOf prov:startedAtTime ;
 .
-<http://network.csiro.au/ontology/core#Project>
+network:Project
   rdfs:subClassOf proj:Project ;
 .
 obo:ERO_0000014
+  rdfs:subClassOf proj:ResearchProject ;
+.
+humanres:Project
   rdfs:subClassOf proj:ResearchProject ;
 .
 doap:Project
@@ -131,17 +137,17 @@ vivo:Project
 vivo:geographicFocus
   owl:equivalentProperty proj:hasAreaOfInterest ;
 .
-<http://www.w3.org/ns/dcat#Dataset>
+dcat:Dataset
   rdf:type owl:Class ;
-  rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
+  rdfs:subClassOf network:Product ;
 .
-<http://www.w3.org/ns/dcat#Distribution>
+dcat:Distribution
   rdf:type owl:Class ;
-  rdfs:subClassOf <http://network.csiro.au/ontology/core#Product> ;
+  rdfs:subClassOf network:Product ;
 .
 org:Membership
   rdf:type owl:Class ;
-  rdfs:subClassOf <http://network.csiro.au/ontology/core#Relationship> ;
+  rdfs:subClassOf network:Relationship ;
 .
 proj:Project
   owl:equivalentClass dbo:Project ;
@@ -174,6 +180,7 @@ proj:Project
   owl:imports <http://purl.org/cerif/frapo> ;
   owl:imports dc: ;
   owl:imports <http://schema.org> ;
+  owl:imports <http://sweetontology.net/sweetAll> ;
   owl:imports <http://usefulinc.com/ns/doap> ;
   owl:imports <http://vivoweb.org/ontology/core> ;
   owl:imports <http://vocab.deri.ie/pdo> ;
