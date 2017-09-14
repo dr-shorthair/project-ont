@@ -91,11 +91,6 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
       owl:onProperty proj:hasSponsor ;
     ] ;
 .
-proj:RelatedActivity
-  rdf:type owl:Class ;
-  rdfs:label "Related activity" ;
-  rdfs:subClassOf prov:ActivityInfluence ;
-.
 proj:ResearchProject
   rdf:type owl:Class ;
   rdfs:comment "A research project has one or more PIs who are individual persons, and should be classified according to standard research classification such as the Australian Bureau of Statistics ANZSRC-FOR or NASA's Global Change Master Directory - Science Keywords." ;
@@ -220,7 +215,8 @@ proj:hasRelatedActivity
 This is more general than prov:qualifiedCommunication since it is not predicated on the exchange of an entity. """ ;
   rdfs:domain prov:Activity ;
   rdfs:label "has related activity" ;
-  rdfs:range proj:RelatedActivity ;
+  rdfs:range prov:ActivityInfluence ;
+  owl:inverseOf prov:activity ;
 .
 proj:hasSponsor
   rdf:type owl:ObjectProperty ;
@@ -308,7 +304,7 @@ proj:subActivityAssociation
   rdfs:label "sub-activity association" ;
   rdfs:range [
       rdf:type owl:Class ;
-      rdfs:subClassOf proj:RelatedActivity ;
+      rdfs:subClassOf prov:ActivityInfluence ;
       rdfs:subClassOf [
           rdf:type owl:Restriction ;
           owl:hasValue proji:SubActivity ;

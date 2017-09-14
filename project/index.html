@@ -311,14 +311,14 @@
         </figcaption>
       </figure>
       <p>
-        The core class in the ontology is <a href="#proj:Project">proj:Project</a> which is intended to be applicable to a broad range of project types.
+        The core class in the PROJECT ontology is <a href="#proj:Project">proj:Project</a> which is intended to be applicable to a broad range of project types.
         A <i>project</i> is a planned activity that generates outputs, and is modelled as a specialization of the <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> class.
       </p>
       <p>
         A project or activity is typically organized through a set of sub-activities, which may be undertaken concurrently or consecutively, and may themselves be composed of further sub-activities.
         Basic structure is captured through the <a href="#proj:hasSubActivity">proj:hasSubActivity</a> and <a href="#proj:isSubActivityOf">proj:isSubActivityOf</a> properties.
         A project or activity is often related to or influenced by other activities, captured through the <a href="#proj:hasRelatedActivity">proj:hasRelatedActivity</a> property.
-        Details of each relationship are captured as properties of the individual <a href="#proj:RelatedActivity">proj:RelatedActivity</a>, using the <a href="https://www.w3.org/TR/prov-o/#hadRrole">prov:hadRole</a> and <a href="https://www.w3.org/TR/prov-o/#activity">prov:activity</a> properties, plus other properties as required.
+        Details of each relationship are captured as properties of the individual <a href="https://www.w3.org/TR/prov-o/#ActivityInfluence">prov:ActivityInfluence</a>, using the <a href="https://www.w3.org/TR/prov-o/#hadRrole">prov:hadRole</a> and <a href="https://www.w3.org/TR/prov-o/#activity">prov:activity</a> properties, plus other properties as required.
       </p>
     </section>
 
@@ -483,7 +483,6 @@
             <b>Classes:</b>
             | <a href="#proj:FundingAssociation">FundingAssociation</a>
             | <a href="#proj:Project">Project</a>
-            | <a href="#proj:RelatedActivity">RelatedActivity</a>
             | <a href="#proj:ResearchProject">ResearchProject</a>
             | <a href="#proj:SumOfMoney">SumOfMoney</a>
             |
@@ -754,23 +753,9 @@
               <tbody>
                 <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
                 <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
-                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/project#RelatedActivity">proj:RelatedActivity</a></td></tr>
+                <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/prov#ActivityInfluence">prov:ActivityInfluence</a></td></tr>
+                <tr><td class="prop">inverseOf:</td><td><a href="http://www.w3.org/ns/prov#activity">prov:activity</a></td></tr>
                 <tr><td class="prop">Usage note:</td><td> </td></tr>
-              </tbody>
-            </table>
-          </section>
-          <section id="proj:RelatedActivity">
-            <h4>Class: RelatedActivity</h4>
-            <p>
-              Association class to support description of a related activity.
-            </p>
-
-            <table class="definition">
-              <thead><tr><th>RDF Class:</th><th><a href="http://www.w3.org/ns/project#RelatedActivity">proj:RelatedActivity</a></th></tr></thead>
-              <tbody>
-                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#Class">owl:Class</a></td></tr>
-                <tr><td class="prop">subClassOf:</td><td><a href="http://www.w3.org/ns/prov#ActivityInfluence">prov:ActivityInfluence</a></td></tr>
-                <tr><td class="prop">Usage note:</td><td></td></tr>
               </tbody>
             </table>
           </section>
