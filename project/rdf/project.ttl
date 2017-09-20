@@ -116,48 +116,6 @@ proj:SumOfMoney
       owl:onProperty proj:moneyCurrency ;
     ] ;
 .
-proj:activityLeadingAssociation
-  rdf:type owl:ObjectProperty ;
-  rdfs:label "activity leading association" ;
-  rdfs:range [
-      rdf:type owl:Class ;
-      rdfs:subClassOf prov:Association ;
-      rdfs:subClassOf [
-          rdf:type owl:Restriction ;
-          owl:hasValue proji:Leader ;
-          owl:onProperty prov:hadRole ;
-        ] ;
-    ] ;
-  rdfs:subPropertyOf prov:qualifiedAssociation ;
-.
-proj:activityParticipationAssociation
-  rdf:type owl:ObjectProperty ;
-  rdfs:label "activity participation association" ;
-  rdfs:range [
-      rdf:type owl:Class ;
-      rdfs:subClassOf prov:Association ;
-      rdfs:subClassOf [
-          rdf:type owl:Restriction ;
-          owl:hasValue proji:Participant ;
-          owl:onProperty prov:hadRole ;
-        ] ;
-    ] ;
-  rdfs:subPropertyOf prov:qualifiedAssociation ;
-.
-proj:activitySponsorshipAssociation
-  rdf:type owl:ObjectProperty ;
-  rdfs:label "activity sponsorship association" ;
-  rdfs:range [
-      rdf:type owl:Class ;
-      rdfs:subClassOf prov:Association ;
-      rdfs:subClassOf [
-          rdf:type owl:Restriction ;
-          owl:hasValue proji:Sponsor ;
-          owl:onProperty prov:hadRole ;
-        ] ;
-    ] ;
-  rdfs:subPropertyOf prov:qualifiedAssociation ;
-.
 proj:fundsProvided
   rdf:type owl:ObjectProperty ;
   rdfs:label "funding provided" ;
@@ -188,7 +146,19 @@ proj:hasLeader
   rdfs:label "activity leader" ;
   rdfs:subPropertyOf prov:wasAssociatedWith ;
   owl:propertyChainAxiom (
-      proj:activityLeadingAssociation
+      [
+        rdf:type owl:ObjectProperty ;
+        rdfs:range [
+            rdf:type owl:Class ;
+            rdfs:subClassOf prov:Association ;
+            rdfs:subClassOf [
+                rdf:type owl:Restriction ;
+                owl:hasValue proji:Leader ;
+                owl:onProperty prov:hadRole ;
+              ] ;
+          ] ;
+        rdfs:subPropertyOf prov:qualifiedAssociation ;
+      ]
       prov:agent
     ) ;
 .
@@ -197,7 +167,19 @@ proj:hasParticipant
   rdfs:label "activity participant" ;
   rdfs:subPropertyOf prov:wasAssociatedWith ;
   owl:propertyChainAxiom (
-      proj:activityParticipationAssociation
+      [
+        rdf:type owl:ObjectProperty ;
+        rdfs:range [
+            rdf:type owl:Class ;
+            rdfs:subClassOf prov:Association ;
+            rdfs:subClassOf [
+                rdf:type owl:Restriction ;
+                owl:hasValue proji:Participant ;
+                owl:onProperty prov:hadRole ;
+              ] ;
+          ] ;
+        rdfs:subPropertyOf prov:qualifiedAssociation ;
+      ]
       prov:agent
     ) ;
 .
@@ -224,7 +206,19 @@ proj:hasSponsor
   rdfs:label "activity sponsor" ;
   rdfs:subPropertyOf prov:wasAssociatedWith ;
   owl:propertyChainAxiom (
-      proj:activitySponsorshipAssociation
+      [
+        rdf:type owl:ObjectProperty ;
+        rdfs:range [
+            rdf:type owl:Class ;
+            rdfs:subClassOf prov:Association ;
+            rdfs:subClassOf [
+                rdf:type owl:Restriction ;
+                owl:hasValue proji:Sponsor ;
+                owl:onProperty prov:hadRole ;
+              ] ;
+          ] ;
+        rdfs:subPropertyOf prov:qualifiedAssociation ;
+      ]
       prov:agent
     ) ;
 .
@@ -237,7 +231,19 @@ This is more general than prov:wasInformedBy since it is not predicated on the e
   rdfs:label "has sub-activity" ;
   rdfs:range prov:Activity ;
   owl:propertyChainAxiom (
-      proj:subActivityAssociation
+      [
+        rdf:type owl:ObjectProperty ;
+        rdfs:range [
+            rdf:type owl:Class ;
+            rdfs:subClassOf prov:ActivityInfluence ;
+            rdfs:subClassOf [
+                rdf:type owl:Restriction ;
+                owl:hasValue proji:SubActivity ;
+                owl:onProperty prov:hadRole ;
+              ] ;
+          ] ;
+        rdfs:subPropertyOf proj:hasRelatedActivity ;
+      ]
       prov:activity
     ) ;
 .
@@ -246,7 +252,19 @@ proj:isFundedThrough
   rdfs:domain proj:Project ;
   rdfs:label "has funding association" ;
   rdfs:range proj:FundingAssociation ;
-  rdfs:subPropertyOf proj:activitySponsorshipAssociation ;
+  rdfs:subPropertyOf [
+      rdf:type owl:ObjectProperty ;
+      rdfs:range [
+          rdf:type owl:Class ;
+          rdfs:subClassOf prov:Association ;
+          rdfs:subClassOf [
+              rdf:type owl:Restriction ;
+              owl:hasValue proji:Sponsor ;
+              owl:onProperty prov:hadRole ;
+            ] ;
+        ] ;
+      rdfs:subPropertyOf prov:qualifiedAssociation ;
+    ] ;
 .
 proj:isSubActivityOf
   rdf:type owl:ObjectProperty ;
@@ -298,20 +316,6 @@ proj:projectPlan
   rdfs:label "Project plan" ;
   rdfs:range prov:Plan ;
   rdfs:subPropertyOf prov:used ;
-.
-proj:subActivityAssociation
-  rdf:type owl:ObjectProperty ;
-  rdfs:label "sub-activity association" ;
-  rdfs:range [
-      rdf:type owl:Class ;
-      rdfs:subClassOf prov:ActivityInfluence ;
-      rdfs:subClassOf [
-          rdf:type owl:Restriction ;
-          owl:hasValue proji:SubActivity ;
-          owl:onProperty prov:hadRole ;
-        ] ;
-    ] ;
-  rdfs:subPropertyOf proj:hasRelatedActivity ;
 .
 proji:Funder
   rdf:type prov:Role ;
