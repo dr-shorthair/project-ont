@@ -292,6 +292,7 @@ proj:name
 .
 proj:objective
   rdf:type owl:AnnotationProperty ;
+  rdfs:comment "Textual definition of project objective." ;
   rdfs:domain proj:Project ;
   rdfs:label "project objective" ;
   rdfs:subPropertyOf rdfs:comment ;
