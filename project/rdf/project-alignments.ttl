@@ -142,6 +142,9 @@ proj:Project
   owl:equivalentClass vivo:Project ;
   owl:equivalentClass foaf:Project ;
 .
+proj:SumOfMoney
+  owl:equivalentClass schemaorg:MonetaryAmount ;
+.
 proj:fundsProvided
   rdfs:subPropertyOf schemaorg:amount ;
 .
