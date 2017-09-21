@@ -14,11 +14,10 @@
 # imports: http://dbpedia.org/ontology/projectReferenceID
 # imports: http://dbpedia.org/ontology/projectStartDate
 # imports: http://dbpedia.org/ontology/projectType
-# imports: http://network.csiro.au/ontology/core
 # imports: http://purl.org/cerif/frapo
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://schema.org
-# imports: http://sweetontology.net/sweetAll
+# imports: http://topbraid.org/schema/
 # imports: http://usefulinc.com/ns/doap
 # imports: http://vivoweb.org/ontology/core
 # imports: http://vocab.deri.ie/pdo
@@ -137,22 +136,38 @@ vivo:Project
 vivo:geographicFocus
   owl:equivalentProperty proj:hasAreaOfInterest ;
 .
-dcat:Dataset
-  rdf:type owl:Class ;
-  rdfs:subClassOf network:Product ;
-.
-dcat:Distribution
-  rdf:type owl:Class ;
-  rdfs:subClassOf network:Product ;
-.
-org:Membership
-  rdf:type owl:Class ;
-  rdfs:subClassOf network:Relationship ;
-.
 proj:Project
+  rdfs:subClassOf schemaorg:Action ;
   owl:equivalentClass dbo:Project ;
   owl:equivalentClass vivo:Project ;
   owl:equivalentClass foaf:Project ;
+.
+proj:fundsProvided
+  rdfs:subPropertyOf schemaorg:amount ;
+.
+proj:hasAreaOfInterest
+  rdfs:subPropertyOf schemaorg:location ;
+.
+proj:hasBudgetTotal
+  rdfs:subPropertyOf schemaorg:amount ;
+.
+proj:hasLeader
+  rdfs:subPropertyOf schemaorg:agent ;
+.
+proj:hasParticipant
+  rdfs:subPropertyOf schemaorg:participant ;
+.
+proj:hasSponsor
+  owl:equivalentProperty schemaorg:sponsor ;
+.
+proj:moneyAmount
+  rdfs:subPropertyOf schemaorg:value ;
+.
+proj:moneyCurrency
+  owl:equivalentProperty schemaorg:currency ;
+.
+proj:plannedEndTime
+  rdfs:subPropertyOf schemaorg:scheduledTime ;
 .
 <http://www.w3.org/ns/project-alignments>
   rdf:type owl:Ontology ;
@@ -176,11 +191,10 @@ proj:Project
   owl:imports dbo:projectReferenceID ;
   owl:imports dbo:projectStartDate ;
   owl:imports dbo:projectType ;
-  owl:imports <http://network.csiro.au/ontology/core> ;
   owl:imports <http://purl.org/cerif/frapo> ;
   owl:imports dc: ;
   owl:imports <http://schema.org> ;
-  owl:imports <http://sweetontology.net/sweetAll> ;
+  owl:imports <http://topbraid.org/schema/> ;
   owl:imports <http://usefulinc.com/ns/doap> ;
   owl:imports <http://vivoweb.org/ontology/core> ;
   owl:imports <http://vocab.deri.ie/pdo> ;
