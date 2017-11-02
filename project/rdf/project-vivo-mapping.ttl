@@ -1,0 +1,25 @@
+# baseURI: http://www.w3.org/ns/project/vivo
+# imports: file:///External/cache/vivo-isf-public-1.6.rdf
+# imports: http://purl.org/dc/terms/
+# imports: http://www.w3.org/ns/project
+# prefix: vivo
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vivo: <http://www.w3.org/ns/project/vivo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://vivoweb.org/ontology/core#Project>
+  owl:equivalentClass <http://www.w3.org/ns/project#Project> ;
+.
+<http://www.w3.org/ns/project#hasAreaOfInterest>
+  owl:equivalentProperty <http://vivoweb.org/ontology/core#geographicFocus> ;
+.
+<http://www.w3.org/ns/project/vivo>
+  rdf:type owl:Ontology ;
+  owl:imports <file:///External/cache/vivo-isf-public-1.6.rdf> ;
+  owl:imports <http://purl.org/dc/terms/> ;
+  owl:imports <http://www.w3.org/ns/project> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.

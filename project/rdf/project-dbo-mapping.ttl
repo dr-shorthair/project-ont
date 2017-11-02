@@ -1,0 +1,40 @@
+# baseURI: http://www.w3.org/ns/project/dbo
+# imports: http://dbpedia.org/ontology/
+# imports: http://purl.org/dc/terms/
+# imports: http://www.w3.org/ns/project
+# prefix: dbo
+
+@prefix dbo: <http://www.w3.org/ns/project/dbo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://dbpedia.org/ontology/UnitOfWork>
+  rdfs:subClassOf <http://www.w3.org/ns/prov#Activity> ;
+.
+<http://dbpedia.org/ontology/developer>
+  rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasAssociatedWith> ;
+.
+<http://dbpedia.org/ontology/projectEndDate>
+  rdfs:subPropertyOf <http://www.w3.org/ns/prov#endedAtTime> ;
+.
+<http://dbpedia.org/ontology/projectStartDate>
+  rdfs:subPropertyOf <http://www.w3.org/ns/prov#startedAtTime> ;
+.
+<http://www.w3.org/ns/project#Project>
+  owl:equivalentClass <http://dbpedia.org/ontology/Project> ;
+.
+<http://www.w3.org/ns/project#ResearchProject>
+  owl:equivalentClass <http://dbpedia.org/ontology/ResearchProject> ;
+.
+<http://www.w3.org/ns/project#objective>
+  owl:equivalentProperty <http://dbpedia.org/ontology/projectObjective> ;
+.
+<http://www.w3.org/ns/project/dbo>
+  rdf:type owl:Ontology ;
+  owl:imports <http://dbpedia.org/ontology/> ;
+  owl:imports <http://purl.org/dc/terms/> ;
+  owl:imports <http://www.w3.org/ns/project> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.

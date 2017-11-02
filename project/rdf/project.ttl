@@ -1,7 +1,7 @@
 # baseURI: http://www.w3.org/ns/project
 # imports: http://purl.org/dc/elements/1.1/
 # imports: http://purl.org/vocommons/voaf
-# imports: http://www.w3.org/ns/prov-o
+# imports: http://www.w3.org/ns/prov-o#
 # imports: http://xmlns.com/foaf/0.1/
 # prefix: proj
 
@@ -36,7 +36,7 @@ Can be used for alignment of project related classes and properties in more spec
 1. figure out how to link to prov:Plan""" ;
   owl:imports dc: ;
   owl:imports <http://purl.org/vocommons/voaf> ;
-  owl:imports <http://www.w3.org/ns/prov-o> ;
+  owl:imports <http://www.w3.org/ns/prov-o#> ;
   owl:imports foaf: ;
 .
 proj:FundingAssociation

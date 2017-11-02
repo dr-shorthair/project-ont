@@ -1,0 +1,25 @@
+# baseURI: http://www.w3.org/ns/project/foaf
+# imports: http://purl.org/dc/terms/
+# imports: http://www.w3.org/ns/project
+# imports: http://xmlns.com/foaf/0.1/
+# prefix: foaf
+
+@prefix foaf: <http://www.w3.org/ns/project/foaf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/ns/project#Project>
+  owl:equivalentClass <http://xmlns.com/foaf/0.1/Project> ;
+.
+<http://www.w3.org/ns/project/foaf>
+  rdf:type owl:Ontology ;
+  owl:imports <http://purl.org/dc/terms/> ;
+  owl:imports <http://www.w3.org/ns/project> ;
+  owl:imports <http://xmlns.com/foaf/0.1/> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+<http://xmlns.com/foaf/0.1/fundedBy>
+  rdfs:subPropertyOf <http://www.w3.org/ns/project#hasSponsor> ;
+.

@@ -1,0 +1,43 @@
+# baseURI: http://www.w3.org/ns/project/doap
+# imports: file:///External/cache/doap.rdf
+# imports: http://purl.org/dc/terms/
+# imports: http://www.w3.org/ns/project
+# prefix: doap
+
+@prefix doap: <http://www.w3.org/ns/project/doap#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://usefulinc.com/ns/doap#Project>
+  rdfs:subClassOf <http://www.w3.org/ns/project#Project> ;
+.
+<http://usefulinc.com/ns/doap#developer>
+  rdfs:subPropertyOf <http://www.w3.org/ns/project#hasParticipant> ;
+.
+<http://usefulinc.com/ns/doap#documenter>
+  rdfs:subPropertyOf <http://www.w3.org/ns/project#hasParticipant> ;
+.
+<http://usefulinc.com/ns/doap#helper>
+  rdfs:subPropertyOf <http://www.w3.org/ns/project#hasParticipant> ;
+.
+<http://usefulinc.com/ns/doap#maintainer>
+  rdfs:subPropertyOf <http://www.w3.org/ns/project#hasParticipant> ;
+.
+<http://usefulinc.com/ns/doap#tester>
+  rdfs:subPropertyOf <http://www.w3.org/ns/project#hasParticipant> ;
+.
+<http://usefulinc.com/ns/doap#translator>
+  rdfs:subPropertyOf <http://www.w3.org/ns/project#hasParticipant> ;
+.
+<http://usefulinc.com/ns/doap#vendor>
+  rdfs:subPropertyOf <http://www.w3.org/ns/project#hasParticipant> ;
+.
+<http://www.w3.org/ns/project/doap>
+  rdf:type owl:Ontology ;
+  owl:imports <file:///External/cache/doap.rdf> ;
+  owl:imports <http://purl.org/dc/terms/> ;
+  owl:imports <http://www.w3.org/ns/project> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
