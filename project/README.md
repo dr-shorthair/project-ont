@@ -1,6 +1,8 @@
 # ont/project
 A core vocabulary for describing a project, any kind of project.
 
+Current draft: https://dr-shorthair.github.io/ont/project/
+
 The goal is a 'core' ontology which can be extended for more domain specific applications. The design is influenced by
 * VIVO-ISF http://vivoweb.org/ontology/core
 * dbPedia http://dbpedia.org/ontology/Project
