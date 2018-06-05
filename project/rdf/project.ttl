@@ -18,8 +18,7 @@
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.w3.org/ns/project>
-  rdf:type voaf:Vocabulary ;
+<https://github.com/dr-shorthair/ont/edit/gh-pages/project/rdf/project.ttl>
   rdf:type owl:Ontology ;
   dc:contributor "Peter BRENTON, CSIRO" ;
   dc:creator "Simon J D COX, CSIRO" ;
