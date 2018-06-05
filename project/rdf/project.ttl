@@ -1,13 +1,10 @@
 # baseURI: http://www.w3.org/ns/project
 # imports: http://purl.org/dc/elements/1.1/
-# imports: http://purl.org/vocommons/voaf
 # imports: http://www.w3.org/ns/prov-o#
-# imports: http://xmlns.com/foaf/0.1/
 # prefix: proj
 
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix proj: <http://www.w3.org/ns/project#> .
 @prefix proji: <http://www.w3.org/ns/project/> .
@@ -19,7 +16,6 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://www.w3.org/ns/project>
-  rdf:type voaf:Vocabulary ;
   rdf:type owl:Ontology ;
   dc:contributor "Peter BRENTON, CSIRO" ;
   dc:creator "Simon J D COX, CSIRO" ;
@@ -32,12 +28,10 @@
   rdfs:comment """A basic ontology for projects, influenced by FOAF, dbPedia, VIVO-ISF, but only depending on W3C PROV-O.
 
 Can be used for alignment of project related classes and properties in more specific applications.""" ;
-  rdfs:comment """TODO: 
+  rdfs:comment """TODO:
 1. figure out how to link to prov:Plan""" ;
   owl:imports dc: ;
-  owl:imports <http://purl.org/vocommons/voaf> ;
   owl:imports <http://www.w3.org/ns/prov-o#> ;
-  owl:imports foaf: ;
 .
 proj:FundingAssociation
   rdf:type owl:Class ;
@@ -56,11 +50,11 @@ proj:FundingAssociation
 .
 proj:Project
   rdf:type owl:Class ;
-  rdfs:comment """Basic project class. 
+  rdfs:comment """Basic project class.
 
-A Project is an activity with a budget, a sponsor, and a leader. It has planned start and end dates, which may differ from the actuals. 
+A Project is an activity with a budget, a sponsor, and a leader. It has planned start and end dates, which may differ from the actuals.
 
-Project stakeholders are indicated using the prov:qualifiedAssociation structure which allows their role to be catpured. Some special stakeholders have specific sub-properties with the roles fixed, including project-leader, project-participant, and project-funder. 
+Project stakeholders are indicated using the prov:qualifiedAssociation structure which allows their role to be catpured. Some special stakeholders have specific sub-properties with the roles fixed, including project-leader, project-participant, and project-funder.
 
 Activities within a project are indicated using the hasSubActivity (simple) or subActivityAssociation properties - the latter allowing the nature of the relationshp to be described as well. """ ;
   rdfs:label "Project" ;
@@ -144,6 +138,8 @@ proj:hasFieldOfResearch
 proj:hasLeader
   rdf:type owl:ObjectProperty ;
   rdfs:label "activity leader" ;
+  rdfs:range prov:Person ;
+  rdfs:subPropertyOf proj:hasParticipant ;
   rdfs:subPropertyOf prov:wasAssociatedWith ;
   owl:propertyChainAxiom (
       [
@@ -187,12 +183,11 @@ proj:hasPrincipalInvestigator
   rdf:type owl:ObjectProperty ;
   rdfs:domain proj:ResearchProject ;
   rdfs:label "principal investigator" ;
-  rdfs:range foaf:Person ;
   rdfs:subPropertyOf proj:hasLeader ;
 .
 proj:hasRelatedActivity
   rdf:type owl:ObjectProperty ;
-  rdfs:comment """Relationship from an activity to a related activity. 
+  rdfs:comment """Relationship from an activity to a related activity.
 
 This is more general than prov:qualifiedCommunication since it is not predicated on the exchange of an entity. """ ;
   rdfs:domain prov:Activity ;
@@ -224,7 +219,7 @@ proj:hasSponsor
 .
 proj:hasSubActivity
   rdf:type owl:ObjectProperty ;
-  rdfs:comment """Relationship from an activity to a subsidiary activity. 
+  rdfs:comment """Relationship from an activity to a subsidiary activity.
 
 This is more general than prov:wasInformedBy since it is not predicated on the exchange of an entity. """ ;
   rdfs:domain prov:Activity ;
