@@ -115,6 +115,12 @@ proj:fundsProvided
   rdfs:label "funding provided" ;
   rdfs:range proj:SumOfMoney ;
 .
+proj:grantNumber
+  rdf:type owl:AnnotationProperty ;
+  rdfs:domain proj:FundingAssociation ;
+  rdfs:label "Funder's grant number" ;
+  rdfs:range xsd:string ;
+.
 proj:hadAreaOfInterest
   rdf:type owl:ObjectProperty ;
   rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
@@ -162,6 +168,19 @@ proj:hadLeader
       prov:agent
     ) ;
 .
+proj:hadObjective
+  rdf:type owl:AnnotationProperty ;
+  rdfs:comment "Textual definition of project objective." ;
+  rdfs:domain proj:Project ;
+  rdfs:label "project objective" ;
+.
+proj:hadPlan
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain proj:Project ;
+  rdfs:label "Project plan" ;
+  rdfs:range prov:Plan ;
+  rdfs:subPropertyOf prov:used ;
+.
 proj:hadPrincipalInvestigator
   rdf:type owl:ObjectProperty ;
   rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
@@ -171,15 +190,15 @@ proj:hadPrincipalInvestigator
 .
 proj:hadRelatedActivity
   rdf:type owl:ObjectProperty ;
-  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
   rdfs:comment """Relationship from an activity to a related activity.
 
 This is more general than prov:qualifiedCommunication since it is not predicated on the exchange of an entity. """ ;
+  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
   rdfs:domain prov:Activity ;
   rdfs:label "has related activity" ;
   rdfs:range prov:ActivityInfluence ;
-  owl:inverseOf prov:activity ;
   rdfs:subPropertyOf prov:qualifiedInfluence ;
+  owl:inverseOf prov:activity ;
 .
 proj:hadSponsor
   rdf:type owl:ObjectProperty ;
@@ -206,20 +225,12 @@ proj:hadSponsor
 .
 proj:hadSubActivity
   rdf:type owl:ObjectProperty ;
-  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
   rdfs:comment "Relationship from an activity to a subsidiary activity." ;
+  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
   rdfs:domain prov:Activity ;
   rdfs:label "has sub-activity" ;
   rdfs:range prov:Activity ;
   skos:editorialNote "This property is more general than prov:wasInformedBy since it is not predicated on the exchange of an entity. " ;
-.
-proj:wasSubActivityOf
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
-  rdfs:comment "Relationship from an activity to its parent activity or project." ;
-  rdfs:label "is sub-activity of" ;
-  rdfs:subPropertyOf prov:wasInformedBy ;
-  owl:inverseOf proj:hasSubActivity ;
 .
 proj:moneyAmount
   rdf:type owl:DatatypeProperty ;
@@ -232,12 +243,6 @@ proj:moneyCurrency
   rdf:type owl:ObjectProperty ;
   rdfs:domain proj:SumOfMoney ;
   rdfs:label "currency of a sum of money" ;
-.
-proj:hadObjective
-  rdf:type owl:AnnotationProperty ;
-  rdfs:comment "Textual definition of project objective." ;
-  rdfs:domain proj:Project ;
-  rdfs:label "project objective" ;
 .
 proj:plannedEndTime
   rdf:type owl:DatatypeProperty ;
@@ -252,13 +257,6 @@ proj:plannedStartTime
   rdfs:domain prov:Activity ;
   rdfs:label "planned start-time" ;
   rdfs:range xsd:dateTime ;
-.
-proj:hadPlan
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain proj:Project ;
-  rdfs:label "Project plan" ;
-  rdfs:range prov:Plan ;
-  rdfs:subPropertyOf prov:used ;
 .
 proj:wasFundedThrough
   rdf:type owl:ObjectProperty ;
@@ -279,6 +277,14 @@ proj:wasFundedThrough
         ] ;
       rdfs:subPropertyOf prov:qualifiedAssociation ;
     ] ;
+.
+proj:wasSubActivityOf
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Relationship from an activity to its parent activity or project." ;
+  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
+  rdfs:label "is sub-activity of" ;
+  rdfs:subPropertyOf prov:wasInformedBy ;
+  owl:inverseOf proj:hasSubActivity ;
 .
 proji:Funder
   rdf:type prov:Role ;
