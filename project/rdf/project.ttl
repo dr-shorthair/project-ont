@@ -62,7 +62,7 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty proj:hasBudgetTotal ;
+      owl:onProperty proj:hadBudgetTotal ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -77,7 +77,7 @@ Activities within a project are indicated using the hasSubActivity (simple) or s
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty proj:hasLeader ;
+      owl:onProperty proj:hadLeader ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -93,7 +93,7 @@ proj:ResearchProject
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty proj:hasFieldOfResearch ;
+      owl:onProperty proj:hadFieldOfResearch ;
     ] ;
 .
 proj:SumOfMoney
@@ -115,31 +115,35 @@ proj:fundsProvided
   rdfs:label "funding provided" ;
   rdfs:range proj:SumOfMoney ;
 .
-proj:hasAreaOfInterest
+proj:hadAreaOfInterest
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
   rdfs:comment "address, place, locality, location, etc" ;
   rdfs:domain proj:Project ;
   rdfs:label "has area of interest" ;
   rdfs:subPropertyOf prov:atLocation ;
 .
-proj:hasBudgetTotal
+proj:hadBudgetTotal
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
   rdfs:domain proj:Project ;
   rdfs:label "total budget" ;
   rdfs:range proj:SumOfMoney ;
 .
-proj:hasFieldOfResearch
+proj:hadFieldOfResearch
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
   rdfs:domain proj:ResearchProject ;
   rdfs:label "field of research" ;
   rdfs:range skos:Concept ;
   rdfs:subPropertyOf dcterms:subject ;
 .
-proj:hasLeader
+proj:hadLeader
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
+  rdfs:domain prov:Activity ;
   rdfs:label "activity leader" ;
   rdfs:range prov:Person ;
-  rdfs:subPropertyOf proj:hasParticipant ;
   rdfs:subPropertyOf prov:wasAssociatedWith ;
   owl:propertyChainAxiom (
       [
@@ -158,35 +162,16 @@ proj:hasLeader
       prov:agent
     ) ;
 .
-proj:hasParticipant
+proj:hadPrincipalInvestigator
   rdf:type owl:ObjectProperty ;
-  rdfs:label "activity participant" ;
-  rdfs:subPropertyOf prov:wasAssociatedWith ;
-  owl:propertyChainAxiom (
-      [
-        rdf:type owl:ObjectProperty ;
-        rdfs:range [
-            rdf:type owl:Class ;
-            rdfs:subClassOf prov:Association ;
-            rdfs:subClassOf [
-                rdf:type owl:Restriction ;
-                owl:hasValue proji:Participant ;
-                owl:onProperty prov:hadRole ;
-              ] ;
-          ] ;
-        rdfs:subPropertyOf prov:qualifiedAssociation ;
-      ]
-      prov:agent
-    ) ;
-.
-proj:hasPrincipalInvestigator
-  rdf:type owl:ObjectProperty ;
+  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
   rdfs:domain proj:ResearchProject ;
   rdfs:label "principal investigator" ;
-  rdfs:subPropertyOf proj:hasLeader ;
+  rdfs:subPropertyOf proj:hadLeader ;
 .
-proj:hasRelatedActivity
+proj:hadRelatedActivity
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
   rdfs:comment """Relationship from an activity to a related activity.
 
 This is more general than prov:qualifiedCommunication since it is not predicated on the exchange of an entity. """ ;
@@ -194,9 +179,11 @@ This is more general than prov:qualifiedCommunication since it is not predicated
   rdfs:label "has related activity" ;
   rdfs:range prov:ActivityInfluence ;
   owl:inverseOf prov:activity ;
+  rdfs:subPropertyOf prov:qualifiedInfluence ;
 .
-proj:hasSponsor
+proj:hadSponsor
   rdf:type owl:ObjectProperty ;
+  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
   rdfs:domain proj:Project ;
   rdfs:label "activity sponsor" ;
   rdfs:subPropertyOf prov:wasAssociatedWith ;
@@ -217,54 +204,21 @@ proj:hasSponsor
       prov:agent
     ) ;
 .
-proj:hasSubActivity
+proj:hadSubActivity
   rdf:type owl:ObjectProperty ;
-  rdfs:comment """Relationship from an activity to a subsidiary activity.
-
-This is more general than prov:wasInformedBy since it is not predicated on the exchange of an entity. """ ;
+  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
+  rdfs:comment "Relationship from an activity to a subsidiary activity." ;
   rdfs:domain prov:Activity ;
   rdfs:label "has sub-activity" ;
   rdfs:range prov:Activity ;
-  owl:propertyChainAxiom (
-      [
-        rdf:type owl:ObjectProperty ;
-        rdfs:range [
-            rdf:type owl:Class ;
-            rdfs:subClassOf prov:ActivityInfluence ;
-            rdfs:subClassOf [
-                rdf:type owl:Restriction ;
-                owl:hasValue proji:SubActivity ;
-                owl:onProperty prov:hadRole ;
-              ] ;
-          ] ;
-        rdfs:subPropertyOf proj:hasRelatedActivity ;
-      ]
-      prov:activity
-    ) ;
+  skos:editorialNote "This property is more general than prov:wasInformedBy since it is not predicated on the exchange of an entity. " ;
 .
-proj:isFundedThrough
+proj:wasSubActivityOf
   rdf:type owl:ObjectProperty ;
-  rdfs:domain proj:Project ;
-  rdfs:label "has funding association" ;
-  rdfs:range proj:FundingAssociation ;
-  rdfs:subPropertyOf [
-      rdf:type owl:ObjectProperty ;
-      rdfs:range [
-          rdf:type owl:Class ;
-          rdfs:subClassOf prov:Association ;
-          rdfs:subClassOf [
-              rdf:type owl:Restriction ;
-              owl:hasValue proji:Sponsor ;
-              owl:onProperty prov:hadRole ;
-            ] ;
-        ] ;
-      rdfs:subPropertyOf prov:qualifiedAssociation ;
-    ] ;
-.
-proj:isSubActivityOf
-  rdf:type owl:ObjectProperty ;
+  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
   rdfs:comment "Relationship from an activity to its parent activity or project." ;
   rdfs:label "is sub-activity of" ;
+  rdfs:subPropertyOf prov:wasInformedBy ;
   owl:inverseOf proj:hasSubActivity ;
 .
 proj:moneyAmount
@@ -279,39 +233,52 @@ proj:moneyCurrency
   rdfs:domain proj:SumOfMoney ;
   rdfs:label "currency of a sum of money" ;
 .
-proj:name
-  rdf:type owl:AnnotationProperty ;
-  rdfs:domain proj:Project ;
-  rdfs:label "project name" ;
-  rdfs:subPropertyOf rdfs:label ;
-.
-proj:objective
+proj:hadObjective
   rdf:type owl:AnnotationProperty ;
   rdfs:comment "Textual definition of project objective." ;
   rdfs:domain proj:Project ;
   rdfs:label "project objective" ;
-  rdfs:subPropertyOf rdfs:comment ;
 .
 proj:plannedEndTime
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment "The time at which an project was planned to end. See also project:plannedStartTime."@en ;
+  rdfs:comment "The time at which an activity was planned to end. See also project:plannedStartTime."@en ;
   rdfs:domain prov:Activity ;
   rdfs:label "planned end-time" ;
   rdfs:range xsd:dateTime ;
 .
 proj:plannedStartTime
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment "The time at which an project was planned to start. See also project:plannedEndTime."@en ;
+  rdfs:comment "The time at which an activity was planned to start. See also project:plannedEndTime."@en ;
   rdfs:domain prov:Activity ;
   rdfs:label "planned start-time" ;
   rdfs:range xsd:dateTime ;
 .
-proj:projectPlan
+proj:hadPlan
   rdf:type owl:ObjectProperty ;
   rdfs:domain proj:Project ;
   rdfs:label "Project plan" ;
   rdfs:range prov:Plan ;
   rdfs:subPropertyOf prov:used ;
+.
+proj:wasFundedThrough
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway." ;
+  rdfs:domain proj:Project ;
+  rdfs:label "had funding association" ;
+  rdfs:range proj:FundingAssociation ;
+  rdfs:subPropertyOf [
+      rdf:type owl:ObjectProperty ;
+      rdfs:range [
+          rdf:type owl:Class ;
+          rdfs:subClassOf prov:Association ;
+          rdfs:subClassOf [
+              rdf:type owl:Restriction ;
+              owl:hasValue proji:Sponsor ;
+              owl:onProperty prov:hadRole ;
+            ] ;
+        ] ;
+      rdfs:subPropertyOf prov:qualifiedAssociation ;
+    ] ;
 .
 proji:Funder
   rdf:type prov:Role ;

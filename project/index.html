@@ -144,22 +144,22 @@
           ex:VictoriaLevelCrossingRemovalPhase1
           rdf:type proj:Project ;
           rdfs:label "Victoria level-crossing removal - phase 1" ;
-          proj:hasBudgetTotal [
+          proj:hadBudgetTotal [
             rdf:type proj:SumOfMoney ;
             rdfs:label "Level crossing removal phase 1 budget " ;
             proj:moneyAmount "524000000"^^xsd:decimal ;
             proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt ;
           ] ;
-          proj:hasLeader ex:johnholland-kbr ;
-          proj:hasParticipant &lt;http://www.metrotrains.com.au/&gt ;
-          proj:hasParticipant &lt;https://www.ptv.vic.gov.au/&gt ;
-          proj:hasParticipant &lt;https://www.vicroads.vic.gov.au/&gt ;
-          proj:hasSponsor &lt;http://levelcrossings.vic.gov.au/about/about-the-authority&gt ;
-          proj:hasSubActivity ex:BentleighLevelCrossingRemoval ;
-          proj:hasSubActivity ex:BurkeRoadLevelCrossingRemoval ;
-          proj:hasSubActivity ex:McKinnonRoadLevelCrossingRemoval ;
-          proj:hasSubActivity ex:NorthRoadLevelCrossingRemoval ;
-          proj:isFundedThrough [
+          proj:hadLeader ex:johnholland-kbr ;
+          prov:wasAssociatedWith &lt;http://www.metrotrains.com.au/&gt ;
+          prov:wasAssociatedWith &lt;https://www.ptv.vic.gov.au/&gt ;
+          prov:wasAssociatedWith &lt;https://www.vicroads.vic.gov.au/&gt ;
+          proj:hadSponsor &lt;http://levelcrossings.vic.gov.au/about/about-the-authority&gt ;
+          proj:hadSubActivity ex:BentleighLevelCrossingRemoval ;
+          proj:hadSubActivity ex:BurkeRoadLevelCrossingRemoval ;
+          proj:hadSubActivity ex:McKinnonRoadLevelCrossingRemoval ;
+          proj:hadSubActivity ex:NorthRoadLevelCrossingRemoval ;
+          proj:wasFundedThrough [
             rdf:type proj:FundingAssociation ;
             rdfs:label "Level crossing removal project phase 1 funding arrangement" ;
             rdfs:seeAlso &lt;http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/&gt ;
@@ -170,7 +170,7 @@
             ] ;
             prov:agent &lt;http://www.vic.gov.au/&gt ;
           ] ;
-          proj:name "Victoria level-crossing removal - phase 1" ;
+          rdfs:label "Victoria level-crossing removal - phase 1" ;
           proj:plannedEndTime "2017-03-31T23:59:00"^^xsd:dateTime ;
           proj:plannedStartTime "2015-10-01T00:00:00"^^xsd:dateTime ;
           prov:atLocation &lt;https://dbpedia.org/resource/Melbourne&gt ;
@@ -188,7 +188,7 @@
           ex:McKinnonRoadLevelCrossingRemoval
           rdf:type prov:Activity ;
           rdfs:label "McKinnon Road level crossing removal" ;
-          proj:isSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
+          proj:wasSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
           proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
           proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
           prov:atLocation &lt;https://dbpedia.org/resource/McKinnon_railway_station&gt; ;
@@ -248,25 +248,25 @@
             proj:moneyAmount 0 ;
             proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
           ] ;
-          proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202&gt; ;
-          proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050204&gt; ;
-          proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050205&gt; ;
-          proj:hasFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050206&gt; ;
-          proj:hasPrincipalInvestigator &lt;http://orcid.org/0000-0002-5823-7364&gt; ;
-          proj:hasSponsor &lt;http://dbpedia.org/resource/Commonwealth_Scientific_and_Industrial_Research_Organisation&gt; ;
-          proj:hasSubActivity ex:Aerial ;
-          proj:hasSubActivity ex:Incidental ;
-          proj:hasSubActivity ex:Limnology ;
-          proj:hasSubActivity ex:Terrestrial ;
-          proj:hasSubActivity ex:Wetland ;
-          proj:isSubActivityOf &lt;http://www.environment.gov.au/science/nesp&gt; ;
-          proj:name "Improved management of feral animals in remote tropical Australia" ;
-          proj:objective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
+          proj:hadFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202&gt; ;
+          proj:hadFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050204&gt; ;
+          proj:hadFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050205&gt; ;
+          proj:hadFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050206&gt; ;
+          proj:hadPrincipalInvestigator &lt;http://orcid.org/0000-0002-5823-7364&gt; ;
+          proj:hadSponsor &lt;http://dbpedia.org/resource/Commonwealth_Scientific_and_Industrial_Research_Organisation&gt; ;
+          proj:hadSubActivity ex:Aerial ;
+          proj:hadSubActivity ex:Incidental ;
+          proj:hadSubActivity ex:Limnology ;
+          proj:hadSubActivity ex:Terrestrial ;
+          proj:hadSubActivity ex:Wetland ;
+          proj:wasSubActivityOf &lt;http://www.environment.gov.au/science/nesp&gt; ;
+          rdfs:label "Improved management of feral animals in remote tropical Australia" ;
+          proj:hadObjective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
           proj:plannedEndTime "2022-12-31T23:59:00"^^xsd:dateTime ;
           proj:plannedStartTime "2012-12-31T00:00:00"^^xsd:dateTime ;
           proj:projectParticipant &lt;mailto:peter.brenton@csiro.au&gt; ;
-          proj:projectPlan ex:FCY-project-plan ;
-          proj:wasFundedBy [
+          proj:hadPlan ex:FCY-project-plan ;
+          proj:wasFundedThrough [
             rdf:type proj:FundingAssociation ;
             proj:fundsProvided [
               rdf:type proj:SumOfMoney ;
@@ -288,7 +288,7 @@
           ex:Aerial
           rdf:type prov:Activity ;
           rdfs:label "Aerial feral animals survey" ;
-          proj:isSubActivityOf ex:cyferal-impact ;
+          proj:wasSubActivityOf ex:cyferal-impact ;
           prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
           prov:startedAtTime "2016-01-31T00:00:00"^^xsd:dateTime ;
           .
@@ -318,8 +318,8 @@
       </p>
       <p>
         A project or activity is typically organized through a set of sub-activities, which may be undertaken concurrently or consecutively, and may themselves be composed of further sub-activities.
-        Basic structure is captured through the <a href="#proj:hasSubActivity">proj:hasSubActivity</a> and <a href="#proj:isSubActivityOf">proj:isSubActivityOf</a> properties.
-        A project or activity is often related to or influenced by other activities, captured through the <a href="#proj:hasRelatedActivity">proj:hasRelatedActivity</a> property.
+        Basic structure is captured through the <a href="#proj:hadSubActivity">proj:hadSubActivity</a> and <a href="#proj:wasSubActivityOf">proj:wasSubActivityOf</a> properties.
+        A project or activity is often related to or influenced by other activities, captured through the <a href="#proj:RelatedActivity">proj:hadRelatedActivity</a> property.
         Details of each relationship are captured as properties of the individual <a href="https://www.w3.org/TR/prov-o/#ActivityInfluence">prov:ActivityInfluence</a>, using the <a href="https://www.w3.org/TR/prov-o/#hadRrole">prov:hadRole</a> and <a href="https://www.w3.org/TR/prov-o/#activity">prov:activity</a> properties, plus other properties as required.
       </p>
     </section>
@@ -342,8 +342,8 @@
         The standard roles of <i>leader</i>, <i>participant</i> are each implemented as a directly named property from an <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> to a <a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a>, and <i>sponsor</i> as a directly named property from a <a href="#proj:Project">proj:Project</a> to a <a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a>.
       </p>
       <p>
-        Basic funding arrangements are captured through the <a href="#proj:hasSponsor">proj:hasSponsor</a> and <a href="#proj:hasBudgetTotal">proj:hasBudgetTotal</a> properties.
-        More complex arrangements, for example if multiple funders are involved, can be captured through the <a href="#proj:isFundedThrough">proj:isFundedThrough</a> property, which links a funding agent with a funding amount in the context of a project.
+        Basic funding arrangements are captured through the <a href="#proj:hadSponsor">proj:hadSponsor</a> and <a href="#proj:hadBudgetTotal">proj:hadBudgetTotal</a> properties.
+        More complex arrangements, for example if multiple funders are involved, can be captured through the <a href="#proj:wasFundedThrough">proj:wasFundedThrough</a> property, which links a funding agent with a funding amount in the context of a project.
       </p>
       <p>
         Other relationships may be expressed using the <a href="https://www.w3.org/TR/prov-o/#qualifiedAssociation">prov:qualifiedAssociation</a> property.
@@ -492,24 +492,22 @@
           <p>
             <b>Properties:</b>
             | <a href="#proj:fundsProvided">fundsProvided</a>
-            | <a href="#proj:hasAreaOfInterest">hasAreaOfInterest</a>
-            | <a href="#proj:hasBudgetTotal">hasBudgetTotal</a>
-            | <a href="#proj:hasFieldOfResearch">hasFieldOfResearch</a>
-            | <a href="#proj:hasLeader">hasLeader</a>
-            | <a href="#proj:hasParticipant">hasParticipant</a>
-            | <a href="#proj:hasPrincipalInvestigator">hasPrincipalInvestigator</a>
-            | <a href="#proj:hasRelatedActivity">hasRelatedActivity</a>
-            | <a href="#proj:hasSponsor">hasSponsor</a>
-            | <a href="#proj:hasSubActivity">hasSubActivity</a>
-            | <a href="#proj:isFundedThrough">isFundedThrough</a>
-            | <a href="#proj:isSubActivityOf">isSubActivityOf</a>
+            | <a href="#proj:hadAreaOfInterest">hadAreaOfInterest</a>
+            | <a href="#proj:hadBudgetTotal">hadBudgetTotal</a>
+            | <a href="#proj:hadFieldOfResearch">hadFieldOfResearch</a>
+            | <a href="#proj:hadLeader">hadLeader</a>
+            | <a href="#proj:hadPrincipalInvestigator">hadPrincipalInvestigator</a>
+            | <a href="#proj:hadRelatedActivity">hadRelatedActivity</a>
+            | <a href="#proj:hadSponsor">hadSponsor</a>
+            | <a href="#proj:hadSubActivity">hadSubActivity</a>
+            | <a href="#proj:wasFundedThrough">wasFundedThrough</a>
+            | <a href="#proj:wasSubActivityOf">wasSubActivityOf</a>
             | <a href="#proj:moneyAmount">moneyAmount</a>
             | <a href="#proj:moneyCurrency">moneyCurrency</a>
-            | <a href="#proj:name">name</a>
-            | <a href="#proj:objective">objective</a>
+            | <a href="#proj:hadObjective">hadObjective</a>
             | <a href="#proj:plannedEndTime">plannedEndTime</a>
             | <a href="#proj:plannedStartTime">plannedStartTime</a>
-            | <a href="#proj:projectPlan">projectPlan</a>
+            | <a href="#proj:hadPlan">hadPlan</a>
             |
           </p>
         </section>
@@ -531,46 +529,29 @@
               </tbody>
             </table>
           </section>
-          <section id="proj:name">
-            <h4>Property: name</h4>
-            <p>
-              The name of the project.
-            </p>
-
-            <table class="definition">
-              <thead><tr><th>RDF Property:</th><th><a href="#proj:name">proj:name</a></th></tr></thead>
-              <tbody>
-                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#AnnotationProperty">owl:AnnotationProperty</a></td></tr>
-                <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
-                <tr><td class="prop">subpropertyOf:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a></td></tr>
-                <tr><td class="prop">Usage note:</td><td></td></tr>
-              </tbody>
-            </table>
-          </section>
-          <section id="proj:objective">
-            <h4>Property: objective</h4>
+          <section id="proj:hadObjective">
+            <h4>Property: had objective</h4>
             <p>
               The objective of the project.
             </p>
 
             <table class="definition">
-              <thead><tr><th>RDF Property:</th><th><a href="#proj:objective">proj:objective</a></th></tr></thead>
+              <thead><tr><th>RDF Property:</th><th><a href="#proj:hadObjective">proj:hadObjective</a></th></tr></thead>
               <tbody>
                 <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#AnnotationProperty">owl:AnnotationProperty</a></td></tr>
                 <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
-                <tr><td class="prop">subpropertyOf:</td><td><a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a></td></tr>
                 <tr><td class="prop">Usage note:</td><td></td></tr>
               </tbody>
             </table>
           </section>
-          <section id="proj:projectPlan">
-            <h4>Property: projectPlan</h4>
+          <section id="proj:hadPlan">
+            <h4>Property: had plan</h4>
             <p>
               The project plan.
             </p>
 
             <table class="definition">
-              <thead><tr><th>RDF Property:</th><th><a href="#proj:projectPlan">proj:projectPlan</a></th></tr></thead>
+              <thead><tr><th>RDF Property:</th><th><a href="#proj:hadPlan">proj:hadPlan</a></th></tr></thead>
               <tbody>
                 <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
                 <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
@@ -579,6 +560,10 @@
                 <tr><td class="prop">Usage note:</td><td></td></tr>
               </tbody>
             </table>
+
+            <p class="note">
+              A new property is required to associated a plan with a project activity because the domain of <a href="http://www.w3.org/ns/prov#hadPlan">prov:hadPlan</a> is <a href="http://www.w3.org/ns/prov#Association">prov:Association</a>.
+            </p>
           </section>
           <section id="proj:plannedStartTime">
             <h4>Property: plannedStartTime</h4>
@@ -612,14 +597,14 @@
               </tbody>
             </table>
           </section>
-          <section id="proj:hasLeader">
-            <h4>Property: hasLeader</h4>
+          <section id="proj:hadLeader">
+            <h4>Property: hadLeader</h4>
             <p>
               The party (person or organization) responsible for leading an activity.
             </p>
 
             <table class="definition">
-              <thead><tr><th>RDF Property:</th><th><a href="#proj:hasLeader">proj:hasLeader</a></th></tr></thead>
+              <thead><tr><th>RDF Property:</th><th><a href="#proj:hadLeader">proj:hadLeader</a></th></tr></thead>
               <tbody>
                 <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
                 <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a></td></tr>
@@ -627,14 +612,14 @@
               </tbody>
             </table>
           </section>
-          <section id="proj:hasSponsor">
-            <h4>Property: hasSponsor</h4>
+          <section id="proj:hadSponsor">
+            <h4>Property: hadSponsor</h4>
             <p>
               The party (person or organization) who is sponsoring a project.
             </p>
 
             <table class="definition">
-              <thead><tr><th>RDF Property:</th><th><a href="#proj:hasSponsor">proj:hasSponsor</a></th></tr></thead>
+              <thead><tr><th>RDF Property:</th><th><a href="#proj:hadSponsor">proj:hadSponsor</a></th></tr></thead>
               <tbody>
                 <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
                 <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
@@ -643,14 +628,14 @@
               </tbody>
             </table>
           </section>
-          <section id="proj:hasBudgetTotal">
-            <h4>Property: hasBudgetTotal</h4>
+          <section id="proj:hadBudgetTotal">
+            <h4>Property: hadBudgetTotal</h4>
             <p>
               The project budget or planned expenditure.
             </p>
 
             <table class="definition">
-              <thead><tr><th>RDF Property:</th><th><a href="#proj:hasBudgetTotal">proj:hasBudgetTotal</a></th></tr></thead>
+              <thead><tr><th>RDF Property:</th><th><a href="#proj:hadBudgetTotal">proj:hadBudgetTotal</a></th></tr></thead>
               <tbody>
                 <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
                 <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
@@ -662,14 +647,14 @@
         </section>
         <section id="vocab-project-sub">
           <h3>Project activity structure</h3>
-          <section id="proj:hasSubActivity">
-            <h4>Property: hasSubActivity</h4>
+          <section id="proj:hadSubActivity">
+            <h4>Property: hadSubActivity</h4>
             <p>
               Direct link to a subsidiary activity.
             </p>
 
             <table class="definition">
-              <thead><tr><th>RDF Property:</th><th><a href="#proj:hasSubActivity">proj:hasSubActivity</a></th></tr></thead>
+              <thead><tr><th>RDF Property:</th><th><a href="#proj:hadSubActivity">proj:hadSubActivity</a></th></tr></thead>
               <tbody>
                 <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
                 <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
@@ -678,34 +663,36 @@
               </tbody>
             </table>
           </section>
-          <section id="proj:isSubActivityOf">
-            <h4>Property: isSubActivityOf</h4>
+          <section id="proj:wasSubActivityOf">
+            <h4>Property: wasSubActivityOf</h4>
             <p>
               Direct link to a parent activity.
             </p>
 
             <table class="definition">
-              <thead><tr><th>RDF Property:</th><th><a href="#proj:isSubActivityOf">proj:isSubActivityOf</a></th></tr></thead>
+              <thead><tr><th>RDF Property:</th><th><a href="#proj:wasSubActivityOf">proj:wasSubActivityOf</a></th></tr></thead>
               <tbody>
                 <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
-                <tr><td class="prop">inverseOf:</td><td><a href="#proj:hasSubActivity">proj:hasSubActivity</a></td></tr>
+                <tr><td class="prop">inverseOf:</td><td><a href="#proj:hadSubActivity">proj:hadSubActivity</a></td></tr>
+                <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#wasInformedBy">prov:wasInformedBy</a></td></tr>
                 <tr><td class="prop">Usage note:</td><td> </td></tr>
               </tbody>
             </table>
           </section>
-          <section id="proj:hasRelatedActivity">
-            <h4>Property: hasRelatedActivity</h4>
+          <section id="proj:hadRelatedActivity">
+            <h4>Property: hadRelatedActivity</h4>
             <p>
               Link to a related activity association.
             </p>
 
             <table class="definition">
-              <thead><tr><th>RDF Property:</th><th><a href="#proj:hasRelatedActivity">proj:hasRelatedActivity</a></th></tr></thead>
+              <thead><tr><th>RDF Property:</th><th><a href="#proj:hadRelatedActivity">proj:hadRelatedActivity</a></th></tr></thead>
               <tbody>
                 <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
                 <tr><td class="prop">Domain:</td><td><a href="http://www.w3.org/ns/prov#Activity">prov:Activity</a></td></tr>
                 <tr><td class="prop">Range:</td><td><a href="http://www.w3.org/ns/prov#ActivityInfluence">prov:ActivityInfluence</a></td></tr>
                 <tr><td class="prop">inverseOf:</td><td><a href="http://www.w3.org/ns/prov#activity">prov:activity</a></td></tr>
+                <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#qualifiedInfluence">prov:qualifiedInfluence</a></td></tr>
                 <tr><td class="prop">Usage note:</td><td> </td></tr>
               </tbody>
             </table>
@@ -714,14 +701,14 @@
 
         <section id="vocab-project-stake">
           <h3>Project stakeholders</h3>
-          <section id="proj:hasParticipant">
-            <h4>Property: hasParticipant</h4>
+          <section id="prov:wasAssociatedWith">
+            <h4>Property: hadParticipant</h4>
             <p>
               Direct link to a party (person or organization) participating in the activity.
             </p>
 
             <table class="definition">
-              <thead><tr><th>RDF Property:</th><th><a href="#proj:hasParticipant">proj:hasParticipant</a></th></tr></thead>
+              <thead><tr><th>RDF Property:</th><th><a href="#prov:wasAssociatedWith">prov:wasAssociatedWith</a></th></tr></thead>
               <tbody>
                 <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
                 <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#wasAssociatedWith">prov:wasAssociatedWith</a></td></tr>
@@ -733,18 +720,19 @@
 
         <section id="vocab-project-funding">
           <h3>Project funding</h3>
-          <section id="proj:isFundedThrough">
-            <h4>Property: isFundedThrough</h4>
+          <section id="proj:wasFundedThrough">
+            <h4>Property: wasFundedThrough</h4>
             <p>
               Link to a description of a project funding arrangement.
             </p>
 
             <table class="definition">
-              <thead><tr><th>RDF Property:</th><th><a href="#proj:isFundedThrough">proj:isFundedThrough</a></th></tr></thead>
+              <thead><tr><th>RDF Property:</th><th><a href="#proj:wasFundedThrough">proj:wasFundedThrough</a></th></tr></thead>
               <tbody>
                 <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
                 <tr><td class="prop">Domain:</td><td><a href="#proj:Project">proj:Project</a></td></tr>
                 <tr><td class="prop">Range:</td><td><a href="#proj:FundingAssociation">proj:FundingAssociation</a></td></tr>
+                <tr><td class="prop">subPropertyOf:</td><td><a href="http://www.w3.org/ns/prov#qualifiedAssociation">prov:qualifiedAssociation</a></td></tr>
                 <tr><td class="prop">Usage note:</td><td> </td></tr>
               </tbody>
             </table>
@@ -798,30 +786,31 @@
               </tbody>
             </table>
           </section>
-          <section id="proj:hasPrincipalInvestigator">
-            <h4>Property: hasPrincipalInvestigator</h4>
+          <section id="proj:hadPrincipalInvestigator">
+            <h4>Property: hadPrincipalInvestigator</h4>
             <p>
               The person who acts as principal investigator on the research project.
             </p>
 
             <table class="definition">
-              <thead><tr><th>RDF Property:</th><th><a href="#proj:hasPrincipalInvestigator">proj:hasPrincipalInvestigator</a></th></tr></thead>
+              <thead><tr><th>RDF Property:</th><th><a href="#proj:hadPrincipalInvestigator">proj:hadPrincipalInvestigator</a></th></tr></thead>
               <tbody>
                 <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
                 <tr><td class="prop">Domain:</td><td><a href="#proj:ResearchProject">proj:ResearchProject</a></td></tr>
                 <tr><td class="prop">Range:</td><td><a href="http://xmlns.com/foaf/0.1/Person">foaf:Person</a></td></tr>
+                <tr><td class="prop">subPropertyOf:</td><td><a href="#proj:hadLeader">proj:hadLeader</a></td></tr>
                 <tr><td class="prop">Usage note:</td><td> </td></tr>
               </tbody>
             </table>
           </section>
-          <section id="proj:hasFieldOfResearch">
-            <h4>Property: hasFieldOfResearch</h4>
+          <section id="proj:hadFieldOfResearch">
+            <h4>Property: hadFieldOfResearch</h4>
             <p>
               The field of research of the research project.
             </p>
 
             <table class="definition">
-              <thead><tr><th>RDF Property:</th><th><a href="#proj:hasFieldOfResearch">proj:hasFieldOfResearch</a></th></tr></thead>
+              <thead><tr><th>RDF Property:</th><th><a href="#proj:hadFieldOfResearch">proj:FieldOfResearch</a></th></tr></thead>
               <tbody>
                 <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
                 <tr><td class="prop">Domain:</td><td><a href="#proj:ResearchProject">proj:ResearchProject</a></td></tr>

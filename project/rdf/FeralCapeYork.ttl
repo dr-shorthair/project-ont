@@ -24,7 +24,7 @@ proji:FeralCapeYork
 ex:Aerial
   rdf:type prov:Activity ;
   rdfs:label "Aerial feral animals survey" ;
-  proj:isSubActivityOf ex:cyferal-impact ;
+  proj:wasSubActivityOf ex:cyferal-impact ;
   proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
   proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
   prov:endedAtTime "2017-10-31T00:00:00"^^xsd:dateTime ;
@@ -63,16 +63,15 @@ ex:cyferal-biocollect
   rdfs:seeAlso <https://twitter.com/KalanEnterprise> ;
   rdfs:seeAlso <https://www.facebook.com/Kalan-Enterprises-177589252419524/> ;
   owl:sameAs proji:f0b53dfa-7bee-4d04-b0d3-6ec71049e70a ;
-  proj:hasBudgetTotal [
+  proj:hadBudgetTotal [
       rdf:type proj:SumOfMoney ;
       proj:moneyAmount "0"^^xsd:decimal ;
     ] ;
-  proj:hasLeader <http://www.csiro.au> ;
-  proj:hasParticipant <http://www.kalan.org.au/> ;
-  proj:hasParticipant <http://www.nespnorthern.edu.au/> ;
-  proj:isSubActivityOf <http://www.environment.gov.au/science/nesp> ;
-  proj:name "Improved management of feral animals in remote tropical Australia" ;
-  proj:objective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
+  proj:hadLeader <http://www.csiro.au> ;
+  proj:hadParticipant <http://www.kalan.org.au/> ;
+  proj:hadParticipant <http://www.nespnorthern.edu.au/> ;
+  proj:wasSubActivityOf <http://www.environment.gov.au/science/nesp> ;
+  proj:hadObjective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
   proj:plannedStartTime "2012-12-31T13:00:00Z"^^xsd:dateTime ;
   prov:atLocation [
       rdf:type prov:Location ;
@@ -152,24 +151,23 @@ ex:cyferal-impact
       proj:moneyAmount 0 ;
       proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
     ] ;
-  proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202> ;
-  proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050204> ;
-  proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050205> ;
-  proj:hasFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050206> ;
-  proj:hasPrincipalInvestigator <http://orcid.org/0000-0002-5823-7364> ;
-  proj:hasSponsor <http://dbpedia.org/resource/Commonwealth_Scientific_and_Industrial_Research_Organisation> ;
-  proj:hasSubActivity ex:Aerial ;
-  proj:hasSubActivity ex:Incidental ;
-  proj:hasSubActivity ex:Limnology ;
-  proj:hasSubActivity ex:Terrestrial ;
-  proj:hasSubActivity ex:Wetland ;
-  proj:isSubActivityOf <http://www.environment.gov.au/science/nesp> ;
-  proj:name "Improved management of feral animals in remote tropical Australia" ;
-  proj:objective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
+  proj:hadFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202> ;
+  proj:hadFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050204> ;
+  proj:hadFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050205> ;
+  proj:hadFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050206> ;
+  proj:hadPrincipalInvestigator <http://orcid.org/0000-0002-5823-7364> ;
+  proj:hadSponsor <http://dbpedia.org/resource/Commonwealth_Scientific_and_Industrial_Research_Organisation> ;
+  proj:hadSubActivity ex:Aerial ;
+  proj:hadSubActivity ex:Incidental ;
+  proj:hadSubActivity ex:Limnology ;
+  proj:hadSubActivity ex:Terrestrial ;
+  proj:hadSubActivity ex:Wetland ;
+  proj:wasSubActivityOf <http://www.environment.gov.au/science/nesp> ;
+  proj:hadObjective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
   proj:plannedEndTime "2022-12-31T23:59:00"^^xsd:dateTime ;
   proj:plannedStartTime "2012-12-31T00:00:00"^^xsd:dateTime ;
-  proj:projectParticipant <mailto:peter.brenton@csiro.au> ;
-  proj:projectPlan ex:FCY-project-plan ;
+  prov:wasAssociatedWith <mailto:peter.brenton@csiro.au> ;
+  proj:hadPlan ex:FCY-project-plan ;
   proj:wasFundedBy [
       rdf:type proj:FundingAssociation ;
       proj:fundsProvided [

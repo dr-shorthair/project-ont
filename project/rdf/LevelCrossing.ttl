@@ -1,5 +1,4 @@
 # baseURI: http://www.w3.org/ns/project/examples
-# imports: http://www.w3.org/ns/org
 # imports: http://www.w3.org/ns/project
 # prefix: ex
 
@@ -19,25 +18,14 @@
 org:Organization
   owl:equivalentClass prov:Organization ;
 .
-ex:examples
+proji:examples
   rdf:type owl:Ontology ;
-  dcterms:created "2017-08-29" ;
-  dcterms:creator [
-      rdf:type foaf:Person ;
-      rdfs:label "Simon J D COX" ;
-      owl:sameAs <http://orcid.org/0000-0002-3884-3420> ;
-      owl:sameAs <http://people.csiro.au/Simon-Cox> ;
-      owl:sameAs <http://researchgate.net/profile/Simon_Cox3> ;
-    ] ;
-  rdfs:comment "Some examples using the proposed PROJECT ontology" ;
-  owl:imports <http://www.w3.org/ns/org> ;
   owl:imports <http://www.w3.org/ns/project> ;
 .
 ex:BentleighLevelCrossingRemoval
   rdf:type prov:Activity ;
   rdfs:label "Bentleigh level crossing removal" ;
-  proj:isSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
-  proj:name "Bentleigh level crossing removal" ;
+  proj:wasSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
   proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
   proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/Bentleigh_railway_station> ;
@@ -52,7 +40,7 @@ ex:BentleighLevelCrossingRemoval
 ex:BurkeRoadLevelCrossingRemoval
   rdf:type prov:Activity ;
   rdfs:label "Burke Road level crossing removal" ;
-  proj:isSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
+  proj:wasSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
   proj:plannedEndTime "2016-03-31T00:00:00"^^xsd:dateTime ;
   proj:plannedStartTime "2015-10-01T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/Gardiner_railway_station> ;
@@ -66,7 +54,7 @@ ex:Joint-Venture-Partner
 ex:McKinnonRoadLevelCrossingRemoval
   rdf:type prov:Activity ;
   rdfs:label "McKinnon Road level crossing removal" ;
-  proj:isSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
+  proj:wasSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
   proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
   proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/McKinnon_railway_station> ;
@@ -85,8 +73,7 @@ ex:Negative-economic-impact
 ex:NorthRoadLevelCrossingRemoval
   rdf:type prov:Activity ;
   rdfs:label "North Road level crossing removal (Ormond)" ;
-  proj:isSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
-  proj:name "North Road level crossing removal (Ormond)" ;
+  proj:wasSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
   proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
   proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/Ormond_railway_station> ;
@@ -101,22 +88,19 @@ ex:NorthRoadLevelCrossingRemoval
 ex:VictoriaLevelCrossingRemovalPhase1
   rdf:type proj:Project ;
   rdfs:label "Victoria level-crossing removal - phase 1" ;
-  proj:hasBudgetTotal [
+  proj:hadBudgetTotal [
       rdf:type proj:SumOfMoney ;
       rdfs:label "Level crossing removal phase 1 budget " ;
       proj:moneyAmount "524000000"^^xsd:decimal ;
       proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
     ] ;
-  proj:hasLeader ex:johnholland-kbr ;
-  proj:hasParticipant <http://www.metrotrains.com.au/> ;
-  proj:hasParticipant <https://www.ptv.vic.gov.au/> ;
-  proj:hasParticipant <https://www.vicroads.vic.gov.au/> ;
-  proj:hasSponsor <http://levelcrossings.vic.gov.au/about/about-the-authority> ;
-  proj:hasSubActivity ex:BentleighLevelCrossingRemoval ;
-  proj:hasSubActivity ex:BurkeRoadLevelCrossingRemoval ;
-  proj:hasSubActivity ex:McKinnonRoadLevelCrossingRemoval ;
-  proj:hasSubActivity ex:NorthRoadLevelCrossingRemoval ;
-  proj:isFundedThrough [
+  proj:hadLeader ex:johnholland-kbr ;
+  proj:hadSponsor <http://levelcrossings.vic.gov.au/about/about-the-authority> ;
+  proj:hadSubActivity ex:BentleighLevelCrossingRemoval ;
+  proj:hadSubActivity ex:BurkeRoadLevelCrossingRemoval ;
+  proj:hadSubActivity ex:McKinnonRoadLevelCrossingRemoval ;
+  proj:hadSubActivity ex:NorthRoadLevelCrossingRemoval ;
+  proj:wasFundedThrough [
       rdf:type proj:FundingAssociation ;
       rdfs:label "Level crossing removal project phase 1 funding arrangement" ;
       rdfs:seeAlso <http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/> ;
@@ -127,8 +111,7 @@ ex:VictoriaLevelCrossingRemovalPhase1
         ] ;
       prov:agent <http://www.vic.gov.au/> ;
     ] ;
-  proj:name "Victoria level-crossing removal - phase 1" ;
-  proj:objective """<p>Phase 1 of project to remove 50 dangerous and congested level crossings across Melbourne. </p>
+  proj:hadObjective """<p>Phase 1 of project to remove 50 dangerous and congested level crossings across Melbourne. </p>
 <p>Removing the crossings will:</p>
 <ul>
 <li>deliver significant safety improvements for drivers and pedestrians</li>
@@ -144,6 +127,23 @@ ex:VictoriaLevelCrossingRemovalPhase1
   prov:atLocation <https://dbpedia.org/resource/Melbourne> ;
   prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
   prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
+  prov:wasAssociatedWith <http://www.metrotrains.com.au/> ;
+  prov:wasAssociatedWith <https://www.ptv.vic.gov.au/> ;
+  prov:wasAssociatedWith <https://www.vicroads.vic.gov.au/> ;
+.
+ex:examples
+  rdf:type owl:Ontology ;
+  dcterms:created "2017-08-29" ;
+  dcterms:creator [
+      rdf:type foaf:Person ;
+      rdfs:label "Simon J D COX" ;
+      owl:sameAs <http://orcid.org/0000-0002-3884-3420> ;
+      owl:sameAs <http://people.csiro.au/Simon-Cox> ;
+      owl:sameAs <http://researchgate.net/profile/Simon_Cox3> ;
+    ] ;
+  rdfs:comment "Some examples using the proposed PROJECT ontology" ;
+  owl:imports <http://www.w3.org/ns/org> ;
+  owl:imports <http://www.w3.org/ns/project> ;
 .
 ex:johnholland-kbr
   rdf:type org:FormalOrganization ;
