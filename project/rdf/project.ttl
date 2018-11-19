@@ -117,8 +117,9 @@ proj:fundsProvided
 .
 proj:grantNumber
   rdf:type owl:AnnotationProperty ;
+  rdfs:comment "The grant or contract number assigned to the funding arrangement by the funder" ;
   rdfs:domain proj:FundingAssociation ;
-  rdfs:label "Funder's grant number" ;
+  rdfs:label "grant or contract number" ;
   rdfs:range xsd:string ;
 .
 proj:hadAreaOfInterest

@@ -339,7 +339,7 @@
         PROJECT provides a number of ways to represent the relationships of stakeholders to projects and activities.
       </p>
       <p>
-        The standard roles of <i>leader</i>, <i>participant</i> are each implemented as a directly named property from an <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> to a <a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a>, and <i>sponsor</i> as a directly named property from a <a href="#proj:Project">proj:Project</a> to a <a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a>.
+        The standard role of <i>leader</i> is implemented as a directly named property from an <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activity</a> to a <a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a>, and <i>sponsor</i> as a directly named property from a <a href="#proj:Project">proj:Project</a> to a <a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a>.
       </p>
       <p>
         Basic funding arrangements are captured through the <a href="#proj:hadSponsor">proj:hadSponsor</a> and <a href="#proj:hadBudgetTotal">proj:hadBudgetTotal</a> properties.
@@ -740,7 +740,7 @@
           <section id="proj:FundingAssociation">
             <h4>Class: FundingAssociation</h4>
             <p>
-              Association class to support description of a project funding arrangement.
+              Association class to support description of a project funding arrangement, such as a grant or contract.
             </p>
 
             <table class="definition">
@@ -770,7 +770,7 @@
           <section id="proj:grantNumber">
             <h4>Property: grantNumber</h4>
             <p>
-              Identifier assigned by the funder
+              Identifier assigned by the funder. 'Grant number' is common for research or charitable projects, 'Contract number' in a commercial context.
             </p>
 
             <table class="definition">
