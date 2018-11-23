@@ -110,6 +110,15 @@ proj:SumOfMoney
       owl:onProperty proj:moneyCurrency ;
     ] ;
 .
+proj:fundingScheme
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment """Link to description of funding scheme, e.g.
+
+- European Commission Horizon 2020 <https://ec.europa.eu/programmes/horizon2020/>
+- Australian National Collaborative Research Infrastructure Strategy <https://www.education.gov.au/national-collaborative-research-infrastructure-strategy-ncris>""" ;
+  rdfs:domain proj:FundingAssociation ;
+  rdfs:label "pointer to funding-scheme" ;
+.
 proj:fundsProvided
   rdf:type owl:ObjectProperty ;
   rdfs:label "funding provided" ;
@@ -318,4 +327,7 @@ proji:SubActivity
 .
 prov:Role
   rdfs:subClassOf skos:Concept ;
+.
+prov:agent
+  skos:scopeNote "When used in the context of the sub-class proj:FundingAssociation, the value of prov:agent should identify the agent which provided the funds." ;
 .

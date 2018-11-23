@@ -752,6 +752,21 @@
               </tbody>
             </table>
           </section>
+          <section id="proj:fundingScheme">
+            <h4>Property: fundingScheme</h4>
+            <p>
+              Pointer to the scheme through which the funding was provided.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="#proj:fundingScheme">proj:fundingScheme</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="#proj:FundingAssociation">proj:FundingAssociation</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td>The value should identify the scheme through which the funding was provided - e.g. EC Horizon 2020, Australia's National Collaborative Research Infrastructure Strategy. </td></tr>
+              </tbody>
+            </table>
+          </section>
           <section id="proj:fundsProvided">
             <h4>Property: fundsProvided</h4>
             <p>
@@ -780,6 +795,22 @@
                 <tr><td class="prop">Domain:</td><td><a href="#proj:FundingAssociation">proj:FundingAssociation</a></td></tr>
                 <tr><td class="prop">Range:</td><td><a href="https://www.w3.org/TR/xmlschema11-2/#string">xsd:string</a></td></tr>
                 <tr><td class="prop">Usage note:</td><td> </td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section id="prov:agent">
+            <h4>Property: agent</h4>
+            <p>
+              Pointer to the agent which provided the funds.
+            </p>
+
+            <table class="definition">
+              <thead><tr><th>RDF Property:</th><th><a href="#prov:agent">prov:agent</a></th></tr></thead>
+              <tbody>
+                <tr><td class="prop">Type:</td><td><a href="http://www.w3.org/2002/07/owl#ObjectProperty">owl:ObjectProperty</a></td></tr>
+                <tr><td class="prop">Domain:</td><td><a href="#prov:Association">prov:Association</a></td></tr>
+                <tr><td class="prop">Range:</td><td><a href="#prov:Agent">prov:Agent</a></td></tr>
+                <tr><td class="prop">Usage note:</td><td>When used in the context of the sub-class proj:FundingAssociation, the value of prov:agent should identify the agent which provided the funds. </td></tr>
               </tbody>
             </table>
           </section>
