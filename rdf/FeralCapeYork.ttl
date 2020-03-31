@@ -1,0 +1,186 @@
+# baseURI: http://www.w3.org/ns/project/FeralCapeYork
+# imports: http://www.w3.org/ns/org
+# imports: http://www.w3.org/ns/project
+
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <http://www.w3.org/ns/project/examples#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix proj: <http://www.w3.org/ns/project#> .
+@prefix proji: <http://www.w3.org/ns/project/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+proji:FeralCapeYork
+  rdf:type owl:Ontology ;
+  owl:imports <http://www.w3.org/ns/org> ;
+  owl:imports <http://www.w3.org/ns/project> ;
+.
+ex:Aerial
+  rdf:type prov:Activity ;
+  rdfs:label "Aerial feral animals survey" ;
+  proj:wasSubActivityOf ex:cyferal-impact ;
+  proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
+  proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
+  prov:endedAtTime "2017-10-31T00:00:00"^^xsd:dateTime ;
+  prov:startedAtTime "2016-01-31T00:00:00"^^xsd:dateTime ;
+.
+ex:CSIRO
+  rdf:type org:FormalOrganization ;
+  rdfs:label "Commonwealth Scientific and Industrial Research Organisation" ;
+.
+ex:FeralCapeYork
+  rdf:type owl:Ontology ;
+  owl:imports <http://www.w3.org/ns/org> ;
+  owl:imports <http://www.w3.org/ns/project> ;
+.
+ex:cyferal-biocollect
+  rdf:type proj:Project ;
+  dc:description "Conduct a broad range of scientific research in the Archer River Basin Cape York Penisnula to objectively assess the impact of feral animals on natural and social values.  Establish a robust baseline of feral animal distribution and describe the impact of these animals on freshwater ecosystems, biodiversity and cultural values. " ;
+  dc:subject """\"ecoScienceType\": [
+    \"functional ecology\",
+    \"landscape ecology\",
+    \"macroecology\",
+    \"other\",
+    \"population dynamics\",
+    \"restoration ecology\",
+    \"species distribution modelling\",
+    \"long-term community monitoring\",
+    \"behavioural ecology\",
+    \"disturbances\",
+    \"productivity\",
+    \"species decline\",
+    \"predator-prey interactions\",
+    \"biodiversity inventory\"
+  ]""" ;
+  dc:subject "pig,cape york,indigenous,feral,animal,management,pig,horse,cat,buffalo" ;
+  rdfs:label "Improved management of feral animals in remote tropical Australia" ;
+  rdfs:seeAlso <https://twitter.com/KalanEnterprise> ;
+  rdfs:seeAlso <https://www.facebook.com/Kalan-Enterprises-177589252419524/> ;
+  owl:sameAs proji:f0b53dfa-7bee-4d04-b0d3-6ec71049e70a ;
+  proj:hadBudgetTotal [
+      rdf:type proj:SumOfMoney ;
+      proj:moneyAmount "0"^^xsd:decimal ;
+    ] ;
+  proj:hadLeader <http://www.csiro.au> ;
+  proj:hadParticipant <http://www.kalan.org.au/> ;
+  proj:hadParticipant <http://www.nespnorthern.edu.au/> ;
+  proj:wasSubActivityOf <http://www.environment.gov.au/science/nesp> ;
+  proj:hadObjective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
+  proj:plannedStartTime "2012-12-31T13:00:00Z"^^xsd:dateTime ;
+  prov:atLocation [
+      rdf:type prov:Location ;
+      rdfs:comment """\"coverage\": {
+    \"fid\": \"\",
+    \"centre\": [
+      \"142.60391235351562\",
+      \"-13.654768697793203\"
+    ],
+    \"state\": [
+      \"Queensland (including Coastal Waters)\"
+    ],
+    \"layerName\": \"\",
+    \"datum\": \"\",
+    \"type\": \"Polygon\",
+    \"ibra\": [
+      \"Cape York Peninsula\"
+    ],
+    \"imcra4_pb\": [
+      \"Northeast Shelf Transition\",
+      \"Northern Shelf Province\"
+    ],
+    \"areaKmSq\": 28920.24227487258,
+    \"nrm\": [
+      \"Cape York\"
+    ],
+    \"bbox\": \"\",
+    \"name\": \"\",
+    \"coordinates\": [
+      [
+        [
+          141.43524169921875,
+          -14.168534269226564
+        ],
+        [
+          141.43524169921875,
+          -13.141003126359843
+        ],
+        [
+          143.77258300781247,
+          -13.141003126359843
+        ],
+        [
+          143.77258300781247,
+          -14.168534269226564
+        ],
+        [
+          141.43524169921875,
+          -14.168534269226564
+        ]
+      ]
+    ],
+    \"uncertainty\": \"\",
+    \"precision\": \"\",
+    \"pid\": 6643847,
+    \"decimalLatitude\": -13.654768697793203,
+    \"decimalLongitude\": 142.60391235351562,
+    \"locality\": \"Rokeby Rd, Queensland 4892, Australia\",
+    \"lga\": [
+      \"Lockhart River (S)\",
+      \"Pormpuraaw (S)\",
+      \"Aurukun (S)\",
+      \"Cook (S)\"
+    ],
+    \"aream2\": 28752876166.73096
+  },""" ;
+    ] ;
+  foaf:homepage <http://apncapeyork.org/> ;
+  foaf:img <https://ecodata.ala.org.au/uploads/2016-09/thumb_Pigs_SUSSCRO_coastal_plains_south_of_Aurukun_%2816%29.JPG> ;
+.
+ex:cyferal-impact
+  rdf:type proj:Project ;
+  rdf:type proj:ResearchProject ;
+  rdfs:label "Improved management of feral animals in remote tropical Australia" ;
+  proj:budgetTotal [
+      rdf:type proj:SumOfMoney ;
+      proj:moneyAmount 0 ;
+      proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+    ] ;
+  proj:hadFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202> ;
+  proj:hadFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050204> ;
+  proj:hadFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050205> ;
+  proj:hadFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050206> ;
+  proj:hadPrincipalInvestigator <http://orcid.org/0000-0002-5823-7364> ;
+  proj:hadSponsor <http://dbpedia.org/resource/Commonwealth_Scientific_and_Industrial_Research_Organisation> ;
+  proj:hadSubActivity ex:Aerial ;
+  proj:hadSubActivity ex:Incidental ;
+  proj:hadSubActivity ex:Limnology ;
+  proj:hadSubActivity ex:Terrestrial ;
+  proj:hadSubActivity ex:Wetland ;
+  proj:wasSubActivityOf <http://www.environment.gov.au/science/nesp> ;
+  proj:hadObjective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
+  proj:plannedEndTime "2022-12-31T23:59:00"^^xsd:dateTime ;
+  proj:plannedStartTime "2012-12-31T00:00:00"^^xsd:dateTime ;
+  prov:wasAssociatedWith <mailto:peter.brenton@csiro.au> ;
+  proj:hadPlan ex:FCY-project-plan ;
+  proj:wasFundedBy [
+      rdf:type proj:FundingAssociation ;
+      proj:fundsProvided [
+          rdf:type proj:SumOfMoney ;
+          proj:moneyAmount 0 ;
+          proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+        ] ;
+      prov:agent <http://dbpedia.org/resource/Government_of_Australia> ;
+    ] ;
+  prov:atLocation <http://dbpedia.org/resource/Archer_River,_Queensland> ;
+  prov:generated <https://doi.org/10.1071/WF15133> ;
+  prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
+.
+prov:Organization
+  owl:equivalentClass org:Organization ;
+.
