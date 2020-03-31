@@ -13,7 +13,7 @@ var respecConfig = {
     ]
   }],
   shortName: "vocab-project",
-  edDraftURI: "http://dr-shorthair.github.io/ont/project/",
+  edDraftURI: "http://dr-shorthair.github.io/project-ont/docs/",
 //  wg: "Data eXchange Working Group",
 //  wgURI: "https://www.w3.org/2017/dxwg/",
 //  wgPublicList: "public-dxwg-comments",
@@ -55,5 +55,5 @@ var respecConfig = {
       title:"VIVO-ISF Data Standard"
     }
   },
-  issueBase: "https://github.com/w3c/dxwg/issues/"
+  issueBase: "https://github.com/dr-shorthair/project-ont/issues"
 };
