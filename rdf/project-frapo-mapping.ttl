@@ -1,10 +1,10 @@
-# baseURI: http://www.w3.org/ns/project/frapo
+# baseURI: http://linked.data.gov.au/def/project/frapo
 # imports: http://purl.org/cerif/frapo/
 # imports: http://purl.org/dc/terms/
-# imports: http://www.w3.org/ns/project
+# imports: http://linked.data.gov.au/def/project
 # prefix: frapo
 
-@prefix frapo: <http://www.w3.org/ns/project/frapo#> .
+@prefix frapo: <http://linked.data.gov.au/def/project/frapo#> .
 @prefix frapo1: <http://purl.org/cerif/frapo/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -12,7 +12,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 frapo1:Funding
-  rdfs:subClassOf <http://www.w3.org/ns/project#SumOfMoney> ;
+  rdfs:subClassOf <http://linked.data.gov.au/def/project#SumOfMoney> ;
 .
 frapo1:InfrastructureEntity
   rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
@@ -23,10 +23,10 @@ frapo1:hasOutput
 frapo1:isOutputOf
   rdfs:subPropertyOf <http://www.w3.org/ns/prov#wasGeneratedBy> ;
 .
-<http://www.w3.org/ns/project/frapo>
+<http://linked.data.gov.au/def/project/frapo>
   rdf:type owl:Ontology ;
   owl:imports frapo1: ;
   owl:imports <http://purl.org/dc/terms/> ;
-  owl:imports <http://www.w3.org/ns/project> ;
+  owl:imports <http://linked.data.gov.au/def/project> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .

@@ -1,21 +1,21 @@
-# baseURI: http://www.w3.org/ns/project/sdo
+# baseURI: http://linked.data.gov.au/def/project/sdo
 # imports: http://purl.org/dc/terms/
 # imports: http://topbraid.org/schema/schema-single-range
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: http://www.w3.org/ns/project
+# imports: http://linked.data.gov.au/def/project
 # prefix: sdo
 
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sdo: <http://www.w3.org/ns/project/sdo#> .
+@prefix sdo: <http://linked.data.gov.au/def/project/sdo#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.w3.org/ns/project/sdo>
+<http://linked.data.gov.au/def/project/sdo>
   rdf:type owl:Ontology ;
   owl:imports dcterms: ;
   owl:imports <http://topbraid.org/schema/schema-single-range> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <http://www.w3.org/ns/project> ;
+  owl:imports <http://linked.data.gov.au/def/project> ;
 .

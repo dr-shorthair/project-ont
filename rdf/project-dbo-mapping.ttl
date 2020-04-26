@@ -1,10 +1,10 @@
-# baseURI: http://www.w3.org/ns/project/dbo
+# baseURI: http://linked.data.gov.au/def/project/dbo
 # imports: http://dbpedia.org/ontology/
 # imports: http://purl.org/dc/terms/
-# imports: http://www.w3.org/ns/project
+# imports: http://linked.data.gov.au/def/project
 # prefix: dbo
 
-@prefix dbo: <http://www.w3.org/ns/project/dbo#> .
+@prefix dbo: <http://linked.data.gov.au/def/project/dbo#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -22,19 +22,19 @@
 <http://dbpedia.org/ontology/projectStartDate>
   rdfs:subPropertyOf <http://www.w3.org/ns/prov#startedAtTime> ;
 .
-<http://www.w3.org/ns/project#Project>
+<http://linked.data.gov.au/def/project#Project>
   owl:equivalentClass <http://dbpedia.org/ontology/Project> ;
 .
-<http://www.w3.org/ns/project#ResearchProject>
+<http://linked.data.gov.au/def/project#ResearchProject>
   owl:equivalentClass <http://dbpedia.org/ontology/ResearchProject> ;
 .
-<http://www.w3.org/ns/project#objective>
+<http://linked.data.gov.au/def/project#objective>
   owl:equivalentProperty <http://dbpedia.org/ontology/projectObjective> ;
 .
-<http://www.w3.org/ns/project/dbo>
+<http://linked.data.gov.au/def/project/dbo>
   rdf:type owl:Ontology ;
   owl:imports <http://dbpedia.org/ontology/> ;
   owl:imports <http://purl.org/dc/terms/> ;
-  owl:imports <http://www.w3.org/ns/project> ;
+  owl:imports <http://linked.data.gov.au/def/project> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .

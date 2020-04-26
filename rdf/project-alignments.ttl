@@ -1,4 +1,4 @@
-# baseURI: http://www.w3.org/ns/project-alignments
+# baseURI: http://linked.data.gov.au/def/project-alignments
 # imports: http://dbpedia.org/ontology/Organisation
 # imports: http://dbpedia.org/ontology/Project
 # imports: http://dbpedia.org/ontology/ResearchProject
@@ -23,7 +23,7 @@
 # imports: http://vocab.deri.ie/pdo
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://www.w3.org/ns/org
-# imports: http://www.w3.org/ns/project
+# imports: http://linked.data.gov.au/def/project
 # imports: http://www.w3.org/ns/prov-o
 # imports: http://xmlns.com/foaf/0.1
 
@@ -40,8 +40,8 @@
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pdo: <http://ontologies.smile.deri.ie/pdo#> .
-@prefix proj: <http://www.w3.org/ns/project#> .
-@prefix proji: <http://www.w3.org/ns/project/> .
+@prefix proj: <http://linked.data.gov.au/def/project#> .
+@prefix proji: <http://linked.data.gov.au/def/project/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -169,10 +169,10 @@ proj:moneyAmount
 proj:moneyCurrency
   owl:equivalentProperty schemaorg:currency ;
 .
-proj:plannedEndTime
+proj:plannedEnd
   rdfs:subPropertyOf schemaorg:scheduledTime ;
 .
-<http://www.w3.org/ns/project-alignments>
+<http://linked.data.gov.au/def/project-alignments>
   rdf:type owl:Ontology ;
   dc:creator "Simon J D COX, CSIRO" ;
   dct:created "2017-08-14"^^xsd:date ;
@@ -203,7 +203,7 @@ proj:plannedEndTime
   owl:imports <http://vocab.deri.ie/pdo> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/ns/org> ;
-  owl:imports <http://www.w3.org/ns/project> ;
+  owl:imports <http://linked.data.gov.au/def/project> ;
   owl:imports <http://www.w3.org/ns/prov-o> ;
   owl:imports <http://xmlns.com/foaf/0.1> ;
 .
