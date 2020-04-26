@@ -1,14 +1,14 @@
-# baseURI: http://www.w3.org/ns/project/examples
-# imports: http://www.w3.org/ns/project
+# baseURI: http://linked.data.gov.au/def/project/examples
+# imports: http://linked.data.gov.au/def/project
 # prefix: ex
 
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ex: <http://www.w3.org/ns/project/examples#> .
+@prefix ex: <http://linked.data.gov.au/def/project/examples#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix proj: <http://www.w3.org/ns/project#> .
-@prefix proji: <http://www.w3.org/ns/project/> .
+@prefix proj: <http://linked.data.gov.au/def/project#> .
+@prefix proji: <http://linked.data.gov.au/def/project/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -20,14 +20,14 @@ org:Organization
 .
 proji:examples
   rdf:type owl:Ontology ;
-  owl:imports <http://www.w3.org/ns/project> ;
+  owl:imports <http://linked.data.gov.au/def/project> ;
 .
 ex:BentleighLevelCrossingRemoval
   rdf:type prov:Activity ;
   rdfs:label "Bentleigh level crossing removal" ;
   proj:wasSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
-  proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
-  proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
+  proj:plannedEnd "2017-03-31T00:00:00"^^xsd:dateTime ;
+  proj:plannedStart "2016-01-31T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/Bentleigh_railway_station> ;
   prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
   prov:qualifiedAssociation [
@@ -41,8 +41,8 @@ ex:BurkeRoadLevelCrossingRemoval
   rdf:type prov:Activity ;
   rdfs:label "Burke Road level crossing removal" ;
   proj:wasSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
-  proj:plannedEndTime "2016-03-31T00:00:00"^^xsd:dateTime ;
-  proj:plannedStartTime "2015-10-01T00:00:00"^^xsd:dateTime ;
+  proj:plannedEnd "2016-03-31T00:00:00"^^xsd:dateTime ;
+  proj:plannedStart "2015-10-01T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/Gardiner_railway_station> ;
   prov:endedAtTime "2016-02-28T00:00:00"^^xsd:dateTime ;
   prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
@@ -55,8 +55,8 @@ ex:McKinnonRoadLevelCrossingRemoval
   rdf:type prov:Activity ;
   rdfs:label "McKinnon Road level crossing removal" ;
   proj:wasSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
-  proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
-  proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
+  proj:plannedEnd "2017-03-31T00:00:00"^^xsd:dateTime ;
+  proj:plannedStart "2016-01-31T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/McKinnon_railway_station> ;
   prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
   prov:qualifiedAssociation [
@@ -74,8 +74,8 @@ ex:NorthRoadLevelCrossingRemoval
   rdf:type prov:Activity ;
   rdfs:label "North Road level crossing removal (Ormond)" ;
   proj:wasSubActivityOf ex:VictoriaLevelCrossingRemovalPhase1 ;
-  proj:plannedEndTime "2017-03-31T00:00:00"^^xsd:dateTime ;
-  proj:plannedStartTime "2016-01-31T00:00:00"^^xsd:dateTime ;
+  proj:plannedEnd "2017-03-31T00:00:00"^^xsd:dateTime ;
+  proj:plannedStart "2016-01-31T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/Ormond_railway_station> ;
   prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
   prov:qualifiedAssociation [
@@ -122,8 +122,8 @@ ex:VictoriaLevelCrossingRemovalPhase1
 <li>revitalise local communities, with many areas benefiting from station rebuilds</li>
 <li>enable more trains to run more often and on time.</li>
 </ul>"""^^rdf:HTML ;
-  proj:plannedEndTime "2017-03-31T23:59:00"^^xsd:dateTime ;
-  proj:plannedStartTime "2015-10-01T00:00:00"^^xsd:dateTime ;
+  proj:plannedEnd "2017-03-31T23:59:00"^^xsd:dateTime ;
+  proj:plannedStart "2015-10-01T00:00:00"^^xsd:dateTime ;
   prov:atLocation <https://dbpedia.org/resource/Melbourne> ;
   prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
   prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
@@ -143,7 +143,7 @@ ex:examples
     ] ;
   rdfs:comment "Some examples using the proposed PROJECT ontology" ;
   owl:imports <http://www.w3.org/ns/org> ;
-  owl:imports <http://www.w3.org/ns/project> ;
+  owl:imports <http://linked.data.gov.au/def/project> ;
 .
 ex:johnholland-kbr
   rdf:type org:FormalOrganization ;
