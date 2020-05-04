@@ -331,56 +331,58 @@ ex:FA3
             <tr>
                 <th>Description</th>
                 <td>
-                    
+<p>                    
 A Project is a planned activity with a budget, a sponsor, and a leader.
-
-Project stakeholders are indicated using the `prov:qualifiedAssociation` structure which allows their role to be catpured. Some special stakeholders have specific sub-properties with the roles fixed, including project-leader, project-participant, and project-funder.
-
-Activities within a project are indicated using the `proj:hasSubActivity` (simple) or `proj:subActivityAssociation` properties - the latter allowing the nature of the relationshp to be described as well. 
-
-![Project details](../images/project.png)
-
-
+</p>
+<p>
+    Project stakeholders are indicated using the `prov:qualifiedAssociation` structure which allows their role to be catpured. Some special stakeholders have specific sub-properties with the roles fixed, including project-leader, project-participant, and project-funder.
+</p>
+<p>
+    Activities within a project are indicated using the `proj:hasSubActivity` (simple) or `proj:subActivityAssociation` properties - the latter allowing the nature of the relationshp to be described as well. 
+</p>
+<p>
+    <img alt="Project details" src="../images/project.png"/>
+</p>               
                 </td>
             </tr>
             <tr>
                 <th>Example</th>
                 <td>
-                    
+<pre>                    
 ex:Project1
-rdf:type proj:Project ;
-rdfs:label "Victoria level-crossing removal - phase 1" ;
-proj:hadBudgetTotal [
-  rdf:type proj:SumOfMoney ;
-  rdfs:label "Level crossing removal phase 1 budget" ;
-  proj:moneyAmount "524000000"^^xsd:decimal ;
-  proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
-] ;
-proj:hadLeader ex:johnholland-kbr ;
-proj:hadSponsor <http://levelcrossings.vic.gov.au/about/about-the-authority> ;
-proj:hadSubActivity ex:BentleighLevelCrossingRemoval ;
-proj:hadSubActivity ex:BurkeRoadLevelCrossingRemoval ;
-proj:hadSubActivity ex:McKinnonRoadLevelCrossingRemoval ;
-proj:hadSubActivity ex:NorthRoadLevelCrossingRemoval ;
-proj:wasFundedThrough [
-  rdf:type proj:FundingAssociation ;
-  rdfs:label "Level crossing removal project phase 1 funding arrangement" ;
-  rdfs:seeAlso <http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/> ;
-  proj:fundsProvided [
-    rdf:type proj:SumOfMoney ;
-    proj:moneyAmount "524000000"^^xsd:decimal ;
-    proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
-  ] ;
-  prov:agent <http://www.vic.gov.au/> ;
-] ;
-rdfs:label "Victoria level-crossing removal - phase 1" ;
-proj:plannedEnd "2017-03-31"^^xsd:date ;
-proj:plannedStart "2015-10-01"^^xsd:date ;
-prov:atLocation <https://dbpedia.org/resource/Melbourne> ;
-prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
-prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
+    rdf:type proj:Project ;
+    rdfs:label "Victoria level-crossing removal - phase 1" ;
+    proj:hadBudgetTotal [
+        rdf:type proj:SumOfMoney ;
+        rdfs:label "Level crossing removal phase 1 budget" ;
+        proj:moneyAmount "524000000"^^xsd:decimal ;
+        proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
+    ] ;
+    proj:hadLeader ex:johnholland-kbr ;
+    proj:hadSponsor &lt;http://levelcrossings.vic.gov.au/about/about-the-authority&gt; ;
+    proj:hadSubActivity ex:BentleighLevelCrossingRemoval ;
+    proj:hadSubActivity ex:BurkeRoadLevelCrossingRemoval ;
+    proj:hadSubActivity ex:McKinnonRoadLevelCrossingRemoval ;
+    proj:hadSubActivity ex:NorthRoadLevelCrossingRemoval ;
+    proj:wasFundedThrough [
+        rdf:type proj:FundingAssociation ;
+        rdfs:label "Level crossing removal project phase 1 funding arrangement" ;
+        rdfs:seeAlso &lt;http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/&gt; ;
+        proj:fundsProvided [
+            rdf:type proj:SumOfMoney ;
+            proj:moneyAmount "524000000"^^xsd:decimal ;
+            proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
+        ] ;
+        prov:agent &lt;http://www.vic.gov.au/&gt; ;
+    ] ;
+    rdfs:label "Victoria level-crossing removal - phase 1" ;
+    proj:plannedEnd "2017-03-31"^^xsd:date ;
+    proj:plannedStart "2015-10-01"^^xsd:date ;
+    prov:atLocation &lt;https://dbpedia.org/resource/Melbourne&gt; ;
+    prov:endedAtTime "2016-10-31T00:00:00"^^xsd:dateTime ;
+    prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
 .
-
+</pre>
                 </td>
             </tr>
             <tr>
@@ -428,53 +430,58 @@ prov:startedAtTime "2015-10-01T00:00:00"^^xsd:dateTime ;
             </tr>
             <tr>
                 <th>Description</th>
-                <td>
-                    
-A research project is a project that has 
-
-- one or more PIs who are individual persons, and 
-- should be classified according to standard research classification, such as the Australian Bureau of Statistics ANZSRC-FOR or NASA's Global Change Master Directory - Science Keywords. 
-
+                <td>          
+<p>
+    A research project is a project that has 
+</p>
+<ul>
+    <li>
+        one or more PIs who are individual persons, and 
+    </li>
+    <li>
+        should be classified according to standard research classification, such as the Australian Bureau of Statistics ANZSRC-FOR or NASA's Global Change Master Directory - Science Keywords. 
+    </li>
+</ul>
                 </td>
             </tr>
             <tr>
                 <th>Example</th>
                 <td>
-                    
+<pre>            
 ex:Project2
-rdf:type proj:Project ;
-rdf:type proj:ResearchProject ;
-rdfs:label "Improved management of feral animals in remote tropical Australia" ;
-proj:budgetTotal [
-  rdf:type proj:SumOfMoney ;
-  proj:moneyAmount 0 ;
-  proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
-] ;
-proj:hadFieldOfResearch <http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202> ;
-proj:hadPrincipalInvestigator <http://orcid.org/0000-0002-5823-7364> ;
-proj:hadSponsor <http://dbpedia.org/resource/Commonwealth_Scientific_and_Industrial_Research_Organisation> ;
-proj:hadSubActivity ex:Aerial ;
-proj:wasSubActivityOf <http://www.environment.gov.au/science/nesp> ;
-rdfs:label "Improved management of feral animals in remote tropical Australia" ;
-proj:hadObjective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
-proj:plannedEnd "2022-12-31"^^xsd:date ;
-proj:plannedStart "2012-12-31"^^xsd:date ;
-proj:projectParticipant <mailto:peter.brenton@csiro.au> ;
-proj:hadPlan ex:FCY-project-plan ;
-proj:wasFundedThrough [
-  rdf:type proj:FundingAssociation ;
-  proj:fundsProvided [
-    rdf:type proj:SumOfMoney ;
-    proj:moneyAmount 0 ;
-    proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
-  ] ;
-  prov:agent <http://dbpedia.org/resource/Government_of_Australia> ;
-] ;
-prov:atLocation <http://dbpedia.org/resource/Archer_River,_Queensland> ;
-prov:generated <https://doi.org/10.1071/WF15133> ;
-prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
+    rdf:type proj:Project ;
+    rdf:type proj:ResearchProject ;
+    rdfs:label "Improved management of feral animals in remote tropical Australia" ;
+    proj:budgetTotal [
+        rdf:type proj:SumOfMoney ;
+        proj:moneyAmount 0 ;
+        proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
+    ] ;
+    proj:hadFieldOfResearch &lt;http://purl.org/au-research/vocabulary/anzsrc-for/2008/050202&gt; ;
+    proj:hadPrincipalInvestigator &lt;http://orcid.org/0000-0002-5823-7364&gt; ;
+    proj:hadSponsor &lt;http://dbpedia.org/resource/Commonwealth_Scientific_and_Industrial_Research_Organisation&gt; ;
+    proj:hadSubActivity ex:Aerial ;
+    proj:wasSubActivityOf &lt;http://www.environment.gov.au/science/nesp&gt; ;
+    rdfs:label "Improved management of feral animals in remote tropical Australia" ;
+    proj:hadObjective "To develop a robust understanding of the costs and benefits of selected feral animal control programs on reducing impacts to natural and cultural values." ;
+    proj:plannedEnd "2022-12-31"^^xsd:date ;
+    proj:plannedStart "2012-12-31"^^xsd:date ;
+    proj:projectParticipant &lt;mailto:peter.brenton@csiro.au&gt; ;
+    proj:hadPlan ex:FCY-project-plan ;
+    proj:wasFundedThrough [
+        rdf:type proj:FundingAssociation ;
+        proj:fundsProvided [
+            rdf:type proj:SumOfMoney ;
+            proj:moneyAmount 0 ;
+            proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
+        ] ;
+        prov:agent &lt;http://dbpedia.org/resource/Government_of_Australia&gt; ;
+    ] ;
+    prov:atLocation &lt;http://dbpedia.org/resource/Archer_River,_Queensland&gt; ;
+    prov:generated &lt;https://doi.org/10.1071/WF15133&gt; ;
+    prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
 .
-
+</pre>      
                 </td>
             </tr>
             <tr>
@@ -514,13 +521,13 @@ prov:startedAtTime "2012-12-31T00:00:00"^^xsd:dateTime ;
             <tr>
                 <th>Example</th>
                 <td>
-                    
+<pre>                         
 ex:SM4
     rdf:type proj:SumOfMoney ;
     proj:moneyAmount "524000000"^^xsd:decimal ; 
-    proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+    proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
  .
-
+</pre>      
                 </td>
             </tr>
             <tr>
@@ -581,12 +588,15 @@ ex:SM4
             <tr>
                 <th>Description</th>
                 <td>
-                    
+  <p>                  
 Link to description of funding scheme, e.g.
-
-- [European Commission Horizon 2020](https://ec.europa.eu/programmes/horizon2020/)
-- [Australian National Collaborative Research Infrastructure Strategy](https://www.education.gov.au/national-collaborative-research-infrastructure-strategy-ncris)
-
+</p>
+<ul>
+    <li><a href="https://ec.europa.eu/programmes/horizon2020)">European Commission Horizon 2020</a>
+</li>
+<li><a href="https://www.education.gov.au/national-collaborative-research-infrastructure-strategy-ncris">Australian National Collaborative Research Infrastructure Strategy</a>
+</li>
+</ul>
                 </td>
             </tr>
             <tr>
@@ -663,11 +673,12 @@ Address, place, locality, location, etc
             <tr>
                 <th>Description</th>
                 <td>
-                    
+<p>                    
 Basic funding arrangements are captured through the `proj:hadSponsor` and `proj:hadBudgetTotal` properties.
-  
-More complex arrangements, for example if multiple funders are involved, can be captured through the `proj:wasFundedThrough` property, which links a funding agent with a funding amount in the context of a project.
-
+</p>  
+<p>                    
+    More complex arrangements, for example if multiple funders are involved, can be captured through the `proj:wasFundedThrough` property, which links a funding agent with a funding amount in the context of a project.
+</p>
                 </td>
             </tr>
             <tr>
@@ -702,7 +713,7 @@ The field of research of the research project.
             <tr>
                 <th>Usage Note</th>
                 <td>
-                    The value is usually taken from a curated vocabulary, such as [ANZSRC Fields of Research](http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E), [Re3data subjects](http://www.re3data.org/browse/by-subject/), [EDAM Topic](http://edamontology.org/topic_0003) or [Scigraph subjects](https://github.com/springernature/scigraph/wiki)
+                    The value is usually taken from a curated vocabulary, such as <a href="http://www.abs.gov.au/ausstats/abs@.nsf/0/6BB427AB9696C225CA2574180004463E">ANZSRC Fields of Research</a>, <a href="http://www.re3data.org/browse/by-subject/">Re3data subjects</a>, <a href="http://edamontology.org/topic_0003">EDAM Topic</a> or <a href="https://github.com/springernature/scigraph/wiki">Scigraph subjects</a>
                 </td>
             </tr>
             <tr>
@@ -735,16 +746,17 @@ The field of research of the research project.
             <tr>
                 <th>Description</th>
                 <td>
-                    
+<p>                    
 There are a number of distinctive stakeholders in a project, in particular: a leader who is accountable for the delivery of project outcomes; a sponsor under whose authority the project is undertaken; funders; and project staff or participants.
 In some cases it is useful to provide specific details of a participant's role in the project.
 PROJECT provides a number of ways to represent the relationships of stakeholders to projects and activities.
-
-The standard role of _leader_ is implemented as a directly named property from an `prov:Activity` to a `prov:Agent`, and _sponsor_ as a directly named property from a `proj:Project` to a `prov:Agent`.
-
+</p>                    
+<p>                    
+The standard role of _leader_ is implemented as a directly named property from an `prov:Activity` to a `prov:Agent`, and _sponsor_ as a directly named property from a `proj:Project` to a `prov:Agent`.    
+</p>                    
+<p>                    
 We distinguish one sub-class, the `proj:ResearchProject`, in which the leader(s) is known as a _Principal Investigator_, and which is classified according to its _field of research_.
-
-
+</p>                    
                 </td>
             </tr>
             <tr>
@@ -874,16 +886,18 @@ Link from an activity to a related activity.
             <tr>
                 <th>Description</th>
                 <td>
-                    
+<p>                  
 There are a number of distinctive stakeholders in a project, in particular: a leader who is accountable for the delivery of project outcomes; a sponsor under whose authority the project is undertaken; funders; and project staff or participants.
 In some cases it is useful to provide specific details of a participant's role in the project.
 PROJECT provides a number of ways to represent the relationships of stakeholders to projects and activities.
-
+</p>
+<p>                  
 Basic funding arrangements are captured through the `proj:hadSponsor` and `proj:hadBudgetTotal` properties.
 More complex arrangements, for example if multiple funders are involved, can be captured through the `proj:wasFundedThrough` property, which links a funding agent with a funding amount in the context of a project.
-
-![Project funding association](../images/Project-funding.png)
-
+</p>
+<p>                  
+<img alt="Project funding association" src="../images/Project-funding.png"/>
+</p>
 
                 </td>
             </tr>
@@ -955,12 +969,13 @@ Relationship from an activity to a subsidiary activity.
             <tr>
                 <th>Description</th>
                 <td>
-                    
+<p>                  
 Basic funding arrangements are captured through the `proj:hadSponsor` and `proj:hadBudgetTotal` properties.
 More complex arrangements, for example if multiple funders are involved, can be captured through the `proj:wasFundedThrough` property, which links a funding agent with a funding amount in the context of a project.
-
-![Project funding association](../images/Project-funding.png)
-
+</p> 
+<p>                  
+<img alt="Project funding association" src="../images/Project-funding.png"/>
+</p> 
 
                 </td>
             </tr>
