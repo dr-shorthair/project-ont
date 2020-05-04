@@ -99,7 +99,7 @@ Project stakeholders are indicated using the `prov:qualifiedAssociation` structu
 
 Activities within a project are indicated using the `proj:hasSubActivity` (simple) or `proj:subActivityAssociation` properties - the latter allowing the nature of the relationshp to be described as well. 
 
-![Project details](../images/project.png)
+![Project details](../images/Project.png)
 
 """ ;
   rdfs:label "Project" ;
