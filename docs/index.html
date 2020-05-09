@@ -201,7 +201,7 @@ code {
         <dd><code>http://linked.data.gov.au/def/project</code></dd>
         <dt>Creator(s)</dt>
         <dd>
-            Simon J D Cox of <a href="https://csiro.au">Commonwealth Scientific and Industrial Research Organisation</a><br/>
+            <a href="https://orcid.org/0000-0002-3884-3420">Simon J D Cox</a> (<a href="mailto:simon.cox@csiro.au">simon.cox@csiro.au</a>) of <a href="https://csiro.au">Commonwealth Scientific and Industrial Research Organisation</a><br/>
         </dd>
         <dt>Contributors(s)</dt>
         <dd>
@@ -277,19 +277,19 @@ Association to a funder and a sum of money
             <tr>
                 <th>Example</th>
                 <td>
-                    
+<pre>                   
 ex:FA3
   rdf:type proj:FundingAssociation ;
   rdfs:label "Level crossing removal project phase 1 funding arrangement" ;
-  rdfs:seeAlso <http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/> ;
+  rdfs:seeAlso &lt;http://www.premier.vic.gov.au/contract-awarded-for-first-four-level-crossing-removals/&gt; ;
   proj:fundsProvided [
     rdf:type proj:SumOfMoney ;
     proj:moneyAmount "524000000"^^xsd:decimal ;
-    proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+    proj:moneyCurrency &lt;https://dbpedia.org/resource/Australian_dollar&gt; ;
   ] ;
-  prov:agent <http://www.vic.gov.au/> ;
+  prov:agent &lt;http://www.vic.gov.au/&gt; ;
  .
-
+</pre> 
                 </td>
             </tr>
             <tr>
@@ -335,7 +335,7 @@ ex:FA3
 A Project is a planned activity with a budget, a sponsor, and a leader.
 </p>
 <p>
-    Project stakeholders are indicated using the `prov:qualifiedAssociation` structure which allows their role to be catpured. Some special stakeholders have specific sub-properties with the roles fixed, including project-leader, project-participant, and project-funder.
+    Project stakeholders are indicated using `prov:wasAssociatedWith` or the `prov:qualifiedAssociation` structure which allows their role to be catpured. Some special stakeholders have specific sub-properties with the roles fixed, including project-leader, project-participant, and project-funder.
 </p>
 <p>
     Activities within a project are indicated using the `proj:hasSubActivity` (simple) or `proj:subActivityAssociation` properties - the latter allowing the nature of the relationshp to be described as well. 

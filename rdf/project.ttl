@@ -1,10 +1,13 @@
 # baseURI: http://linked.data.gov.au/def/project
+# imports: file:///C:/Users/cox075/dev/cache-external/schema.ttl
 # imports: http://purl.org/dc/terms/
+# imports: http://usefulinc.com/ns/doap
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://www.w3.org/ns/prov
 # prefix: proj
 
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix proj: <http://linked.data.gov.au/def/project#> .
 @prefix proji: <http://linked.data.gov.au/def/project/> .
@@ -12,7 +15,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
-@prefix sdo: <https://schema.org/> .
+@prefix sdo: <http://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -47,7 +50,10 @@ Core classes from PROJECT vocabulary.
   voaf:exampleDataset <https://raw.githubusercontent.com/dr-shorthair/ont/gh-pages/project/examples.ttl> ;
   voaf:extends <http://www.w3.org/ns/prov-o> ;
   voaf:reliesOn <http://www.w3.org/2004/02/skos/core> ;
+  sdo:codeRepository <https://github.com/dr-shorthair/project-ont> ;
+  owl:imports <file:///C:/Users/cox075/dev/cache-external/schema.ttl> ;
   owl:imports dcterms: ;
+  owl:imports <http://usefulinc.com/ns/doap> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/ns/prov> ;
 .
@@ -95,7 +101,7 @@ proj:Project
   dcterms:description """
 A Project is a planned activity with a budget, a sponsor, and a leader.
 
-Project stakeholders are indicated using the `prov:qualifiedAssociation` structure which allows their role to be catpured. Some special stakeholders have specific sub-properties with the roles fixed, including project-leader, project-participant, and project-funder.
+Project stakeholders are indicated using `prov:wasAssociatedWith` or the `prov:qualifiedAssociation` structure which allows their role to be catpured. Some special stakeholders have specific sub-properties with the roles fixed, including project-leader, project-participant, and project-funder.
 
 Activities within a project are indicated using the `proj:hasSubActivity` (simple) or `proj:subActivityAssociation` properties - the latter allowing the nature of the relationshp to be described as well. 
 
@@ -558,14 +564,22 @@ prov:agent
   dcterms:description "Link to the agent which provided the funds." ;
   skos:scopeNote "When used in the context of the sub-class proj:FundingAssociation, the value of prov:agent should identify the agent which provided the funds." ;
 .
+<https://github.com/dr-shorthair/project-ont>
+  a doap:GitRepository ;
+.
 <https://linked.data.gov.au/org/csiro>
-  a sdo:Organization ;
-  sdo:name "Commonwealth Scientific and Industrial Research Organisation" ;
-  sdo:url <https://csiro.au> ;
+  a schema:Organization ;
+  schema:name "Commonwealth Scientific and Industrial Research Organisation" ;
+  schema:url <https://csiro.au> ;
 .
 <https://orcid.org/0000-0002-3884-3420>
   a sdo:Person ;
   sdo:affiliation <https://linked.data.gov.au/org/csiro> ;
+  sdo:email "simon.cox@csiro.au" ;
+  sdo:identifier "https://orcid.org/0000-0002-3884-3420"^^xsd:anyURI ;
   sdo:name "Simon J D Cox" ;
-  sdo:url <https://people.csiro.au/C/S/simon-cox> ;
+  sdo:subjectOf <https://people.csiro.au/C/S/simon-cox> ;
+.
+<https://people.csiro.au/C/S/simon-cox>
+  a sdo:AboutPage ;
 .
