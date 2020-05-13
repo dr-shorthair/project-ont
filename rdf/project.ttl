@@ -4,11 +4,13 @@
 # imports: http://usefulinc.com/ns/doap
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://www.w3.org/ns/prov
+# imports: https://www.w3.org/TR/dx-prof/rdf/prof.ttl
 # prefix: proj
 
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
 @prefix proj: <http://linked.data.gov.au/def/project#> .
 @prefix proji: <http://linked.data.gov.au/def/project/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -47,8 +49,6 @@ Core classes from PROJECT vocabulary.
   dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
   dcterms:modified "2020-04-24"^^xsd:date ;
   dcterms:title "A Project ontology" ;
-  voaf:exampleDataset <https://raw.githubusercontent.com/dr-shorthair/ont/gh-pages/project/examples.ttl> ;
-  voaf:extends <http://www.w3.org/ns/prov-o> ;
   voaf:reliesOn <http://www.w3.org/2004/02/skos/core> ;
   sdo:codeRepository <https://github.com/dr-shorthair/project-ont> ;
   owl:imports <file:///C:/Users/cox075/dev/cache-external/schema.ttl> ;
@@ -56,6 +56,28 @@ Core classes from PROJECT vocabulary.
   owl:imports <http://usefulinc.com/ns/doap> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/ns/prov> ;
+  owl:imports <https://www.w3.org/TR/dx-prof/rdf/prof.ttl> ;
+  prof:hasResource [
+      a prof:ResourceDescriptor ;
+      prof:hasArtifact <https://dr-shorthair.github.io/project-ont/docs/> ;
+      prof:hasRole <https://www.w3.org/TR/dx-prof/#Role:specification> ;
+    ] ;
+  prof:hasResource [
+      a prof:ResourceDescriptor ;
+      prof:hasArtifact <https://github.com/dr-shorthair/project-ont/blob/gh-pages/rdf/FeralCapeYork.ttl> ;
+      prof:hasRole <https://www.w3.org/TR/dx-prof/#Role:example> ;
+    ] ;
+  prof:hasResource [
+      a prof:ResourceDescriptor ;
+      prof:hasArtifact <https://github.com/dr-shorthair/project-ont/blob/gh-pages/rdf/LevelCrossing.ttl> ;
+      prof:hasRole <https://www.w3.org/TR/dx-prof/#Role:example> ;
+    ] ;
+  prof:hasResource [
+      a prof:ResourceDescriptor ;
+      prof:hasArtifact <https://raw.githack.com/dr-shorthair/project-ont/gh-pages/rdf/project.ttl> ;
+      prof:hasRole <https://www.w3.org/TR/dx-prof/#Role:schema> ;
+    ] ;
+  prof:isProfileOf <http://www.w3.org/ns/prov-o> ;
 .
 proj:FundingAssociation
   a owl:Class ;
