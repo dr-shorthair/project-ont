@@ -1,14 +1,11 @@
 # baseURI: http://linked.data.gov.au/def/project
-# imports: file:///C:/Users/cox075/dev/cache-external/schema.ttl
 # imports: http://purl.org/dc/terms/
-# imports: http://usefulinc.com/ns/doap
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://www.w3.org/ns/prov
-# imports: https://www.w3.org/TR/dx-prof/rdf/prof.ttl
+# imports: https://www.w3.org/ns/dx/prof
 # prefix: proj
 
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prof: <http://www.w3.org/ns/dx/prof/> .
 @prefix proj: <http://linked.data.gov.au/def/project#> .
@@ -16,10 +13,8 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
 @prefix sdo: <http://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://linked.data.gov.au/def/project>
@@ -49,14 +44,11 @@ Core classes from PROJECT vocabulary.
   dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
   dcterms:modified "2020-04-24"^^xsd:date ;
   dcterms:title "A Project ontology" ;
-  voaf:reliesOn <http://www.w3.org/2004/02/skos/core> ;
   sdo:codeRepository <https://github.com/dr-shorthair/project-ont> ;
-  owl:imports <file:///C:/Users/cox075/dev/cache-external/schema.ttl> ;
   owl:imports dcterms: ;
-  owl:imports <http://usefulinc.com/ns/doap> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/ns/prov> ;
-  owl:imports <https://www.w3.org/TR/dx-prof/rdf/prof.ttl> ;
+  owl:imports <https://www.w3.org/ns/dx/prof> ;
   prof:hasResource [
       a prof:ResourceDescriptor ;
       prof:hasArtifact <https://dr-shorthair.github.io/project-ont/docs/> ;
@@ -586,13 +578,10 @@ prov:agent
   dcterms:description "Link to the agent which provided the funds." ;
   skos:scopeNote "When used in the context of the sub-class proj:FundingAssociation, the value of prov:agent should identify the agent which provided the funds." ;
 .
-<https://github.com/dr-shorthair/project-ont>
-  a doap:GitRepository ;
-.
 <https://linked.data.gov.au/org/csiro>
-  a schema:Organization ;
-  schema:name "Commonwealth Scientific and Industrial Research Organisation" ;
-  schema:url <https://csiro.au> ;
+  a sdo:Organization ;
+  sdo:name "Commonwealth Scientific and Industrial Research Organisation" ;
+  sdo:url <https://csiro.au> ;
 .
 <https://orcid.org/0000-0002-3884-3420>
   a sdo:Person ;
