@@ -18,8 +18,8 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://linked.data.gov.au/def/project>
-  a owl:Ontology ;
-  dcterms:contributor "Peter BRENTON, CSIRO" ;
+  a owl:Ontology , prof:Profile ;
+  dcterms:contributor "Peter Brenton, CSIRO" ;
   dcterms:created "2017-08-14"^^xsd:date ;
   dcterms:creator <https://orcid.org/0000-0002-3884-3420> ;
   dcterms:description """
@@ -52,22 +52,22 @@ Core classes from PROJECT vocabulary.
   prof:hasResource [
       a prof:ResourceDescriptor ;
       prof:hasArtifact <https://dr-shorthair.github.io/project-ont/docs/> ;
-      prof:hasRole <https://www.w3.org/TR/dx-prof/#Role:specification> ;
+      prof:hasRole <http://www.w3.org/ns/dx/prof/role/specification> ;
     ] ;
   prof:hasResource [
       a prof:ResourceDescriptor ;
       prof:hasArtifact <https://github.com/dr-shorthair/project-ont/blob/gh-pages/rdf/FeralCapeYork.ttl> ;
-      prof:hasRole <https://www.w3.org/TR/dx-prof/#Role:example> ;
+      prof:hasRole <http://www.w3.org/ns/dx/prof/role/example> ;
     ] ;
   prof:hasResource [
       a prof:ResourceDescriptor ;
       prof:hasArtifact <https://github.com/dr-shorthair/project-ont/blob/gh-pages/rdf/LevelCrossing.ttl> ;
-      prof:hasRole <https://www.w3.org/TR/dx-prof/#Role:example> ;
+      prof:hasRole <http://www.w3.org/ns/dx/prof/role/example> ;
     ] ;
   prof:hasResource [
       a prof:ResourceDescriptor ;
       prof:hasArtifact <https://raw.githack.com/dr-shorthair/project-ont/gh-pages/rdf/project.ttl> ;
-      prof:hasRole <https://www.w3.org/TR/dx-prof/#Role:schema> ;
+      prof:hasRole <http://www.w3.org/ns/dx/prof/role/schema> ;
     ] ;
   prof:isProfileOf <http://www.w3.org/ns/prov-o> ;
 .
