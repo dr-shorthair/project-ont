@@ -22,7 +22,7 @@ var respecConfig = {
   overrideCopyright: "<p class='copyright'><a href='https://www.w3.org/Consortium/Legal/ipr-notice#Copyright'>Copyright</a> © 2017 <a href='http://www.csiro.au'><abbr title='Commonwealth Scientific and Industrial Organisation'>CSIRO</abbr></a> &amp; <a href='https://www.w3.org/'> <abbr title='World Wide Web Consortium'>W3C</abbr> </a><sup>®</sup> , <abbr title='World Wide Web Consortium'>W3C</abbr> <a href='https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer'>liability</a>, <a href='https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks'>trademark</a> and <a href='https://www.w3.org/Consortium/Legal/copyright-documents'>document use</a> rules apply.</p>",
   localBiblio: {
     "schema-org":{
-      href:"http://schema.org/",
+      href:"https://schema.org/",
       title:"Schema.org"
     },
     "dbpedia-ont":{
