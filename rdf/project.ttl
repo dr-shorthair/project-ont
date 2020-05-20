@@ -18,7 +18,8 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://linked.data.gov.au/def/project>
-  a owl:Ontology , prof:Profile ;
+  a owl:Ontology ;
+  a prof:Profile ;
   dcterms:contributor "Peter Brenton, CSIRO" ;
   dcterms:created "2017-08-14"^^xsd:date ;
   dcterms:creator <https://orcid.org/0000-0002-3884-3420> ;
@@ -31,9 +32,16 @@ The ontology gives terms to support the representation of:
 - project stakeholders and relationships
 - project activities and timeline
 
-One specialization is included - the **Research Project** - which has been the subject of several predecessor designs that have informed the design of this ontology.
+One specialization is included - the **Research Project** - which has been the subject of several predecessor designs that have informed the design of this ontology, including:
+- [FOAF](http://xmlns.com/foaf/0.1/) - the foaf:Project class is a stub (no specific properties) which was included primarily to act as the topic of a homepage
+- [Description of a Project ontology (DOAP)](https://en.wikipedia.org/wiki/DOAP) is oriented to software development projects
+- [Funding, Research Administration and Projects Ontology (FRAPO)](http://purl.org/cerif/frapo) is aimed at describing administrative information relating to grant funding and research projects. 
+- [Project Documents Ontology (PDO)](http://vocab.deri.ie/pdo) relates to  various documents in a project-specific setting, like meeting minutes, status reports etc
+- In [VIVO-ISF](https://github.com/openrif/vivo-isf-ontology) the [vivo:Project](http://vivoweb.org/ontology/core#Project) class is very lightweight, characterised only by its timing and geographic focus
 
-PROJECT extends the W3C PROV-O ontology. Otherwise, it has no dependencies except for the normal RDF/OWL infrastructure (RDF [rdf11-concepts], RDFS [rdf-schema], OWL [owl2-quick-reference]), Dublin Core [dc-terms] for some ontology metadata, and SKOS [skos-reference] to support some relationships between Role values, and project classification.
+The [DBPedia ontology](http://dbpedia.org/ontology/) provides what is probably the most general purpose class for projects: [dbo:Project](http://dbpedia.org/ontology/Project) is described as \"a temporary endeavor undertaken to achieve defined objectives\" and has key properties relating to timing, objectives, and classification (keywords).
+
+PROJECT extends the W3C PROV-O ontology. Otherwise, it has no dependencies except for the normal RDF/OWL infrastructure ([RDF](https://www.w3.org/TR/rdf11-concepts/), [RDFS](https://www.w3.org/TR/rdf-schema/), [OWL2](https://www.w3.org/TR/owl2-quick-reference/)), [Dublin Core](http://dublincore.org/documents/2010/10/11/dcmi-terms/) for some ontology metadata, and [SKOS](https://www.w3.org/TR/skos-reference/) to support some relationships between Role values, and project classification.
 
 A summary of the main classes and relationships in PROJECT is shown in the diagram below, including the key superclass `prov:Activity`.
 
@@ -44,7 +52,6 @@ Core classes from PROJECT vocabulary.
   dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
   dcterms:modified "2020-04-24"^^xsd:date ;
   dcterms:title "A Project ontology" ;
-  sdo:codeRepository <https://github.com/dr-shorthair/project-ont> ;
   owl:imports dcterms: ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/ns/prov> ;
@@ -70,6 +77,7 @@ Core classes from PROJECT vocabulary.
       prof:hasRole <http://www.w3.org/ns/dx/prof/role/schema> ;
     ] ;
   prof:isProfileOf <http://www.w3.org/ns/prov-o> ;
+  sdo:codeRepository <https://github.com/dr-shorthair/project-ont> ;
 .
 proj:FundingAssociation
   a owl:Class ;
