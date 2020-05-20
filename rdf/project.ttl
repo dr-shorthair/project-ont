@@ -2,7 +2,6 @@
 # imports: http://purl.org/dc/terms/
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://www.w3.org/ns/prov
-# imports: https://www.w3.org/ns/dx/prof
 # prefix: proj
 
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -33,7 +32,8 @@ The ontology gives terms to support the representation of:
 - project activities and timeline
 
 One specialization is included - the **Research Project** - which has been the subject of several predecessor designs that have informed the design of this ontology, including:
-- [FOAF](http://xmlns.com/foaf/0.1/) - the foaf:Project class is a stub (no specific properties) which was included primarily to act as the topic of a homepage
+
+- In [FOAF](http://xmlns.com/foaf/0.1/) the foaf:Project class is a stub (no specific properties) which was included primarily to act as the topic of a homepage
 - [Description of a Project ontology (DOAP)](https://en.wikipedia.org/wiki/DOAP) is oriented to software development projects
 - [Funding, Research Administration and Projects Ontology (FRAPO)](http://purl.org/cerif/frapo) is aimed at describing administrative information relating to grant funding and research projects. 
 - [Project Documents Ontology (PDO)](http://vocab.deri.ie/pdo) relates to  various documents in a project-specific setting, like meeting minutes, status reports etc
@@ -55,7 +55,6 @@ Core classes from PROJECT vocabulary.
   owl:imports dcterms: ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/ns/prov> ;
-  owl:imports <https://www.w3.org/ns/dx/prof> ;
   prof:hasResource [
       a prof:ResourceDescriptor ;
       prof:hasArtifact <https://dr-shorthair.github.io/project-ont/docs/> ;
