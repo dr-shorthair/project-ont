@@ -1,25 +1,24 @@
-# baseURI: http://linked.data.gov.au/def/project/foaf
+# baseURI: https://linked.data.gov.au/def/project/foaf
 # imports: http://purl.org/dc/terms/
-# imports: http://linked.data.gov.au/def/project
 # imports: http://xmlns.com/foaf/0.1/
+# imports: https://linked.data.gov.au/def/project
 # prefix: foaf
 
-@prefix foaf: <http://linked.data.gov.au/def/project/foaf#> .
+@prefix foaf: <https://linked.data.gov.au/def/project/foaf#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://linked.data.gov.au/def/project#Project>
-  owl:equivalentClass <http://xmlns.com/foaf/0.1/Project> ;
-.
-<http://linked.data.gov.au/def/project/foaf>
-  rdf:type owl:Ontology ;
+<https://linked.data.gov.au/def/project/foaf>
+  a owl:Ontology ;
   owl:imports <http://purl.org/dc/terms/> ;
-  owl:imports <http://linked.data.gov.au/def/project> ;
   owl:imports <http://xmlns.com/foaf/0.1/> ;
-  owl:versionInfo "Created with TopBraid Composer" ;
+  owl:imports <https://linked.data.gov.au/def/project> ;
 .
 <http://xmlns.com/foaf/0.1/fundedBy>
-  rdfs:subPropertyOf <http://linked.data.gov.au/def/project#hasSponsor> ;
+  rdfs:subPropertyOf <https://linked.data.gov.au/def/project#hasSponsor> ;
+.
+<https://linked.data.gov.au/def/project#Project>
+  owl:equivalentClass <http://xmlns.com/foaf/0.1/Project> ;
 .

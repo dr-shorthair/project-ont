@@ -1,4 +1,4 @@
-# baseURI: http://linked.data.gov.au/def/project
+# baseURI: https://linked.data.gov.au/def/project
 # imports: http://purl.org/dc/terms/
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://www.w3.org/ns/prov
@@ -7,8 +7,8 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prof: <http://www.w3.org/ns/dx/prof/> .
-@prefix proj: <http://linked.data.gov.au/def/project#> .
-@prefix proji: <http://linked.data.gov.au/def/project/> .
+@prefix proj: <https://linked.data.gov.au/def/project#> .
+@prefix proji: <https://linked.data.gov.au/def/project/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -16,7 +16,43 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://linked.data.gov.au/def/project>
+<https://linked.data.gov.au/def/project/Funder>
+  a prov:Role ;
+  rdfs:label "funding-agent role" ;
+  skos:broader <https://linked.data.gov.au/def/project/Sponsor> ;
+.
+<https://linked.data.gov.au/def/project/Leader>
+  a prov:Role ;
+  rdfs:label "activity-leader role" ;
+  skos:broader <https://linked.data.gov.au/def/project/Participant> ;
+  skos:narrower <https://linked.data.gov.au/def/project/PrincipalInvestigator> ;
+.
+<https://linked.data.gov.au/def/project/Participant>
+  a prov:Role ;
+  rdfs:label "activity-participant role" ;
+.
+<https://linked.data.gov.au/def/project/PrincipalInvestigator>
+  a prov:Role ;
+  rdfs:label "principal-investigator role" ;
+  skos:broader <https://linked.data.gov.au/def/project/Leader> ;
+.
+<https://linked.data.gov.au/def/project/Sponsor>
+  a prov:Role ;
+  rdfs:label "project-sponsor role" ;
+  skos:narrower <https://linked.data.gov.au/def/project/Funder> ;
+.
+<https://linked.data.gov.au/def/project/SubActivity>
+  a prov:Role ;
+  rdfs:label "sub-activity" ;
+.
+prov:Role
+  rdfs:subClassOf skos:Concept ;
+.
+prov:agent
+  dcterms:description "Link to the agent which provided the funds." ;
+  skos:scopeNote "When used in the context of the sub-class proj:FundingAssociation, the value of prov:agent should identify the agent which provided the funds." ;
+.
+<https://linked.data.gov.au/def/project>
   a owl:Ontology ;
   a prof:Profile ;
   dcterms:contributor "Peter Brenton, CSIRO" ;
@@ -50,11 +86,12 @@ A summary of the main classes and relationships in PROJECT is shown in the diagr
 Core classes from PROJECT vocabulary. 
 """ ;
   dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
-  dcterms:modified "2020-04-24"^^xsd:date ;
+  dcterms:modified "2022-04-26"^^xsd:date ;
   dcterms:title "A Project ontology" ;
   owl:imports dcterms: ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/ns/prov> ;
+  skos:changeNote "2022-04-26 - changed namespaces to https" ;
   prof:hasResource [
       a prof:ResourceDescriptor ;
       prof:hasArtifact <https://dr-shorthair.github.io/project-ont/docs/> ;
@@ -95,7 +132,7 @@ Association to a funder and a sum of money
     ] ;
   rdfs:subClassOf [
       a owl:Restriction ;
-      owl:hasValue proji:Funder ;
+      owl:hasValue <https://linked.data.gov.au/def/project/Funder> ;
       owl:onProperty prov:hadRole ;
     ] ;
   rdfs:subClassOf [
@@ -548,42 +585,6 @@ Relationship from an activity to its parent activity or project.
   skos:editorialNote """
 The name and label of this property are phrased retrospectively (had, was) which is consistent with PROV-O, but may be used for a contemporary relationship (has, is) while the project is underway.
 """ ;
-.
-proji:Funder
-  a prov:Role ;
-  rdfs:label "funding-agent role" ;
-  skos:broader proji:Sponsor ;
-.
-proji:Leader
-  a prov:Role ;
-  rdfs:label "activity-leader role" ;
-  skos:broader proji:Participant ;
-  skos:narrower proji:PrincipalInvestigator ;
-.
-proji:Participant
-  a prov:Role ;
-  rdfs:label "activity-participant role" ;
-.
-proji:PrincipalInvestigator
-  a prov:Role ;
-  rdfs:label "principal-investigator role" ;
-  skos:broader proji:Leader ;
-.
-proji:Sponsor
-  a prov:Role ;
-  rdfs:label "project-sponsor role" ;
-  skos:narrower proji:Funder ;
-.
-proji:SubActivity
-  a prov:Role ;
-  rdfs:label "sub-activity" ;
-.
-prov:Role
-  rdfs:subClassOf skos:Concept ;
-.
-prov:agent
-  dcterms:description "Link to the agent which provided the funds." ;
-  skos:scopeNote "When used in the context of the sub-class proj:FundingAssociation, the value of prov:agent should identify the agent which provided the funds." ;
 .
 <https://linked.data.gov.au/org/csiro>
   a sdo:Organization ;

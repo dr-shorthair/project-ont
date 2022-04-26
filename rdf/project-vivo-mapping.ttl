@@ -1,25 +1,25 @@
-# baseURI: http://linked.data.gov.au/def/project/vivo
+# baseURI: https://linked.data.gov.au/def/project/vivo
 # imports: file:///External/cache/vivo-isf-public-1.6.rdf
 # imports: http://purl.org/dc/terms/
-# imports: http://linked.data.gov.au/def/project
+# imports: https://linked.data.gov.au/def/project
 # prefix: vivo
 
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix vivo: <http://linked.data.gov.au/def/project/vivo#> .
+@prefix vivo: <https://linked.data.gov.au/def/project/vivo#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://vivoweb.org/ontology/core#Project>
-  owl:equivalentClass <http://linked.data.gov.au/def/project#Project> ;
+  owl:equivalentClass <https://linked.data.gov.au/def/project#Project> ;
 .
-<http://linked.data.gov.au/def/project#hasAreaOfInterest>
+<https://linked.data.gov.au/def/project#hasAreaOfInterest>
   owl:equivalentProperty <http://vivoweb.org/ontology/core#geographicFocus> ;
 .
-<http://linked.data.gov.au/def/project/vivo>
+<https://linked.data.gov.au/def/project/vivo>
   rdf:type owl:Ontology ;
   owl:imports <file:///External/cache/vivo-isf-public-1.6.rdf> ;
   owl:imports <http://purl.org/dc/terms/> ;
-  owl:imports <http://linked.data.gov.au/def/project> ;
+  owl:imports <https://linked.data.gov.au/def/project> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .

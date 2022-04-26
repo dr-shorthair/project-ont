@@ -1,4 +1,4 @@
-# baseURI: http://linked.data.gov.au/def/project-alignments
+# baseURI: https://linked.data.gov.au/def/project-alignments
 # imports: http://dbpedia.org/ontology/Organisation
 # imports: http://dbpedia.org/ontology/Project
 # imports: http://dbpedia.org/ontology/ResearchProject
@@ -16,16 +16,16 @@
 # imports: http://dbpedia.org/ontology/projectType
 # imports: http://purl.org/cerif/frapo
 # imports: http://purl.org/dc/elements/1.1/
-# imports: https://schema.org
 # imports: http://topbraid.org/schema/
 # imports: http://usefulinc.com/ns/doap
 # imports: http://vivoweb.org/ontology/core
 # imports: http://vocab.deri.ie/pdo
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://www.w3.org/ns/org
-# imports: http://linked.data.gov.au/def/project
 # imports: http://www.w3.org/ns/prov-o
 # imports: http://xmlns.com/foaf/0.1
+# imports: https://linked.data.gov.au/def/project
+# imports: https://schema.org
 
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
@@ -40,8 +40,8 @@
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pdo: <http://ontologies.smile.deri.ie/pdo#> .
-@prefix proj: <http://linked.data.gov.au/def/project#> .
-@prefix proji: <http://linked.data.gov.au/def/project/> .
+@prefix proj: <https://linked.data.gov.au/def/project#> .
+@prefix proji: <https://linked.data.gov.au/def/project/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -94,6 +94,41 @@ dbo:projectParticipant
 dbo:projectStartDate
   rdfs:subPropertyOf prov:startedAtTime ;
 .
+<https://linked.data.gov.au/def/project-alignments>
+  a owl:Ontology ;
+  dc:creator "Simon J D COX, CSIRO" ;
+  dct:created "2017-08-14"^^xsd:date ;
+  dct:creator <http://orcid.org/0000-0002-3884-3420> ;
+  dct:license <https://creativecommons.org/licenses/by/4.0/> ;
+  rdfs:comment "Alignment of the basic ontology for projects to FOAF, dbPedia, VIVO-ISF." ;
+  owl:imports dbo:Organisation ;
+  owl:imports dbo:Project ;
+  owl:imports dbo:ResearchProject ;
+  owl:imports dbo:UnitOfWork ;
+  owl:imports dbo:fundedBy ;
+  owl:imports dbo:projectBudgetFunding ;
+  owl:imports dbo:projectBudgetTotal ;
+  owl:imports dbo:projectCoordinator ;
+  owl:imports dbo:projectEndDate ;
+  owl:imports dbo:projectKeyword ;
+  owl:imports dbo:projectObjective ;
+  owl:imports dbo:projectParticipant ;
+  owl:imports dbo:projectReferenceID ;
+  owl:imports dbo:projectStartDate ;
+  owl:imports dbo:projectType ;
+  owl:imports <http://purl.org/cerif/frapo> ;
+  owl:imports dc: ;
+  owl:imports <http://topbraid.org/schema/> ;
+  owl:imports <http://usefulinc.com/ns/doap> ;
+  owl:imports <http://vivoweb.org/ontology/core> ;
+  owl:imports <http://vocab.deri.ie/pdo> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports <http://www.w3.org/ns/org> ;
+  owl:imports <http://www.w3.org/ns/prov-o> ;
+  owl:imports <http://xmlns.com/foaf/0.1> ;
+  owl:imports <https://linked.data.gov.au/def/project> ;
+  owl:imports <https://schema.org> ;
+.
 network:Project
   rdfs:subClassOf proj:Project ;
 .
@@ -136,6 +171,21 @@ vivo:Project
 vivo:geographicFocus
   owl:equivalentProperty proj:hasAreaOfInterest ;
 .
+prov:endedAtTime
+  owl:propertyChainAxiom (
+      vivo:dateTimeInterval
+      vivo:end
+    ) ;
+.
+prov:startedAtTime
+  owl:propertyChainAxiom (
+      vivo:dateTimeInterval
+      vivo:start
+    ) ;
+.
+foaf:Project
+  owl:equivalentClass proj:Project ;
+.
 proj:Project
   rdfs:subClassOf schemaorg:Action ;
   owl:equivalentClass dbo:Project ;
@@ -171,54 +221,4 @@ proj:moneyCurrency
 .
 proj:plannedEnd
   rdfs:subPropertyOf schemaorg:scheduledTime ;
-.
-<http://linked.data.gov.au/def/project-alignments>
-  rdf:type owl:Ontology ;
-  dc:creator "Simon J D COX, CSIRO" ;
-  dct:created "2017-08-14"^^xsd:date ;
-  dct:creator <http://orcid.org/0000-0002-3884-3420> ;
-  dct:license <https://creativecommons.org/licenses/by/4.0/> ;
-  rdfs:comment "Alignment of the basic ontology for projects to FOAF, dbPedia, VIVO-ISF." ;
-  owl:imports dbo:Organisation ;
-  owl:imports dbo:Project ;
-  owl:imports dbo:ResearchProject ;
-  owl:imports dbo:UnitOfWork ;
-  owl:imports dbo:fundedBy ;
-  owl:imports dbo:projectBudgetFunding ;
-  owl:imports dbo:projectBudgetTotal ;
-  owl:imports dbo:projectCoordinator ;
-  owl:imports dbo:projectEndDate ;
-  owl:imports dbo:projectKeyword ;
-  owl:imports dbo:projectObjective ;
-  owl:imports dbo:projectParticipant ;
-  owl:imports dbo:projectReferenceID ;
-  owl:imports dbo:projectStartDate ;
-  owl:imports dbo:projectType ;
-  owl:imports <http://purl.org/cerif/frapo> ;
-  owl:imports dc: ;
-  owl:imports <https://schema.org> ;
-  owl:imports <http://topbraid.org/schema/> ;
-  owl:imports <http://usefulinc.com/ns/doap> ;
-  owl:imports <http://vivoweb.org/ontology/core> ;
-  owl:imports <http://vocab.deri.ie/pdo> ;
-  owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <http://www.w3.org/ns/org> ;
-  owl:imports <http://linked.data.gov.au/def/project> ;
-  owl:imports <http://www.w3.org/ns/prov-o> ;
-  owl:imports <http://xmlns.com/foaf/0.1> ;
-.
-prov:endedAtTime
-  owl:propertyChainAxiom (
-      vivo:dateTimeInterval
-      vivo:end
-    ) ;
-.
-prov:startedAtTime
-  owl:propertyChainAxiom (
-      vivo:dateTimeInterval
-      vivo:start
-    ) ;
-.
-foaf:Project
-  owl:equivalentClass proj:Project ;
 .

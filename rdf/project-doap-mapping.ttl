@@ -1,43 +1,43 @@
-# baseURI: http://linked.data.gov.au/def/project/doap
+# baseURI: https://linked.data.gov.au/def/project/doap
 # imports: file:///External/cache/doap.rdf
 # imports: http://purl.org/dc/terms/
-# imports: http://linked.data.gov.au/def/project
+# imports: https://linked.data.gov.au/def/project
 # prefix: doap
 
-@prefix doap: <http://linked.data.gov.au/def/project/doap#> .
+@prefix doap: <https://linked.data.gov.au/def/project/doap#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://usefulinc.com/ns/doap#Project>
-  rdfs:subClassOf <http://linked.data.gov.au/def/project#Project> ;
-.
-<http://usefulinc.com/ns/doap#developer>
-  rdfs:subPropertyOf <http://linked.data.gov.au/def/project#hasParticipant> ;
-.
-<http://usefulinc.com/ns/doap#documenter>
-  rdfs:subPropertyOf <http://linked.data.gov.au/def/project#hasParticipant> ;
-.
-<http://usefulinc.com/ns/doap#helper>
-  rdfs:subPropertyOf <http://linked.data.gov.au/def/project#hasParticipant> ;
-.
-<http://usefulinc.com/ns/doap#maintainer>
-  rdfs:subPropertyOf <http://linked.data.gov.au/def/project#hasParticipant> ;
-.
-<http://usefulinc.com/ns/doap#tester>
-  rdfs:subPropertyOf <http://linked.data.gov.au/def/project#hasParticipant> ;
-.
-<http://usefulinc.com/ns/doap#translator>
-  rdfs:subPropertyOf <http://linked.data.gov.au/def/project#hasParticipant> ;
-.
-<http://usefulinc.com/ns/doap#vendor>
-  rdfs:subPropertyOf <http://linked.data.gov.au/def/project#hasParticipant> ;
-.
-<http://linked.data.gov.au/def/project/doap>
-  rdf:type owl:Ontology ;
+<https://linked.data.gov.au/def/project/doap>
+  a owl:Ontology ;
   owl:imports <file:///External/cache/doap.rdf> ;
   owl:imports <http://purl.org/dc/terms/> ;
-  owl:imports <http://linked.data.gov.au/def/project> ;
+  owl:imports <https://linked.data.gov.au/def/project> ;
   owl:versionInfo "Created with TopBraid Composer" ;
+.
+<http://usefulinc.com/ns/doap#Project>
+  rdfs:subClassOf <https://linked.data.gov.au/def/project#Project> ;
+.
+<http://usefulinc.com/ns/doap#developer>
+  rdfs:subPropertyOf <https://linked.data.gov.au/def/project#hasParticipant> ;
+.
+<http://usefulinc.com/ns/doap#documenter>
+  rdfs:subPropertyOf <https://linked.data.gov.au/def/project#hasParticipant> ;
+.
+<http://usefulinc.com/ns/doap#helper>
+  rdfs:subPropertyOf <https://linked.data.gov.au/def/project#hasParticipant> ;
+.
+<http://usefulinc.com/ns/doap#maintainer>
+  rdfs:subPropertyOf <https://linked.data.gov.au/def/project#hasParticipant> ;
+.
+<http://usefulinc.com/ns/doap#tester>
+  rdfs:subPropertyOf <https://linked.data.gov.au/def/project#hasParticipant> ;
+.
+<http://usefulinc.com/ns/doap#translator>
+  rdfs:subPropertyOf <https://linked.data.gov.au/def/project#hasParticipant> ;
+.
+<http://usefulinc.com/ns/doap#vendor>
+  rdfs:subPropertyOf <https://linked.data.gov.au/def/project#hasParticipant> ;
 .
