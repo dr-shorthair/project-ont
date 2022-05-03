@@ -1,0 +1,109 @@
+# baseURI: file:///C:/Users/cox075/dev/project-ont/rdf/RAID-example.ttl
+# imports: https://linked.data.gov.au/def/project
+
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix proj: <https://linked.data.gov.au/def/project#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///C:/Users/cox075/dev/project-ont/rdf/RAID-example.ttl>
+  a owl:Ontology ;
+  owl:imports <https://linked.data.gov.au/def/project> ;
+.
+<http://orcid.org/0000-000N-NNNN-NNNN>
+  a prov:Person ;
+  a foaf:Person ;
+  dcterms:identifier "http://orcid.org/0000-000N-NNNN-NNNN"^^xsd:anyURI ;
+  foaf:firstname "Anna" ;
+  foaf:surname "Green" ;
+.
+<http://pid/to/ARDCgrant123>
+  a proj:FundingAssociation ;
+  dcterms:identifier "ARDC_GRANT:123" ;
+  dcterms:identifier "http://doi/to/ARDCgrant123"^^xsd:anyURI ;
+  dcterms:identifier "http://pid/to/ARDCgrant123"^^xsd:anyURI ;
+  dcterms:title "ARDC Grant 123" ;
+  prov:agent <https://ror.org/038sjwq14> ;
+  proj:fundsProvided [
+      a proj:SumOfMoney ;
+      proj:moneyAmount "50"^^xsd:decimal ;
+      proj:moneyCurrency <https://dbpedia.org/resource/Australian_dollar> ;
+    ] ;
+.
+<http://pid/to/dataset987>
+  a dcat:Dataset ;
+  dcterms:identifier "OTHER_ID:ParticularDataset987" ;
+  dcterms:identifier "http://doi/to/dataset987"^^xsd:anyURI ;
+  dcterms:identifier "http://pid/to/dataset987"^^xsd:anyURI ;
+  dcterms:title "Particular Dataset" ;
+.
+<http://pid/to/instrument345>
+  a <http://todo/Instrument> ;
+  dcterms:identifier "SERIAL:ParticularInstrument345" ;
+  dcterms:identifier "http://doi/to/instrument345"^^xsd:anyURI ;
+  dcterms:identifier "http://pid/to/instrument345"^^xsd:anyURI ;
+  dcterms:title "Particular Instrument" ;
+.
+<http://project/123xzy>
+  a proj:Project ;
+  dcterms:description "Project Description" ;
+  dcterms:identifier "http://RAiD.org/oy54398ryf"^^xsd:anyURI ;
+  dcterms:title "123xzy" ;
+  prov:endedAtTime "1991-10-17T17:00:00.0+01:00"^^xsd:dateTime ;
+  prov:generated <http://pid/to/dataset987> ;
+  prov:qualifiedAssociation [
+      a prov:Activity ;
+      a prov:Association ;
+      prov:agent <http://orcid.org/0000-000N-NNNN-NNNN> ;
+      prov:endedAtTime "2002-10-17T17:00:00.0+01:00"^^xsd:dateTime ;
+      prov:hadRole <http://vivoweb.org/ontology/core#PrincipalInvestigatorRole> ;
+      prov:startedAtTime "2002-10-13T09:00:00.0+01:00"^^xsd:dateTime ;
+    ] ;
+  prov:qualifiedAssociation [
+      a prov:Activity ;
+      a prov:Association ;
+      prov:agent <https://ror.org/03qn8fb07> ;
+      prov:endedAtTime "2021-03-31T17:00:00.00Z"^^xsd:dateTime ;
+      prov:hadRole <http://vivoweb.org/ontology/core#LeaderRole> ;
+      prov:startedAtTime "2002-10-13T09:00:00.0+01:00"^^xsd:dateTime ;
+    ] ;
+  prov:qualifiedUsage [
+      a prov:Activity ;
+      a prov:Usage ;
+      rdfs:comment "optional time-limited usage if needed" ;
+      rdfs:label "Use of machine 345" ;
+      prov:endedAtTime "1991-10-17T17:00:00.0+01:00"^^xsd:dateTime ;
+      prov:entity <http://pid/to/instrument345> ;
+      prov:startedAtTime "1980-10-13T09:00:00.0+01:00"^^xsd:dateTime ;
+    ] ;
+  prov:startedAtTime "1980-10-13T09:00:00.0+01:00"^^xsd:dateTime ;
+  prov:used <http://pid/to/instrument345> ;
+  proj:wasFundedThrough <http://pid/to/ARDCgrant123> ;
+.
+<https://ror.org/038sjwq14>
+  a prov:Organization ;
+  a foaf:Organization ;
+  dcterms:identifier "https://api.crossref.org/funders/100010581"^^xsd:anyURI ;
+  dcterms:identifier "https://grid.ac/institutes/grid.503071.0"^^xsd:anyURI ;
+  dcterms:identifier "https://ror.org/038sjwq14"^^xsd:anyURI ;
+  dcterms:title "Australian Research Data Commons" ;
+.
+<https://ror.org/03qn8fb07>
+  a prov:Organization ;
+  a foaf:Organization ;
+  dcterms:identifier "ISNI:0000000121732719" ;
+  dcterms:identifier "https://crossref_funder_id/501100000943"^^xsd:anyURI ;
+  dcterms:identifier "https://grid/grid.1016.6"^^xsd:anyURI ;
+  dcterms:identifier "https://ror.org/03qn8fb07"^^xsd:anyURI ;
+  dcterms:title "Commonwealth Scientific and Industrial Research Organisation" ;
+  rdfs:comment "alternative places to store a name ... " ;
+  rdfs:label "Commonwealth Scientific and Industrial Research Organisation" ;
+  foaf:name "Commonwealth Scientific and Industrial Research Organisation" ;
+.
